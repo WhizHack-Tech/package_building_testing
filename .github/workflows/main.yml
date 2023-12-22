@@ -14,11 +14,7 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-
-    - name: scp to machine
-      run: |
-        scp -i ${{ secrets.KEY }} -r docker/ installers/ VM-LIN-STAG-Global-Download-Server_key\ 1.pem  downloadserver@20.231.96.231:
-
+    
     - name: ssh testing phase 1
       uses: appleboy/ssh-action@v1.0.0
       with:
