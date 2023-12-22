@@ -1,26 +1,24 @@
----
-name: Build and Push Image to AWS ECR
+name: Build
 on:
   pull_request_target:
-    branches: [ "main" ]
-    types: [ "closed" ]
+    branches: [main]
+    types: [closed]
+
 jobs:
   build-and-push:
     if: github.event.pull_request.merged == true
-
-    name: SSH and create directory
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-    - name: Checkout
-      uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
-    - name: Set up SSH
-      uses: webfactory/ssh-agent@v0.8.0
-      with:
-        ssh-private-key: |
-          ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-    - name: Copy File to VM
-      run: |
-        scp -i ${{ secrets.SSH_PRIVATE_KEY }} $GITHUB_WORKSPACE/* downloadserver@20.231.96.231:
+      - name: Copy File to VM
+        run: |
+          # Ensure proper file path and correct usage of ssh key
+          scp -i ${{ secrets.SSH_PRIVATE_KEY }} docker/* downloadserver@20.231.96.231:
