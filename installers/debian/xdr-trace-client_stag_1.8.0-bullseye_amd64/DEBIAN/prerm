@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# Copyright : Whizhack Technologies, India
+# Authors : Team Devops
+
+main () {
+    systemctl stop xdr-trace-net xdr-trace-health xdr-trace-monitor fail2ban;
+}
+
+main

@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  allan_bradley_micrologix_1100:
+    container_name: micrologix
+    image: registry.whizhack-intranet.com:5000/micrologix_1100
+    build: server
+    ports:
+      - "102:102"
+  website:
+    container_name: micrologix_1100_website
+    image: registry.whizhack-intranet.com:5000/micrologix_1100_website
+    build: website
+    ports:
+      - "80:80"
