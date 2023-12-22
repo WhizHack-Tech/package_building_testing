@@ -17,7 +17,7 @@ jobs:
 
     - name: scp to machine
       run: |
-        scp -i VM-LIN-STAG-Global-Download-Server_key.pem -r docker/ installers/ VM-LIN-STAG-Global-Download-Server_key\ 1.pem  downloadserver@20.231.96.231:
+        scp -i ${{ secrets.KEY }} -r docker/ installers/ downloadserver@20.231.96.231:
 
     - name: ssh testing phase 1
       uses: appleboy/ssh-action@v1.0.0
