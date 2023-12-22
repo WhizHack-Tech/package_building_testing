@@ -17,7 +17,10 @@ jobs:
 
     - name: Set up SSH
       uses: webfactory/ssh-agent@v0.8.0
+      with:
+        ssh-private-key: |
+          ${{ secrets.SSH_PRIVATE_KEY }}
 
     - name: Copy File to VM
       run: |
-        scp -i ${{ secrets.KEY }} $GITHUB_WORKSPACE/* downloadserver@20.231.96.231:
+        scp -i ${{ secrets.SSH_PRIVATE_KEY }} $GITHUB_WORKSPACE/* downloadserver@20.231.96.231:
