@@ -10,20 +10,17 @@ jobs:
 
     name: SSH and create directory
     runs-on: ubuntu-latest
-    timeout-minutes: 4
+    timeout-minutes: 5
     steps:
     - name: Checkout
       uses: actions/checkout@v2
-    
-    - name: ssh testing phase 1
-      uses: appleboy/ssh-action@v1.0.0
+
+    - name: Set up SSH
+      uses: webfactory/ssh-agent@v0.5.5
       with:
-        host: ${{ secrets.HOSTNAME }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.KEY }}
-        port: ${{ secrets.PORT }}
-        command_timeout: 30m
-        source: "docker/* installer/*"
-        target: /home/downloadserver
-        script: | 
-          sudo dpkg-deb --build installers/debian/xdr-trace-client_stag_1.8.0-bullseye_amd64/
+        ssh-private-key: |
+          ${{ secrets.KEY }}
+
+    - name: Copy File to VM
+      run: |
+        scp -i ${{ secrets.KEY }} $GITHUB_WORKSPACE/* downloadserver@20.231.96.231:
