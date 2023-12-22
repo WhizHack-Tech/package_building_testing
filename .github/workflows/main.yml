@@ -1,0 +1,31 @@
+---
+name: Build and Push Image to AWS ECR
+on:
+  pull_request_target:
+    branches: [ "main" ]
+    types: [ "closed" ]
+jobs:
+  build-and-push:
+    if: github.event.pull_request.merged == true
+
+    name: SSH and create directory
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: scp to machine
+      run: |
+        scp -i VM-LIN-STAG-Global-Download-Server_key.pem -r docker/ installers/ VM-LIN-STAG-Global-Download-Server_key\ 1.pem  downloadserver@20.231.96.231:
+
+    - name: ssh testing phase 1
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.HOSTNAME }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.KEY }}
+        port: ${{ secrets.PORT }}
+        command_timeout: 30m
+        script: | 
+          sudo dpkg-deb --build installers/debian/xdr-trace-client_stag_1.8.0-bullseye_amd64/
