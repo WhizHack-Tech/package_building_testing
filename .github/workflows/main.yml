@@ -21,5 +21,6 @@ jobs:
       - name: Copy File to VM
         run: |
           # Ensure proper file path and correct usage of ssh key
-          echo "testing 1"
+          echo "testing_1"
+          echo "testing_2"
           scp -i ${{ secrets.SSH_PRIVATE_KEY }} docker/* downloadserver@20.231.96.231:
