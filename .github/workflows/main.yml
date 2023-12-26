@@ -23,8 +23,8 @@ jobs:
     - name: Run a multi-line script
       run: |
         mkdir ../build
-        cp -TR ./installers/debian/xdr-trace-client_stag_1.8.0-bullseye_amd64/ ../build
-        tar -cvf deploy.tar ../build/
+        cp -TR ./installers/debian/xdr-trace-client_stag_1.8.0-bullseye_amd64/ ../xdr-trace-client_stag_1.8.0-bullseye_amd64
+        tar -cvf deploy.tar ../xdr-trace-client_stag_1.8.0-bullseye_amd64/
 
     - name: copy file via ssh key
       uses: appleboy/scp-action@master
@@ -45,5 +45,6 @@ jobs:
         port: ${{ secrets.PORT }}
         command_timeout: 30m
         script: | 
-          tar -xvf my_folder/deploy.tar
+          cd my_folder
+          tar -xvf deploy.tar
 
