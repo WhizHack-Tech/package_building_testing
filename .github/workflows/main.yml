@@ -13,14 +13,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
 
-      - name: Set up SSH
-        uses: webfactory/ssh-agent@v0.8.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
       - name: Copy File to VM
         run: |
           # Ensure proper file path and correct usage of ssh key
           echo "testing_1"
           echo "testing_2"
+          echo "testing_3"
           scp -i ${{ secrets.SSH_PRIVATE_KEY }} docker/* downloadserver@20.231.96.231:
