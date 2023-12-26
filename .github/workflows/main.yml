@@ -48,4 +48,8 @@ jobs:
           cd my_folder
           tar -xvf trace180.tar
           sudo dpkg-deb --build xdr-trace-client_stag_1.8.0-bullseye_amd64/
+          mkdir landing_zone
+          mv xdr-trace-client_stag_1.8.0-bullseye_amd64.deb landing_zone/
+          rm -rf my-folder
+
 
