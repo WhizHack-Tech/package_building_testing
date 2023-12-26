@@ -33,4 +33,4 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.PORT }}
         source: "deploy.tar"
-        target: "/"
+        target: "/home/downloadserver/my_folder"
