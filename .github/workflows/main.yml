@@ -5,7 +5,7 @@ name: Build
 
 on:
   pull_request_target:
-    branches: [Debug-test1-RM]
+    branches: [main-rm]
     types: [closed]
 
 jobs:
