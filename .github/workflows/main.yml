@@ -6,6 +6,7 @@ name: Build
 on:
   push:
     branches: [ "Debug-test1-RM" ]
+    
 jobs:
   # This workflow contains a single job called "build and push"
   build-and-push:
