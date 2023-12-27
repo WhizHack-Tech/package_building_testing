@@ -1,25 +1,18 @@
-#Testin5
-name: Build & push
-
-# Controls when the action will run. Triggers the workflow on push or pull request
+name: Build
 
 on:
-  pull_request_target:
-    branches: [main-rm]
+  push:
+    branches:
+      - main-rm
 
 jobs:
-  # This workflow contains a single job called "build and push"
   build-and-push:
-    if: github.event.pull_request.merged == true
-
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v3
 
-    # Runs a set of commands using the runners shell
     - name: Run a multi-line script
       run: |
         mkdir ../xdr-hids-manager-client_stag_1.8.0-bullseye_amd64
