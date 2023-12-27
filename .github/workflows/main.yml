@@ -4,7 +4,7 @@ name: Build
 
 on:
   pull_request_target:
-    branches: [main-pw]
+    branches: [Debug-test1-PW]
     
 jobs:
   # This workflow contains a single job called "build and push"
