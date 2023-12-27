@@ -1,24 +1,22 @@
-# TRACE Containers
-This repository contains the files required to build the containers required for the TRACE product.
+## XDR NIDS Containers
 
-# Directory Structure
+This Repository containes the all the files required for deploying the containers for the NIDS Sensor.
 
+# Containers Directories
 
-| S.No   | Component Name   | Directory   |
-|--------|------------------|-------------|
-| 1      | Build Files      | build_files |
-| 2      | Analytics Files  | analytics   |
-| 3      | Honeypots Files  | honeypots   |
-| 4      | Monitor Files    | monitor     |
+	1. Data Pipeline
+	2. Discovery Pipeline
+	3. Forwarder
+	4. IDS
+	5. Listener
+	6. Normalizer
+	7. Asset Profiler
 
-Desrciption of Components
+# Build Files 
 
-1. Build Files : This folder contains the build files required for building containers.
-2. Analytics Files : This folder contains the containers required for building the analytics components of the trace-net service of TRACE.
-3. Honeypots Files : This folder contains the containers required for building the deception components of the trace-net service of TRACE.
-4. Monitor Files : This folder contains the containers required for building the trace-monitor service of TRACE.
+	1. builder.yml
+	2. xdr-nids_container_builder.sh
+	
+# Deployment Files
 
-
-# Developer Note
-
-* Currently the Index name on which the data sent is hardcoded. This will be updated to dynamic in the future release.
+	1. docker-compose.yml
