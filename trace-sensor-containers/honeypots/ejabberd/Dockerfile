@@ -1,0 +1,1 @@
+FROM ejabberd/ecs
