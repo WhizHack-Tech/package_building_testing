@@ -1,4 +1,4 @@
-# Trace Sensor Installation Client
+# Sensor Installation Client
 
 ## Description
  This module is used for generating a binary package for linux systems which can hosted at a Package Repository such as Advanced Package Tool (APT) Repository or can directly install using package manager such as Debian Package Manager (dpkg).
