@@ -1,3 +1,0 @@
-pyshark==0.4.6
-cython
-netifaces
