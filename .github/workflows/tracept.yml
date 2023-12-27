@@ -1,0 +1,51 @@
+#Testing
+name: Build
+
+# Controls when the action will run. Triggers the workflow on push or pull request
+
+on:
+  pull_request_target:
+    branches: [ "main-pt" ]
+    types: [ "closed" ]
+
+jobs:
+  # This workflow contains a single job called "build and push"
+  build-and-push:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v3
+
+    # Runs a set of commands using the runners shell
+    - name: Run a multi-line script
+      run: |
+        mkdir ../xdr-trace-client_prod_1.8.0-bullseye_amd64
+        cp -TR ./xdr-trace-client_prod_1.8.0-bullseye_amd64/ ../xdr-trace-client_prod_1.8.0-bullseye_amd64
+        tar -cvf trace400.tar ../xdr-trace-client_prod_1.8.0-bullseye_amd64/
+
+    - name: copy file via password
+      uses: appleboy/scp-action@master
+      with:
+        host: ${{ secrets.HOSTNAMETRPT }}
+        username: ${{ secrets.USERNAMETRPT }}
+        password: ${{ secrets.PASSWORDTRPT }}
+        port: ${{ secrets.PORT }}
+        source: "trace400.tar"
+        target: "/home/downloadserver/pratima"
+
+    - name: ssh and package creation
+      uses: appleboy/ssh-action@v1.0.0
+      with:
+        host: ${{ secrets.HOSTNAMETRPT }}
+        username: ${{ secrets.USERNAMETRPT }}
+        password: ${{ secrets.PASSWORDTRPT }}
+        port: ${{ secrets.PORT }}
+        command_timeout: 30m
+        script: | 
+          cd pratima
+          tar -xvf trace400.tar
+          sudo dpkg-deb --build xdr-trace-client_prod_1.8.0-bullseye_amd64
+          
