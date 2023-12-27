@@ -8,7 +8,7 @@ on:
     branches:
       - Debug-test1-RM
 jobs:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04LTS
     timeout-minutes: 4
 
     steps:
