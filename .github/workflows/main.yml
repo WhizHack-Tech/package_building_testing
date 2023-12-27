@@ -1,9 +1,10 @@
 name: Build
 
 on:
-  push:
+  pull_request:
+    # Sequence of patterns matched against refs/heads
     branches:
-      - main-rm
+        - main-rm
 
 jobs:
   build-and-push:
