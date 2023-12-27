@@ -3,9 +3,9 @@ name: Build
 # Controls when the action will run. Triggers the workflow on push or pull request
 
 on:
-  push:
-    branches:
-      - main-pw
+  pull_request_target:
+    branches: [main]
+    types: [closed]
 jobs:
   # This workflow contains a single job called "build and push"
   build-and-push:
