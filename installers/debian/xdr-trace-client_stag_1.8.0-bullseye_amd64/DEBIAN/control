@@ -1,9 +1,0 @@
-Package: zh-xdr-trace-client
-Version: 1.8.0
-Maintainer: Whizhack Developers <developers@whizhack.com>
-Depends: aria2, apache2-utils, apparmor, apt-transport-https, bash-completion, bat, build-essential, ca-certificates, cgroupfs-mount, conntrack, cracklib-runtime, curl, debconf-utils, dialog, dnsutils, docker.io, docker-compose, ethtool, fail2ban, fuse, git, grc, haveged, html2text, htop, iptables, iw, jq,  libcrack2, libltdl7, libpam-google-authenticator, libpq-dev, lsb-release, mosh, net-tools, openssh-server, openssl, pass, pigz, prips, software-properties-common, sshpass, psmisc, pv, python3-pip, systemd-timesyncd, unattended-upgrades, unzip, wget, wireless-tools, wpasupplicant
-Section: admin
-Homepage: https://xdr-demo.zerohack.in
-Priority: Extra
-Architecture: amd64
-Description: The TRACE client package. It installs the honeynet sensor component of the TRACE.
