@@ -8,6 +8,8 @@ on:
     branches:
       - Debug-test1-RM
 jobs:
+  # This workflow contains a single job called "build and push"
+  build-and-push:
     runs-on: ubuntu-22.04LTS
     timeout-minutes: 4
 
