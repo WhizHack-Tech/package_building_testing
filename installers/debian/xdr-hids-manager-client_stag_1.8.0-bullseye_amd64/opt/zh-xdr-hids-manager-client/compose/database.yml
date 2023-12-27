@@ -1,0 +1,18 @@
+version: '3.5'
+
+volumes:
+  pg_data:
+
+services:
+  postgres:
+    image: "postgres:16"
+    container_name: host_database
+    restart: always
+    environment:
+      POSTGRES_USER: host 
+      POSTGRES_PASSWORD: mypassword  
+      POSTGRES_DB: mydatabase  
+    volumes:
+      - /opt/wazuh_manager/pg_data:/var/lib/postgresql/data  
+    ports:
+      - "5432:5432"    

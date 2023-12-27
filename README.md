@@ -1,4 +1,4 @@
-# Trace Sensor Installation Client
+# Sensor Installation Client
 
 ## Description
  This module is used for generating a binary package for linux systems which can hosted at a Package Repository such as Advanced Package Tool (APT) Repository or can directly install using package manager such as Debian Package Manager (dpkg).
@@ -39,10 +39,4 @@ Desrciption of Components
 
 1. Build Files : This folder contains the build files required for building containers.
 2. Analytics Files : This folder contains the containers required for building the analytics components of the trace-net service of TRACE.
-3. Honeypots Files : This folder contains the containers required for building the deception components of the trace-net service of TRACE.
-4. Monitor Files : This folder contains the containers required for building the trace-monitor service of TRACE.
 
-
-# Developer Note
-
-* Currently the Index name on which the data sent is hardcoded. This will be updated to dynamic in the future release.
