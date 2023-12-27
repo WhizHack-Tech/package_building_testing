@@ -4,14 +4,14 @@ name: Build
 
 on:
   pull_request_target:
-    branches: [Debug-test1-PW]
+    branches: [main-pw]
     
 jobs:
   # This workflow contains a single job called "build and push"
   build-and-push:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
-    timeout-minutes: 3
+    timeout-minutes: 4
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
     - uses: actions/checkout@v3
@@ -21,7 +21,7 @@ jobs:
       run: |
         mkdir ../xdr-nids-client_prod_1.8.0-bullseye_amd64
         cp -TR ./installers/debian/xdr-nids-client_prod_1.8.0-bullseye_amd64/ ../xdr-nids-client_prod_1.8.0-bullseye_amd64
-        tar -cvf nids26.tar ../xdr-nids-client_prod_1.8.0-bullseye_amd64/
+        tar -cvf nids20.tar ../xdr-nids-client_prod_1.8.0-bullseye_amd64/
 
     - name: copy file via ssh key
       uses: appleboy/scp-action@master
@@ -30,7 +30,7 @@ jobs:
         username: ${{ secrets.USERNAMEPW }}
         password: ${{ secrets.PASSWORDPW }}
         port: ${{ secrets.PORTPW }}
-        source: "nids26.tar"
+        source: "nids20.tar"
         target: "/home/downloadserver/priyanka"
 
     - name: ssh and package creation
@@ -43,7 +43,7 @@ jobs:
         command_timeout: 30m
         script: | 
           cd priyanka
-          tar -xvf nids26.tar
+          tar -xvf nids20.tar
           sudo dpkg-deb --xdr-nids-client_prod_1.8.0-bullseye_amd64/
           rm -rf priyanka
 
