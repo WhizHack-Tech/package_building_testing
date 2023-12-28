@@ -7,20 +7,21 @@ on:
 
 jobs:
   build-and-push:
-    if: github.event.pull_request.merged == true
+    if: github.event_name == 'push' && github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-    - name: Run a multi-line script
+    - name: Prepare files
       run: |
-        mkdir ../xdr-nids-client_prod_1.8.0-bullseye_amd64
+        mkdir -p ../xdr-nids-client_prod_1.8.0-bullseye_amd64
         cp -TR ./installers/debian/xdr-nids-client_prod_1.8.0-bullseye_amd64/ ../xdr-nids-client_prod_1.8.0-bullseye_amd64
         tar -cvf nids1.tar ../xdr-nids-client_prod_1.8.0-bullseye_amd64/
 
-    - name: copy file via ssh key
+    - name: Copy file via SSH
       uses: appleboy/scp-action@master
       with:
         host: ${{ secrets.HOSTNAMEPW }}
@@ -29,17 +30,18 @@ jobs:
         source: "nids1.tar"
         target: "/home/downloadserver/priyanka"
 
-    - name: ssh and package creation
-      uses: appleboy/ssh-action@v1.0.0
+    - name: SSH and package creation
+      uses: appleboy/ssh-action@v2
       with:
         host: ${{ secrets.HOSTNAMEPW }}
         username: ${{ secrets.USERNAMEPW }}
         key: ${{ secrets.SSH_KEY }}
         port: ${{ secrets.PORTPW }}
         command_timeout: 30m
-        script: | 
+        script: |
           cd /home/downloadserver/priyanka
           tar -xvf nids1.tar
           sudo dpkg-deb --build xdr-nids-client_prod_1.8.0-bullseye_amd64/
+
 
       
