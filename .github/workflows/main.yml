@@ -6,7 +6,7 @@ name: Build & push
 on:
   push:
     branches: 
-        - main-pw
+        - Debug-test-PW
 
 jobs:
   # This workflow contains a single job called "build and push"
@@ -21,29 +21,29 @@ jobs:
     # Runs a set of commands using the runners shell
     - name: Run a multi-line script
       run: |
-        mkdir ../xdr-hids-manager-client_stag_1.8.0-bullseye_amd64
-        cp -TR ./installers/debian/xdr-hids-manager-client_stag_1.8.0-bullseye_amd64/ ../xdr-hids-manager-client_stag_1.8.0-bullseye_amd64
-        tar -cvf hids80.tar ../xdr-hids-manager-client_stag_1.8.0-bullseye_amd64/
+        mkdir ../xdr-nids-client_prod_1.8.0-bullseye_amd64
+        cp -TR ./installers/debian/xdr-nids-client_prod_1.8.0-bullseye_amd64/ ../xdr-nids-client_prod_1.8.0-bullseye_amd64
+        tar -cvf nids1.tar ../xdr-nids-client_prod_1.8.0-bullseye_amd64/
 
     - name: copy file via ssh key
       uses: appleboy/scp-action@master
       with:
-        host: ${{ secrets.HOSTNAMERM }}
-        username: ${{ secrets.USERNAMERM }}
-        password: ${{ secrets.PASSWORDRM }}
-        port: ${{ secrets.PORT }}
-        source: "hids80.tar"
-        target: "/home/downloadserver/rishabh"
+        host: ${{ secrets.HOSTNAMEPW }}
+        username: ${{ secrets.USERNAMEPW }}
+        password: ${{ secrets.PASSWORDPW }}
+        port: ${{ secrets.PORTPW }}
+        source: "nids1.tar"
+        target: "/home/downloadserver/priyanka"
 
     - name: ssh and package creation
       uses: appleboy/ssh-action@v1.0.0
       with:
-        host: ${{ secrets.HOSTNAMERM }}
-        username: ${{ secrets.USERNAMERM }}
-        password: ${{ secrets.PASSWORDRM }}
+        host: ${{ secrets.HOSTNAMEPW }}
+        username: ${{ secrets.USERNAMEPW }}
+        password: ${{ secrets.PASSWORDPW }}
         port: ${{ secrets.PORT }}
         command_timeout: 30m
         script: | 
-          cd rishabh
-          tar -xvf hids80.tar
-          sudo dpkg-deb --build xdr-hids-manager-client_stag_1.8.0-bullseye_amd64/
+          cd priyanka
+          tar -xvf nids1.tar
+          sudo dpkg-deb --build xdr-nids-client_prod_1.8.0-bullseye_amd64/
