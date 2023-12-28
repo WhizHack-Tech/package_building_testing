@@ -1,9 +1,0 @@
-Package: zh-xdr-hids-manager-client
-Version: 1.0.0
-Maintainer: Whizhack Developers <developers@whizhack.com>
-Depends: docker.io, docker-compose, apt-transport-https, ca-certificates, curl, software-properties-common, rsync, awscli, python3-pip, unzip, ethtool
-Section: admin
-Homepage: https://xdr.zerohack.in
-Priority: Extra
-Architecture: amd64
-Description: This package installs the zerohack xdr client software in the traffic monitoring agents of each client.
