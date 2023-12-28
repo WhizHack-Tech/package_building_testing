@@ -5,7 +5,7 @@ name: Build
 
 on:
   pull_request_target:
-    branches: [main]
+    branches: [Debug-test-PW]
     types: [closed]
 
 jobs:
