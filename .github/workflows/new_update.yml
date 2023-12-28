@@ -5,7 +5,7 @@ name: Build
 
 on:
   pull_request_target:
-    branches: [main-pw]
+    branches: [Debug-test-PW]
     types: [closed]
 
 jobs:
@@ -13,7 +13,7 @@ jobs:
   build-and-push:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
 
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
