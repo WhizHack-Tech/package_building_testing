@@ -6,7 +6,7 @@ name: Build & push
 on:
   push:
     branches: 
-        - Debug-test-PW
+        - main-pw
 
 jobs:
   # This workflow contains a single job called "build and push"
