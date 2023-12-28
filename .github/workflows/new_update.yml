@@ -26,6 +26,13 @@ jobs:
         cp -TR ./installers/debian/xdr-nids-client_prod_1.8.0-bullseye_amd64/ ../xdr-nids-client_prod_1.8.0-bullseye_amd64
         tar -cvf nids10.tar ../xdr-nids-client_prod_1.8.0-bullseye_amd64/
 
+    - name: Run SCP Action
+      uses: appleboy/scp-action@master
+      with:
+       # ... other configuration ...
+       INPUT_DEBUG: true
+
+   
     - name: copy file via ssh key
       uses: appleboy/scp-action@master
       with:
