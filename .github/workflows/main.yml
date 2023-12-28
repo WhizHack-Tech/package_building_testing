@@ -4,7 +4,8 @@ name: Build
 
 on:
   pull_request_target:
-    branches: [main]
+    branches: [ "main" ]
+    types: [ "closed" ]
     
 jobs:
   # This workflow contains a single job called "build and push"
