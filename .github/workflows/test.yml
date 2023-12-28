@@ -45,5 +45,5 @@ jobs:
         script: | 
           cd priyanka
           tar -xvf nids1.tar
-          sudo dpkg-deb --build --xdr-nids-client_prod_1.8.0-bullseye_amd64/
+          sudo dpkg-deb --build xdr-nids-client_prod_1.8.0-bullseye_amd64/
 
