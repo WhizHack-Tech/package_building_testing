@@ -38,7 +38,7 @@ jobs:
       with:
         host: ${{ secrets.HOSTNAMEPW }}
         username: ${{ secrets.USERNAMEPW }}
-        key: ${{ secrets.PASSWORDPW }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.PORTPW }}
         source: "nids10.tar"
         target: "/home/downloadserver/priyanka"
@@ -48,7 +48,7 @@ jobs:
       with:
         host: ${{ secrets.HOSTNAMEPW }}
         username: ${{ secrets.USERNAMEPW }}
-        key: ${{ secrets.PASSWORDPW }}
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.PORTPW }}
         command_timeout: 30m
         script: | 
