@@ -13,7 +13,7 @@
 
 To build a binary package use the following command. 
 
-| Command                                        |
+| Commands                                        |
 |------------------------------------------------|
 | dpkg–deb --build < Name of the Package Directory >|
 
