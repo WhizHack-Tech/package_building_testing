@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  gaspot:
+    container_name: gaspot
+    image: registry.whizhack-intranet.com/trace_gaspot
+    build: .
+    volumes: 
+      #- /data/gaspot/log:/var/log/gaspot
+      - ./:/var/log/gaspot
+    ports:
+      - "10001:10001"

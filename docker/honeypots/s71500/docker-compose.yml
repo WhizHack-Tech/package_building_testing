@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  s71500:
+    container_name: trace_s71500
+    image: registry.whizhack-intranet.com:5000/trace_s71500
+    build: server
+    ports:
+      - "102:102"
+  website:
+    container_name: trace_s71500_website
+    image: registry.whizhack-intranet.com:5000/trace_s71500_website
+    build: website
+    ports:
+      - "80:80"
+  snmp_server:
+    container_name: trace_s71500_snmp
+    image: registry.whizhack-intranet.com:5000/trace_s71500_snmp
+    build: snmp_server
+    ports:
+      - "161:1024"

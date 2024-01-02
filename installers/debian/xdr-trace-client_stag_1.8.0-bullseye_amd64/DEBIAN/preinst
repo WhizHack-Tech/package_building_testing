@@ -1,0 +1,112 @@
+#!/bin/bash
+
+# Copyright : Whizhack Technologies, India
+# Authors : Team Devops
+
+ANCHOR_FILE=/usr/local/bin/trace
+
+SSH="
+Port 64295
+"
+
+package-installer () {
+    # This function downloads and installs required packages.
+
+    # Installing required pip3 packages.
+    pip3 install yq
+
+    if [ -f "/aws/install" ]; then
+        /aws/install --update
+    else
+        curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" &&
+        unzip awscliv2.zip -d / &&
+        /aws/install;
+    fi
+
+}
+
+user-setup () {
+    # This function checks if the required groups and users exists in the system and creates them as per requirements.
+
+    local user=trace-net-operator
+    local user_group=trace-net-operator
+
+    # Checking for availability of the group and creating as needed.
+    if [ $(getent group $user_group) ]; then
+        true
+    else
+        addgroup --gid 2000 trace-net-operator
+    fi
+
+    # Checking if the user exists and creating as needed.
+    id -u $user >/dev/null 2>&1
+    if [ "$?" == "0" ]; then
+        true
+    else
+        adduser --system --no-create-home --uid 2000 --disabled-password --disabled-login --gid 2000 trace-net-operator;
+    fi
+}
+
+directory-creator () {
+    # This function creates the directory structure required for storing the honeypot logs.
+
+    # Ensuring the directory structure is intact.
+    mkdir -p /data/adbhoney/{downloads,log} \
+         /data/ciscoasa/log \
+         /data/conpot/log \
+         /data/citrixhoneypot/logs \
+         /data/cowrie/{downloads,keys,misc,log,log/tty} \
+         /data/ddospot/{bl,db,log} \
+         /data/dicompot/{images,log} \
+         /data/dionaea/{log,bistreams,binaries,rtp,roots,roots/ftp,roots/tftp,roots/www,roots/upnp} \
+         /data/elasticpot/log \
+         /data/endlessh/log \
+         /data/fatt/log \
+         /data/glutton/log \
+         /data/gaspot/log \
+         /data/gridpot/log \
+         /data/hellpot/log \
+         /data/heralding/log \
+         /data/honeypots/log \
+         /data/honeypy/log \
+         /data/honeytrap/{log,attacks,downloads} \
+         /data/honeysap/log \
+         /data/honeyplc/log \
+         /data/ipphoney/log \
+         /data/log4pot/{log,payloads} \
+         /data/mailoney/log \
+         /data/medpot/log \
+         /data/nginx/{log,heimdall} \
+         /data/rdpy/log \
+         /data/p0f/log \
+         /data/redishoneypot/log \
+         /data/tanner/{log,files} \
+         /data/riotpot/log \
+         /data/suricata/log \
+         /data/sentrypeer/log \
+         /data/riotpot &&
+    # Giving the directory permissions and ownership to honeynet user.
+    chmod 770 -R /data &&
+    chown trace-net-operator:trace-net-operator -R /data;
+}
+
+ssh-setup () {
+    # This function performs ssh setup when required.
+
+    # Checking if the ssh has been configured earlier and adding required settings.
+    if ! grep -qF "64295" /etc/ssh/sshd_config; then
+        echo "$SSH" | sudo tee -a /etc/ssh/sshd_config &&
+        sudo systemctl daemon-reload &&
+        sudo systemctl restart ssh;
+        echo "[!!] Changing Default SSH Port to 64295.";
+    fi
+}
+
+main () {
+    package-installer
+    user-setup
+    directory-creator
+    ssh-setup
+}
+
+main
