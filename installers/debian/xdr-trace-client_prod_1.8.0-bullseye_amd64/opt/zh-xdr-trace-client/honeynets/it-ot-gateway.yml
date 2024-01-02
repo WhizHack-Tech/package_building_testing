@@ -1,88 +1,52 @@
-# Copyright : Whizhack Technologies, India
-
-version: '2.3'
-
-networks:
-  endlessh_local:
-  hellpot_local:
-  heralding_local:
+version: "3"
 
 volumes:
+  postgres_data:
   analytics_data:
+
+networks: 
+  riotpot_local:
+  adbhoney_local:
+  ipphoney_local: 
 
 services:
 
-  endlessh:
-    image: "${REGISTRY_SERVER}/endlessh_xdr_trace_honeypots:stag_amd64_1.8.0"
-    container_name: endlessh
+  ipphoney:
+    image: "${REGISTRY_SERVER}/ipphoney_xdr_trace_honeypots:prod_amd64_1.8.0"
+    container_name: ipphoney
     restart: always
     networks:
-     - endlessh_local 
+     - ipphoney_local
     ports:
-     - "22:2222"
+     - "631:631"
     read_only: true
     volumes:
-     - /data/endlessh/log:/var/log/endlessh
-
-  heralding:
-    container_name: heralding
-    image: "${REGISTRY_SERVER}/heralding_xdr_trace_honeypots:stag_amd64_1.8.0"
-    read_only: true
-    restart: always
-    tmpfs:
-     - /tmp/heralding:uid=2000,gid=2000
+     - /data/ipphoney/log:/opt/ipphoney/log
+     
+  postgres:
+    container_name: riotpot_database
+    image: "${REGISTRY_SERVER}/postgres_xdr_trace_honeypots:prod_amd64_1.8.0"
     networks:
-     - heralding_local
-    ports:
-     - "110:110"
-     - "143:143"
-     - "465:465"
-     - "993:993"
-     - "995:995"
-     - "1080:1080"
-     - "5432:5432"
-     - "5900:5900"
+      - riotpot_local
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=db
     volumes:
-     - /data/heralding/log:/var/log/heralding
-
-  honeytrap:
-    container_name: honeytrap
-    image: "${REGISTRY_SERVER}/honeytrap_xdr_trace_honeypots:stag_amd64_1.8.0"
-    read_only: true
-    restart: always
-    tmpfs:
-     - /tmp/honeytrap:uid=2000,gid=2000
-    network_mode: "host"
-    cap_add:
-     - NET_ADMIN
-    volumes:
-     - /data/honeytrap/attacks:/opt/honeytrap/var/attacks
-     - /data/honeytrap/downloads:/opt/honeytrap/var/downloads
-     - /data/honeytrap/log:/opt/honeytrap/var/log
-
-  hellpot:
-    container_name: hellpot
-    image: "${REGISTRY_SERVER}/hellpot_xdr_trace_honeypots:stag_amd64_1.8.0"
-    read_only: true
-    restart: always
-    networks:
-     - hellpot_local
-    ports:
-     - "80:8080"
-    volumes:
-     - /data/hellpot/log:/var/log/hellpot
+      - postgres_data:/var/lib/postgresql/data/
 
 #=========================
 # Analytics
 #=========================
   analytics_init:
-    image: ${REGISTRY_SERVER}/ubuntu_xdr_trace_analytics:stag_amd64_1.8.0
+    image: ${REGISTRY_SERVER}/ubuntu_xdr_trace_analytics:prod_amd64_1.8.0
     command: bash -c "mkdir -p /var/log/zerohack/{photon,gluon,suricata,fatt,p0f,snort,maltrai,listener} && mkdir -p /var/log/zerohack/parted_data/{honeynet,dpi,listener,ids} && mkdir /var/log/zerohack/merger && mkdir -p /var/log/zerohack/normalized_data/{honeynet,dpi,listener,ids} && mkdir /var/log/zerohack/processed_data && mkdir -p /var/log/zerohack/photon/storage/artifacts/http && mkdir -p /var/log/zerohack/photon/storage/rules"
     volumes:
       - analytics_data:/var/log/zerohack
+
   fatt:
     container_name: fatt
-    image: "${REGISTRY_SERVER}/fatt_xdr_trace_analytics:stag_amd64_1.8.0"
+    image: "${REGISTRY_SERVER}/fatt_xdr_trace_analytics:prod_amd64_1.8.0"
     restart: always
     network_mode: "host"
     cap_add:
@@ -94,7 +58,7 @@ services:
 
   p0f:
     container_name: p0f
-    image: "${REGISTRY_SERVER}/p0f_xdr_trace_analytics:stag_amd64_1.8.0"
+    image: "${REGISTRY_SERVER}/p0f_xdr_trace_analytics:prod_amd64_1.8.0"
     restart: always
     network_mode: "host"
     read_only: true
@@ -103,7 +67,7 @@ services:
 
   suricata:
     container_name: suricata
-    image: "${REGISTRY_SERVER}/ids_xdr_trace_analytics:stag_amd64_1.8.0"
+    image: "${REGISTRY_SERVER}/ids_xdr_trace_analytics:prod_amd64_1.8.0"
     restart: always
     environment:
      - OINKCODE=OPEN
@@ -117,7 +81,7 @@ services:
 
   photon:
     container_name: photon
-    image: ${REGISTRY_SERVER}/photon_xdr_trace_analytics:stag_amd64_1.8.0
+    image: ${REGISTRY_SERVER}/photon_xdr_trace_analytics:prod_amd64_1.8.0
     restart: always
     network_mode: "host"
     cap_add:
@@ -133,7 +97,7 @@ services:
 
   gluon_forwarder:
     container_name: gluon_forwarder
-    image: ${REGISTRY_SERVER}/forwarder_xdr_trace_analytics:stag_amd64_1.8.0
+    image: ${REGISTRY_SERVER}/forwarder_xdr_trace_analytics:prod_amd64_1.8.0
     restart: always
     env_file:
       - /etc/zh-xdr-trace-client/config.env
@@ -145,7 +109,7 @@ services:
 
   listener:
     container_name: listener
-    image: ${REGISTRY_SERVER}/listener_xdr_trace_analytics:stag_amd64_1.8.0
+    image: ${REGISTRY_SERVER}/listener_xdr_trace_analytics:prod_amd64_1.8.0
     restart: always
     network_mode: "host"
     volumes:
@@ -157,7 +121,7 @@ services:
       
   normalizer:
     container_name: normalizer
-    image: ${REGISTRY_SERVER}/normalizer_xdr_trace_analytics:stag_amd64_1.8.0
+    image: ${REGISTRY_SERVER}/normalizer_xdr_trace_analytics:prod_amd64_1.8.0
     restart: always
     network_mode: "host"
     volumes:
@@ -169,7 +133,7 @@ services:
 
   merger:
     container_name: merger
-    image: ${REGISTRY_SERVER}/merger_xdr_trace_analytics:stag_amd64_1.8.0
+    image: ${REGISTRY_SERVER}/merger_xdr_trace_analytics:prod_amd64_1.8.0
     restart: always
     network_mode: "host"
     volumes:
@@ -181,7 +145,7 @@ services:
 
   data_pipeline:
     container_name: data_pipeline
-    image: ${REGISTRY_SERVER}/data_pipeline_xdr_trace_analytics:stag_amd64_1.8.0
+    image: ${REGISTRY_SERVER}/data_pipeline_xdr_trace_analytics:prod_amd64_1.8.0
     restart: always
     network_mode: "host"
     volumes:
