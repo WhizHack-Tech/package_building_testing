@@ -1,30 +1,30 @@
-#Testing
-name: packages
 
-# Controls when the action will run. Triggers the workflow on push or pull request
+name: Hids Package Pipeline
 
 on:
   pull_request_target:
     branches: [ "main-rm" ]
     types: [ "closed" ]
+
 jobs:
   build-and-push:
     if: github.event.pull_request.merged == true
 
     name: deployment
     runs-on: ubuntu-22.04
-    timeout-minutes: 5
+    timeout-minutes: 30
 
     steps:
-    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+
+    - name: Checkout
     - uses: actions/checkout@v3
 
-    # Runs a set of commands using the runners shell
+
     - name: Run a multi-line script
       run: |
-        mkdir ../xdr-hids-manager-client_stag_1.8.0-bullseye_amd64
-        cp -TR ./installers/debian/xdr-hids-manager-client_stag_1.8.0-bullseye_amd64/ ../xdr-hids-manager-client_stag_1.8.0-bullseye_amd64
-        tar -cvf hids80.tar ../xdr-hids-manager-client_stag_1.8.0-bullseye_amd64/
+        mkdir ../xdr-hids-manager-client_dev_1.8.0-bullseye_amd64
+        cp -TR ./installers/debian/xdr-hids-manager-client_dev_1.8.0-bullseye_amd64 ../xdr-hids-manager-client_dev_1.8.0-bullseye_amd64
+        tar -cvf hids80.tar ../xdr-hids-manager-client_dev_1.8.0-bullseye_amd64/
 
 
     - name: copy file via ssh key
@@ -37,7 +37,7 @@ jobs:
         source: "hids80.tar"
         target: "/home/downloadserver/rishabh"
 
-    - name: ssh and package creation
+    - name: ssh VM & build package
       uses: appleboy/ssh-action@v1.0.0
       with:
         host: ${{ secrets.HOSTNAMERM }}
@@ -48,5 +48,5 @@ jobs:
         script: | 
           cd rishabh
           tar -xvf hids80.tar
-          sudo dpkg-deb --build xdr-hids-manager-client_stag_1.8.0-bullseye_amd64/
+          sudo dpkg-deb --build xdr-hids-manager-client_dev_1.8.0-bullseye_amd64/
           

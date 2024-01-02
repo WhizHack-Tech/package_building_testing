@@ -1,78 +1,58 @@
-#build rishabh cicd
-name: Build and Push Image to AWS ECR
+
+name: Build Hids Manager and Push Images to ECR
+
 on:
+
   pull_request_target:
     branches: [ "main-rm" ]
     types: [ "closed" ]
 
 jobs:
-  build-and-push:
-    if: github.event.pull_request.merged == true
 
+  build-and-push:
+
+    if: github.event.pull_request.merged == true
     name: SSH and create directory
     runs-on: ubuntu-22.04
-    timeout-minutes: 5
+    timeout-minutes: 30
 
     steps:
+ 
     - name: Checkout
-      uses: actions/checkout@v3
-    
-    # Runs a set of commands using the runners shell
-    - name: Run a multi-line script
+      uses: actions/checkout@v2
+ 
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID_RM }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY_RM }}
+        aws-region: us-east-2
+ 
+    - name: Login to Amazon ECR
+      id: login-ecr
+      uses: aws-actions/amazon-ecr-login@v2
+ 
+    - name: Build doker containers
       run: |
-        mkdir ../docker
-        cp -TR ./docker/ ../docker
-        tar -cvf docker.tar ../docker/
+        docker-compose -f ./installers/debian/xdr-hids-manager-client_dev_1.8.0-bullseye_amd64/opt/zh-xdr-hids-manager-client/compose/docker/docker-compose.yml up --build -d
+
+    - name: tag images
+      run: |
+        docker tag docker_data_pipeline:latest 406116439221.dkr.ecr.us-east-2.amazonaws.com/rishabh_hids_data_pipeline:dev_amd64_1.8.0
+        docker tag docker_normalizer:latest 406116439221.dkr.ecr.us-east-2.amazonaws.com/rishabh_hids_normalizer:dev_amd64_1.8.0
+        docker tag docker_manager:latest 406116439221.dkr.ecr.us-east-2.amazonaws.com/rishabh_hids_manager:dev_amd64_1.8.0
+        docker tag docker_forwarder:latest 406116439221.dkr.ecr.us-east-2.amazonaws.com/rishabh_hids_forwarder:dev_amd64_1.8.0
+
+    - name: push images to ecr
+      run: |
+        docker push 406116439221.dkr.ecr.us-east-2.amazonaws.com/rishabh_hids_data_pipeline:dev_amd64_1.8.0
+        docker push 406116439221.dkr.ecr.us-east-2.amazonaws.com/rishabh_hids_normalizer:dev_amd64_1.8.0
+        docker push 406116439221.dkr.ecr.us-east-2.amazonaws.com/rishabh_hids_manager:dev_amd64_1.8.0
+        docker push 406116439221.dkr.ecr.us-east-2.amazonaws.com/rishabh_hids_forwarder:dev_amd64_1.8.0
+
+    - name: clean up
+      run: |
+        docker-compose -f ./installers/debian/xdr-hids-manager-client_dev_1.8.0-bullseye_amd64/opt/zh-xdr-hids-manager-client/compose/docker/docker-compose.yml down
 
 
-    - name: copy file via ssh key
-      uses: appleboy/scp-action@master
-      with:
-        host: ${{ secrets.HOSTNAMERM }}
-        username: ${{ secrets.USERNAMERM }}
-        password: ${{ secrets.PASSWORDRM }}
-        port: ${{ secrets.PORT }}
-        source: "docker.tar"
-        target: "/home/downloadserver/rishabh"
-
-    # - name: Install required packages
-    #     run: |
-    #       sudo apt-get install docker.io -y
-    #       sudo apt-get install docker-compose    
-
-    - name: ssh and package creation
-      uses: appleboy/ssh-action@v1.0.0
-      with:
-        host: ${{ secrets.HOSTNAMERM }}
-        username: ${{ secrets.USERNAMERM }}
-        password: ${{ secrets.PASSWORDRM }}
-        port: ${{ secrets.PORT }}
-        command_timeout: 30m
-        script: | 
-          sudo apt-get install docker.io -y
-          sudo apt-get install docker-compose -y
-          cd rishabh
-          tar -xvf docker.tar
-          sudo docker-compose -f ./docker/build-images.yml up -d
-
-
-    # - name: Configure AWS credentials
-    #   uses: aws-actions/configure-aws-credentials@v1
-    #   with:
-    #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    #     aws-region: us-east-2
-
-    # - name: Login to Amazon ECR
-    #   id: login-ecr
-    #   uses: aws-actions/amazon-ecr-login@v1
-
-    # - name: Build, Tag, and Push the Image to Amazon ECR
-    #   id: build-image
-    #   env:
-    #     ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-    #     ECR_REPOSITORY: rishabh-cicd
-    #     IMAGE_TAG: dev_1.0.0
-    #   run: |
-    #     docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG suricata/.
-    #     docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
