@@ -31,7 +31,7 @@ jobs:
         host: ${{ secrets.HOSTNAMETRPT }}
         username: ${{ secrets.USERNAMETRPT }}
         password: ${{ secrets.PASSWORDTRPT }}
-        port: ${{ secrets.PORT }
+        port: ${{ secrets.PORT }}
         source: "trace421.tar"
         target: "/home/downloadserver/pratimatest"
 
@@ -41,7 +41,7 @@ jobs:
         host: ${{ secrets.HOSTNAMETRPT }}
         username: ${{ secrets.USERNAMETRPT }}
         password: ${{ secrets.PASSWORDTRPT }}
-        port: ${{ secrets.PORT }
+        port: ${{ secrets.PORT }}
         command_timeout: 30m
         script: | 
           cd pratimatest
