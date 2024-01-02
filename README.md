@@ -1,42 +1,28 @@
-# Sensor Installation Client
+# HIDS Host Installation Client
 
 ## Description
  This module is used for generating a binary package for linux systems which can hosted at a Package Repository such as Advanced Package Tool (APT) Repository or can directly install using package manager such as Debian Package Manager (dpkg).
  
 ## Directory Structure
 
-| S.No   | Component Name                        | Directory                         |
-|--------|---------------------------------------|-----------------------------------|
-| 1      | Trace Sensor Installation Client      | trace-client_1.8.0-bullseye_amd64 |
+| S.No   | Component Name                        | Directory                          |
+|--------|---------------------------------------|------------------------------------|
+| 1      | HIDS Manager Installation Client         | xdr-hids-manager_1.0.0-bullsye_amd64 |
 
 ## Deployment Steps
 
 To build a binary package use the following command. 
 
-| Commands                                        |
-|------------------------------------------------|
-| dpkg–deb --build < Name of the Package Directory >|
+| Command                                                |
+|--------------------------------------------------------|
+| sudo dpkg–deb --build < Name of the Package Directory >|
+
+To install a binary package use the following command. 
+
+| Command                                                |
+|--------------------------------------------------------|
+| sudo apt install ./< Name of the Binary Package >      |
 
 ## Developer Notes
 * Client Location Information via - not yet integrated 
-* Binary needs to be pythonised
-
-
-# TRACE Containers
-This repository contains the files required to build the containers required for the TRACE product.
-
-# Directory Structure
-
-
-| S.No   | Component Name   | Directory   |
-|--------|------------------|-------------|
-| 1      | Build Files      | build_files |
-| 2      | Analytics Files  | analytics   |
-| 3      | Honeypots Files  | honeypots   |
-| 4      | Monitor Files    | monitor     |
-
-Desrciption of Components
-
-1. Build Files : This folder contains the build files required for building containers.
-2. Analytics Files : This folder contains the containers required for building the analytics components of the trace-net service of TRACE.
-
+* Binary needs to be pythonise

@@ -17,13 +17,22 @@ cat >/var/ossec/etc/shared/default/agent.conf <<EOL
     <auto_ignore>no</auto_ignore>
     
     <!-- Directories to check  (perform all possible verifications) -->
+    <directories>/etc,/usr/bin,/usr/sbin</directories>
     <directories>/bin,/sbin,/boot</directories>
-    <directories whodata="yes" check_all="yes" report_changes="yes" realtime="yes">/home,/etc,/usr/bin,/usr/sbin</directories>
-    <directories whodata="yes" check_all="yes" realtime="yes" report_changes="yes">/home/*/Desktop</directories>
-    <directories whodata="yes" check_all="yes" realtime="yes" recursion_level="3" report_changes="yes">C:\Users\*\OneDrive\Desktop</directories>    
+    <directories check_all="yes" realtime="yes" recursion_level="3" report_changes="yes">/home/*/Documents</directories>
+    <directories check_all="yes" realtime="yes" recursion_level="3" report_changes="yes">/home/*/Downloads</directories>
+    <directories check_all="yes" realtime="yes" recursion_level="3" report_changes="yes">/home/*/Desktop</directories>    
+    <directories whodata="yes" check_all="yes" realtime="yes" recursion_level="3" report_changes="yes">C:\Users\*\OneDrive\Desktop</directories>
     <directories whodata="yes" check_all="yes" realtime="yes" recursion_level="3" report_changes="yes">C:\Users\*\Desktop</directories>
     <directories whodata="yes" check_all="yes" realtime="yes" recursion_level="3" report_changes="yes">C:\Users\*\Downloads</directories>
     <directories whodata="yes" check_all="yes" realtime="yes" recursion_level="3" report_changes="yes">C:\Users\*\Documents</directories>
+    <directories whodata="yes" check_all="yes" realtime="yes" recursion_level="3" report_changes="yes">C:\Users\*\OneDrive\Documents</directories>
+    <directories whodata="yes" check_all="yes" realtime="yes" recursion_level="3" report_changes="yes">C:\Users\*\OneDrive\Pictures</directories>
+    <directories whodata="yes" check_all="yes" realtime="yes" recursion_level="3" report_changes="yes">C:\Users\*\OneDrive</directories>
+    <directories whodata="yes" check_all="yes" realtime="yes" recursion_level="3" report_changes="yes">C:\Users\*\Videos</directories>
+    <directories whodata="yes" check_all="yes" realtime="yes" recursion_level="3" report_changes="yes">C:\Users\*\Music</directories>
+    <directories whodata="yes" check_all="yes" realtime="yes" recursion_level="3" report_changes="yes">C:\Users\Public</directories>
+
 
     <!-- Files/directories to ignore -->
     <ignore>/etc/mtab</ignore>

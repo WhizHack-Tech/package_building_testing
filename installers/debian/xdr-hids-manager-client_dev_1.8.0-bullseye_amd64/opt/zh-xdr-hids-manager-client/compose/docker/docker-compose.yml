@@ -1,0 +1,63 @@
+version: "3"
+
+volumes:
+  wazuh_api_configuration:
+  wazuh_etc:
+  wazuh_logs:
+  wazuh_queue:
+  wazuh_var_multigroups:
+  wazuh_integrations:
+  wazuh_active_response:
+  wazuh_agentless:
+  wazuh_wodles:
+  data:
+  
+services:
+  
+  init:
+    image: ubuntu
+    container_name: ubuntu
+    command: bash -c "mkdir -p /var/log/data/gluon && mkdir -p /var/log/data/normalized_data/wazuh && mkdir /var/log/data/processed_data"
+    volumes:
+      - data:/var/log/data
+
+  manager:
+    build: ./manager
+    container_name: manager
+    restart: always
+    ports:
+    - 1514:1514
+    - 1515:1515
+    volumes:
+      - /home/admin/hids_manager_data/wazuh_api_configuration:/var/ossec/api/configuration
+      - /home/admin/hids_manager_data/wazuh_etc:/var/ossec/etc
+      - /home/admin/hids_manager_data/wazuh_logs:/var/ossec/logs
+      - /home/admin/hids_manager_data/wazuh_queue:/var/ossec/queue
+      - /home/admin/hids_manager_data/wazuh_var_multigroups:/var/ossec/var/multigroups
+      - /home/admin/hids_manager_data/wazuh_integrations:/var/ossec/integrations
+      - /home/admin/hids_manager_data/wazuh_active_response:/var/ossec/active-response/bin
+      - /home/admin/hids_manager_data/wazuh_agentless:/var/ossec/agentless
+      - /home/admin/hids_manager_data/wazuh_wodles:/var/ossec/wodles
+      - ./config/wazuh_cluster/wazuh_manager.conf:/wazuh-config-mount/etc/ossec.conf
+
+  forwarder:
+    build: ./forwarder
+    container_name: forwarder
+    restart: always
+    volumes:
+      - data:/var/log/data
+      - /home/admin/hids_manager_data/wazuh_logs:/var/ossec/logs
+
+  normalizer:
+    build: normalizer
+    container_name: normalizer
+    restart: always
+    volumes: 
+      - data:/var/log/data
+
+  data_pipeline:
+    container_name: data_pipeline
+    build: data_pipeline
+    restart: always
+    volumes:
+      - data:/var/log/data      

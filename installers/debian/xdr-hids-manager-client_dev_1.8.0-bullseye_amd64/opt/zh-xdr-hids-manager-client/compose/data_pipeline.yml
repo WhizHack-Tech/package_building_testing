@@ -21,7 +21,10 @@ services:
       - data:/var/log/data
 
   manager:
-    image: "406116439221.dkr.ecr.us-east-2.amazonaws.com/manager_xdr_hids:stag_amd64_1.8.0"
+    build: 
+      context: ./docker/wazuh-manager/.
+      dockerfile: Dockerfile
+    #image: "406116439221.dkr.ecr.us-east-2.amazonaws.com/manager_xdr_hids:dev_amd64_1.8.0"
     container_name: manager
     restart: always
     ports:
@@ -42,7 +45,10 @@ services:
       - /etc/zh-xdr-hids-manager-client/config.env
 
   forwarder:
-    image: "406116439221.dkr.ecr.us-east-2.amazonaws.com/forwarder_xdr_hids:stag_amd64_1.8.0"
+    build: 
+      context: ./docker/forwarder/.
+      dockerfile: Dockerfile
+    #image: "406116439221.dkr.ecr.us-east-2.amazonaws.com/forwarder_xdr_hids:dev_amd64_1.8.0"
     container_name: forwarder
     restart: always
     volumes:
@@ -52,15 +58,22 @@ services:
      - /etc/zh-xdr-hids-manager-client/config.env
 
   normalizer:
-    image: "406116439221.dkr.ecr.us-east-2.amazonaws.com/normalizer_xdr_hids:stag_amd64_1.8.0"
+    build: 
+      context: ./docker/normalizer/.
+      dockerfile: Dockerfile
+    #image: "406116439221.dkr.ecr.us-east-2.amazonaws.com/normalizer_xdr_hids:dev_amd64_1.8.0"
     container_name: normalizer
     restart: always
     volumes: 
       - data:/var/log/data
     env_file:
       - /etc/zh-xdr-hids-manager-client/config.env
+  
   data_pipeline:
-    image: "406116439221.dkr.ecr.us-east-2.amazonaws.com/data_pipeline_xdr_hids:stag_amd64_1.8.0"
+    build: 
+      context: ./docker/data_pipeline/.
+      dockerfile: Dockerfile
+    #image: "406116439221.dkr.ecr.us-east-2.amazonaws.com/data_pipeline_xdr_hids:dev_amd64_1.8.0"
     container_name: data_pipeline
     restart: always
     volumes:
