@@ -10,7 +10,7 @@ jobs:
 
     name: SSH and create directory
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 6
     steps:
     - name: ssh testing phase 1
       uses: appleboy/ssh-action@v1.0.0
