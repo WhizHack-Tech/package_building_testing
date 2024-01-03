@@ -41,7 +41,7 @@ jobs:
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: cicd_nids_testing
+        ECR_REPOSITORY: cicd_repo
         IMAGE_TAG: ${{ secrets.IMAGE_TAG_PW }}
       run: |
         docker build -t cicd_repo .
