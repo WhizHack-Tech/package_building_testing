@@ -1,0 +1,36 @@
+name: Build and push the image to ACR
+on:
+    pull_request_target:
+        branches: ["main-pratima-doc"]
+        types: ["closed"]
+
+jobs:
+  build-and-push:
+    if: github.event.pull_request.merge == true
+
+    name: build and push to acr
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    defaults:
+      run:
+        shell: bash
+        
+    steps:
+
+    - name: checkout
+      uses: actions/checkout@v2
+
+    - name: configure ACR Credentials
+      uses: azure/docker-login@v1
+      with:
+          login-server: ${{ secrets.ACR_ENDPOINTPRT }}
+          username: ${{ secrets.ACR_USERNAMEPRT }}
+          password: ${{ secrets.ACR_PASSWORDPRT }}
+
+    - name: Build the frontend image and push it to ACR
+      uses: docker/build-push-action@v5
+      with:
+        push: true
+        tags: ${{ secrets.ACR_ENDPOINTPRT }}/suricatanew:${{ github.sha }}
+        file: docker/analytics/suricata
