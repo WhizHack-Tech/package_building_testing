@@ -3,102 +3,95 @@
 version: '2.3'
 
 networks:
-  citrixhoneypot_local:
-  cowrie_local:
-  ciscoasa_local:
-  heralding_local:
+  tanner_local:
 
 volumes:
   analytics_data:
 
 services:
 
-  citrixhoneypot:
-    image: "${REGISTRY_SERVER}/citrixpot_xdr_trace_honeypots:stag_amd64_1.8.0"
-    container_name: citrixhoneypot
+  tanner_redis:
+    container_name: tanner_redis
+    image: "${REGISTRY_SERVER}/redis_tanner_xdr_trace_honeypots:prod_amd64_1.8.0"
     restart: always
+    stop_signal: SIGKILL
+    tty: true
+    read_only: true
     networks:
-     - citrixhoneypot_local
-    ports:
-     - "443:443"
-    read_only: true
-    volumes:
-     - /data/citrixhoneypot/logs:/opt/citrixhoneypot/logs
+     - tanner_local
 
-  ciscoasa:
-    container_name: ciscoasa
-    image: "${REGISTRY_SERVER}/ciscoasa_xdr_trace_honeypots:stag_amd64_1.8.0"
+  tanner_phpox:
+    container_name: tanner_phpox
+    image: "${REGISTRY_SERVER}/phpox_xdr_trace_honeypots:prod_amd64_1.8.0"
     restart: always
+    stop_signal: SIGKILL
     tmpfs:
-     - /tmp/ciscoasa:uid=2000,gid=2000
+     - /tmp:uid=2000,gid=2000
+    tty: true
     networks:
-     - ciscoasa_local
-    ports:
-     - "5000:5000/udp"
-     - "8443:8443"
+     - tanner_local
     read_only: true
-    volumes:
-     - /data/ciscoasa/log:/var/log/ciscoasa
 
-  cowrie:
-    image: "${REGISTRY_SERVER}/cowrie_xdr_trace_honeypots:stag_amd64_1.8.0"
-    container_name: cowrie
+  tanner_api:
+    container_name: tanner_api
+    image: "${REGISTRY_SERVER}/tanner_xdr_trace_honeypots:prod_amd64_1.8.0"
     restart: always
+    tty: true
+    stop_signal: SIGKILL
+    read_only: true
     tmpfs:
-     - /tmp/cowrie:uid=2000,gid=2000
-     - /tmp/cowrie/data:uid=2000,gid=2000
+     - /tmp/tanner:uid=2000,gid=2000
     networks:
-     - cowrie_local
-    ports:
-     - "22:22"
-    read_only: true
+     - tanner_local
     volumes:
-     - /data/cowrie/downloads:/home/cowrie/cowrie/dl
-     - /data/cowrie/keys:/home/cowrie/cowrie/etc
-     - /data/cowrie/log:/home/cowrie/cowrie/log
-     - /data/cowrie/log/tty:/home/cowrie/cowrie/log/tty
+     - /data/tanner/log:/var/log/tanner
+    command: tannerapi 
+    depends_on:
+     - tanner_redis
 
-  heralding:
-    image: "${REGISTRY_SERVER}/heralding_xdr_trace_honeypots:stag_amd64_1.8.0"
-    container_name: heralding
+  tanner:
+    container_name: tanner
+    image: "${REGISTRY_SERVER}/tanner_xdr_trace_honeypots:prod_amd64_1.8.0"
     restart: always
+    stop_signal: SIGKILL
+    read_only: true
+    tty: true
     tmpfs:
-     - /tmp/heralding:uid=2000,gid=2000
+     - /tmp/tanner:uid=2000,gid=2000
     networks:
-     - heralding_local
-    ports:
-     - "3389:3389"
-     - "5900:5900"
-    read_only: true
+     - tanner_local
     volumes:
-     - /data/heralding/log:/var/log/heralding
+     - /data/tanner/log:/var/log/tanner
+     - /data/tanner/files:/opt/tanner/files
+    depends_on:
+     - tanner_api
+     - tanner_phpox
+    command: tanner
 
-  glutton:
-    image: "${REGISTRY_SERVER}/glutton_xdr_trace_honeypots:stag_amd64_1.8.0"
-    container_name: glutton
+  snare:
+    container_name: snare
+    image: "${REGISTRY_SERVER}/snare_xdr_trace_honeypots:prod_amd64_1.8.0"
     restart: always
-    tmpfs:
-     - /var/lib/glutton:uid=2000,gid=2000
-     - /run:uid=2000,gid=2000
-    network_mode: "host"
-    cap_add:
-     - NET_ADMIN
-    read_only: true
-    volumes:
-     - /data/glutton/log:/var/log/glutton
+    stop_signal: SIGKILL
+    tty: true
+    networks:
+     - tanner_local
+    ports:
+     - "80:80"
+    depends_on:
+     - tanner
 
 #=========================
 # Analytics
 #=========================
   analytics_init:
-    image: ${REGISTRY_SERVER}/ubuntu_xdr_trace_analytics:stag_amd64_1.8.0
+    image: ${REGISTRY_SERVER}/ubuntu_xdr_trace_analytics:prod_amd64_1.8.0
     command: bash -c "mkdir -p /var/log/zerohack/{photon,gluon,suricata,fatt,p0f,snort,maltrai,listener} && mkdir -p /var/log/zerohack/parted_data/{honeynet,dpi,listener,ids} && mkdir /var/log/zerohack/merger && mkdir -p /var/log/zerohack/normalized_data/{honeynet,dpi,listener,ids} && mkdir /var/log/zerohack/processed_data && mkdir -p /var/log/zerohack/photon/storage/artifacts/http && mkdir -p /var/log/zerohack/photon/storage/rules"
     volumes:
       - analytics_data:/var/log/zerohack
-
   fatt:
     container_name: fatt
-    image: "${REGISTRY_SERVER}/fatt_xdr_trace_analytics:stag_amd64_1.8.0"
+    image: "${REGISTRY_SERVER}/fatt_xdr_trace_analytics:prod_amd64_1.8.0"
     restart: always
     network_mode: "host"
     cap_add:
@@ -110,7 +103,7 @@ services:
 
   p0f:
     container_name: p0f
-    image: "${REGISTRY_SERVER}/p0f_xdr_trace_analytics:stag_amd64_1.8.0"
+    image: "${REGISTRY_SERVER}/p0f_xdr_trace_analytics:prod_amd64_1.8.0"
     restart: always
     network_mode: "host"
     read_only: true
@@ -119,7 +112,7 @@ services:
 
   suricata:
     container_name: suricata
-    image: "${REGISTRY_SERVER}/ids_xdr_trace_analytics:stag_amd64_1.8.0"
+    image: "${REGISTRY_SERVER}/ids_xdr_trace_analytics:prod_amd64_1.8.0"
     restart: always
     environment:
      - OINKCODE=OPEN
@@ -133,7 +126,7 @@ services:
 
   photon:
     container_name: photon
-    image: ${REGISTRY_SERVER}/photon_xdr_trace_analytics:stag_amd64_1.8.0
+    image: ${REGISTRY_SERVER}/photon_xdr_trace_analytics:prod_amd64_1.8.0
     restart: always
     network_mode: "host"
     cap_add:
@@ -147,9 +140,9 @@ services:
     depends_on:
       - analytics_init
 
-  forwarder:
-    container_name: forwarder
-    image: ${REGISTRY_SERVER}/forwarder_xdr_trace_analytics:stag_amd64_1.8.0
+  gluon_forwarder:
+    container_name: gluon_forwarder
+    image: ${REGISTRY_SERVER}/forwarder_xdr_trace_analytics:prod_amd64_1.8.0
     restart: always
     env_file:
       - /etc/zh-xdr-trace-client/config.env
@@ -161,7 +154,7 @@ services:
 
   listener:
     container_name: listener
-    image: ${REGISTRY_SERVER}/listener_xdr_trace_analytics:stag_amd64_1.8.0
+    image: ${REGISTRY_SERVER}/listener_xdr_trace_analytics:prod_amd64_1.8.0
     restart: always
     network_mode: "host"
     volumes:
@@ -173,7 +166,7 @@ services:
       
   normalizer:
     container_name: normalizer
-    image: ${REGISTRY_SERVER}/normalizer_xdr_trace_analytics:stag_amd64_1.8.0
+    image: ${REGISTRY_SERVER}/normalizer_xdr_trace_analytics:prod_amd64_1.8.0
     restart: always
     network_mode: "host"
     volumes:
@@ -185,7 +178,7 @@ services:
 
   merger:
     container_name: merger
-    image: ${REGISTRY_SERVER}/merger_xdr_trace_analytics:stag_amd64_1.8.0
+    image: ${REGISTRY_SERVER}/merger_xdr_trace_analytics:prod_amd64_1.8.0
     restart: always
     network_mode: "host"
     volumes:
@@ -197,7 +190,7 @@ services:
 
   data_pipeline:
     container_name: data_pipeline
-    image: ${REGISTRY_SERVER}/data_pipeline_xdr_trace_analytics:stag_amd64_1.8.0
+    image: ${REGISTRY_SERVER}/data_pipeline_xdr_trace_analytics:prod_amd64_1.8.0
     restart: always
     network_mode: "host"
     volumes:

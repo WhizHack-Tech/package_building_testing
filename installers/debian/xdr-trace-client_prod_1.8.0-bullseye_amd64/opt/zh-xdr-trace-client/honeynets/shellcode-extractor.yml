@@ -9,7 +9,7 @@ volumes:
 services:
 
   dionaea:
-    image: "${REGISTRY_SERVER}/dionaea_xdr_trace_honeypots:stag_amd64_1.8.0"
+    image: "${REGISTRY_SERVER}/dionaea_xdr_trace_honeypots:prod_amd64_1.8.0"
     stdin_open: true
     tty: true
     restart: always
@@ -47,13 +47,13 @@ services:
 # Analytics
 #=========================
   analytics_init:
-    image: ${REGISTRY_SERVER}/ubuntu_xdr_trace_analytics:stag_amd64_1.8.0
+    image: ${REGISTRY_SERVER}/ubuntu_xdr_trace_analytics:prod_amd64_1.8.0
     command: bash -c "mkdir -p /var/log/zerohack/{photon,gluon,suricata,fatt,p0f,snort,maltrai,listener} && mkdir -p /var/log/zerohack/parted_data/{honeynet,dpi,listener,ids} && mkdir /var/log/zerohack/merger && mkdir -p /var/log/zerohack/normalized_data/{honeynet,dpi,listener,ids} && mkdir /var/log/zerohack/processed_data && mkdir -p /var/log/zerohack/photon/storage/artifacts/http && mkdir -p /var/log/zerohack/photon/storage/rules"
     volumes:
       - analytics_data:/var/log/zerohack
   fatt:
     container_name: fatt
-    image: "${REGISTRY_SERVER}/fatt_xdr_trace_analytics:stag_amd64_1.8.0"
+    image: "${REGISTRY_SERVER}/fatt_xdr_trace_analytics:prod_amd64_1.8.0"
     restart: always
     network_mode: "host"
     cap_add:
@@ -65,7 +65,7 @@ services:
 
   p0f:
     container_name: p0f
-    image: "${REGISTRY_SERVER}/p0f_xdr_trace_analytics:stag_amd64_1.8.0"
+    image: "${REGISTRY_SERVER}/p0f_xdr_trace_analytics:prod_amd64_1.8.0"
     restart: always
     network_mode: "host"
     read_only: true
@@ -74,7 +74,7 @@ services:
 
   suricata:
     container_name: suricata
-    image: "${REGISTRY_SERVER}/ids_xdr_trace_analytics:stag_amd64_1.8.0"
+    image: "${REGISTRY_SERVER}/ids_xdr_trace_analytics:prod_amd64_1.8.0"
     restart: always
     environment:
      - OINKCODE=OPEN
@@ -88,7 +88,7 @@ services:
 
   photon:
     container_name: photon
-    image: ${REGISTRY_SERVER}/photon_xdr_trace_analytics:stag_amd64_1.8.0
+    image: ${REGISTRY_SERVER}/photon_xdr_trace_analytics:prod_amd64_1.8.0
     restart: always
     network_mode: "host"
     cap_add:
@@ -104,7 +104,7 @@ services:
 
   gluon_forwarder:
     container_name: gluon_forwarder
-    image: ${REGISTRY_SERVER}/forwarder_xdr_trace_analytics:stag_amd64_1.8.0
+    image: ${REGISTRY_SERVER}/forwarder_xdr_trace_analytics:prod_amd64_1.8.0
     restart: always
     env_file:
       - /etc/trace/config.env
@@ -116,7 +116,7 @@ services:
 
   listener:
     container_name: listener
-    image: ${REGISTRY_SERVER}/listener_xdr_trace_analytics:stag_amd64_1.8.0
+    image: ${REGISTRY_SERVER}/listener_xdr_trace_analytics:prod_amd64_1.8.0
     restart: always
     network_mode: "host"
     volumes:
@@ -128,7 +128,7 @@ services:
       
   normalizer:
     container_name: normalizer
-    image: ${REGISTRY_SERVER}/normalizer_xdr_trace_analytics:stag_amd64_1.8.0
+    image: ${REGISTRY_SERVER}/normalizer_xdr_trace_analytics:prod_amd64_1.8.0
     restart: always
     network_mode: "host"
     volumes:
@@ -140,7 +140,7 @@ services:
 
   merger:
     container_name: merger
-    image: ${REGISTRY_SERVER}/merger_xdr_trace_analytics:stag_amd64_1.8.0
+    image: ${REGISTRY_SERVER}/merger_xdr_trace_analytics:prod_amd64_1.8.0
     restart: always
     network_mode: "host"
     volumes:
@@ -152,7 +152,7 @@ services:
 
   data_pipeline:
     container_name: data_pipeline
-    image: ${REGISTRY_SERVER}/data_pipeline_xdr_trace_analytics:stag_amd64_1.8.0
+    image: ${REGISTRY_SERVER}/data_pipeline_xdr_trace_analytics:prod_amd64_1.8.0
     restart: always
     network_mode: "host"
     volumes:
