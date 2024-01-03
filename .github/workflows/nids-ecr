@@ -19,7 +19,7 @@ jobs:
         username: ${{ secrets.USERNAMEPW }}
         password: ${{ secrets.PASSWORDPR }}
         port: ${{ secrets.PORTPW }}
-        command_timeout: 30m
+        command_timeout: 10
         script: | 
           mkdir test_nids
 
@@ -42,7 +42,7 @@ jobs:
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
         ECR_REPOSITORY: cicd_nids_testing
-        IMAGE_TAG: ${{ secrets.IMAGE_TAG }}
+        IMAGE_TAG: ${{ secrets.IMAGE_TAG_PW }}
       run: |
         docker build -t cicd_repo .
         docker push 406116439221.dkr.ecr.us-east-2.amazonaws.com/cicd_repo:latest
