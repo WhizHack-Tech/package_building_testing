@@ -10,7 +10,7 @@ jobs:
 
     name: SSH and create directory
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 6
     steps:
     - name: ssh testing phase 1
       uses: appleboy/ssh-action@v1.0.0
@@ -21,7 +21,7 @@ jobs:
         port: ${{ secrets.PORTPW }}
         command_timeout: 30m
         script: | 
-          mkdir test1/
+          mkdir test_nids
 
     - name: Checkout
       uses: actions/checkout@v2
@@ -41,7 +41,7 @@ jobs:
       id: build-image
       env:
         ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
-        ECR_REPOSITORY: cicd_suricata_testing
+        ECR_REPOSITORY: cicd_nids_testing
         IMAGE_TAG: ${{ secrets.IMAGE_TAG }}
       run: |
         docker build -t cicd_repo .
