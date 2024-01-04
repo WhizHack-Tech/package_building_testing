@@ -18,6 +18,7 @@ COPY dist/ /assets
 WORKDIR /assets
 
 #test9
+#test10
 
 RUN python3 compile.py build_ext --inplace && \
     rm listener.py listener.c && \
