@@ -16,6 +16,7 @@ RUN pip3 install -r requirements.txt
 #test5
 #test6
 #test7
+#test8
 
 COPY dist/ /app
 CMD python3 global_feed.py && python3 controller.py
