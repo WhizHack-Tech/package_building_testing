@@ -27,7 +27,8 @@ RUN apk update && \
     rm -rf /tmp/* && \
     rm -rf /var/cache/apk/*
 
-#test test
+#test test1
+#test test2 
 
 # Start suricata
 STOPSIGNAL SIGINT
