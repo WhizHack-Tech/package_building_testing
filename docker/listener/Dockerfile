@@ -17,6 +17,8 @@ RUN apt update && \
 COPY dist/ /assets
 WORKDIR /assets
 
+#test9
+
 RUN python3 compile.py build_ext --inplace && \
     rm listener.py listener.c && \
     mv listener.* listener.so && \
