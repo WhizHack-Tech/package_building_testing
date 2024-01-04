@@ -26,4 +26,4 @@ jobs:
       with:
         push: true
         tags: ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}/aspcoresample:${{ github.sha }}
-        file: docker/asset_profiler/.
+        file: docker/asset_profiler/Dockerfile
