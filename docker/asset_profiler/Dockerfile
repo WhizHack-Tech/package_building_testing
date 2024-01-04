@@ -12,6 +12,7 @@ RUN apt update && apt upgrade -y && apt autoremove -y && apt clean && apt instal
 RUN pip3 install -r requirements.txt
 
 #test1
+#test4
 
 COPY dist/ /app
 CMD python3 global_feed.py && python3 controller.py
