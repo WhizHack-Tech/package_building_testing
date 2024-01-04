@@ -34,6 +34,7 @@ RUN apk update && \
 #test test5
 #test6
 #test7
+#test8
 
 # Start suricata
 STOPSIGNAL SIGINT
