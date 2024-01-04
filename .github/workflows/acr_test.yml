@@ -2,13 +2,13 @@ name: Build and Push to ACR
 on:
   push:
     branches:
-      - 'main'
+      - 'PW-main'
 jobs:
   build:
     name: 'Build and Push to ACR'
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
-
+    timeout-minutes: 10
     defaults:
       run:
         shell: bash
