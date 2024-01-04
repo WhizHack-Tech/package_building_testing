@@ -24,9 +24,13 @@ jobs:
         login-server: ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}
         username: ${{ secrets.ACR_REGISTRY_USERNAME_PW }}
         password: ${{ secrets.ACR_REGISTRY_PASSWORD_PW }}
-    - name: Build the frontend image and push it to ACR
-      uses: docker/build-push-action@v5
-      with:
-        push: true
-        tags: ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}/aspcoresample:${{ github.sha }}
-        file: /docker/asset_profiler/Dockerfile/.
+    - name: Build the image
+      id: build-image
+      run:
+       docker build -t ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}/asset_profiler:0.0.1 docker/asset_profiler/.
+ 
+    - name: push Images to ACR
+      run:
+        docker push ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}/asset_profiler:0.0.1
+
+     
