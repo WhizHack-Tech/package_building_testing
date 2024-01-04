@@ -2,7 +2,7 @@ name: Build and Push to ACR
 on:
   push:
     branches:
-      - 'main'
+      - 'PW-main'
 jobs:
   build:
     name: 'Build and Push to ACR'
