@@ -27,10 +27,10 @@ jobs:
     - name: Build the image
       id: build-image
       run:
-       docker build -t ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}/asset_profiler:0.0.1 docker/asset_profiler/Dockerfile
+       docker build -t ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}/dist:0.1 docker/listener/.
  
     - name: push Images to ACR
       run:
-        docker push ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}/asset_profiler:0.0.1
+        docker push ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}/dist:0.1
 
      
