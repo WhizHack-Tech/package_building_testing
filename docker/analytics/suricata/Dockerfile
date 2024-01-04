@@ -27,6 +27,17 @@ RUN apk update && \
     rm -rf /tmp/* && \
     rm -rf /var/cache/apk/*
 
+#test test1
+#test test2 
+#test test3 
+#test test4 
+#test test5
+#test6
+#test7
+#test8
+#test9
+
+
 # Start suricata
 STOPSIGNAL SIGINT
 CMD suricata -v -i $(/sbin/ip address show | /usr/bin/awk '/inet.*brd/{ print $NF; exit }')
