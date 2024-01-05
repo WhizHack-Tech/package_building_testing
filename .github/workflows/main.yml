@@ -1,4 +1,4 @@
-name: Build and Push Image to AWS ECR
+name: Build and Push Image to ACR
 on:
   pull_request_target:
     branches: [ "main-pw" ]
@@ -6,25 +6,34 @@ on:
 jobs:
   build-and-push:
     if: github.event.pull_request.merged == true
-    runs-on: ubuntu-latest
+ 
+    name: build and push to acr
+    runs-on: ubuntu-22.04
     timeout-minutes: 5
+ 
+    defaults:
+      run:
+        shell: bash
+        
     steps:
-
-    - name: Checkout
+ 
+    - name: checkout
       uses: actions/checkout@v2
-
-    - name: Login to Azure ACR
-      id: login-acr
+ 
+    
+ 
+    - name: configure ACR Credentials
       uses: azure/docker-login@v1
       with:
-        login-server: ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}
-        username: ${{ secrets.ACR_REGISTRY_USERNAME_PW }}
-        password: ${{ secrets.ACR_REGISTRY_PASSWORD_PW }}
-
-    - name: Build, Tag, and Push the Image to Amazon ECR
+          login-server: ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}
+          username: ${{ secrets.ACR_REGISTRY_USERNAME_PW }}
+          password: ${{ secrets.ACR_REGISTRY_PASSWORD_PW }}
+ 
+    - name: Build the image
       id: build-image
-      
-      run: |
+      run:
         docker build -t ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}/ids:0.1 docker/ids/.
+ 
+    - name: push Images to ACR
+      run:
         docker push ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}/ids:0.1
-
