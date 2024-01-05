@@ -18,12 +18,13 @@ jobs:
       uses: actions/checkout@v2
 
     - name: run automation.py file
+      working-directory: ./cicd_automation
       run:
         python automation.py
 
     - name: display the changes
       run:
-        cat src/axios.js
+        cat ./src/axios.js
 
     - name: configure ACR Credentials
       uses: azure/docker-login@v1
