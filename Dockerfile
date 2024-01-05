@@ -3,7 +3,7 @@ FROM node:14.18-alpine
 RUN apk update && \
     apk upgrade
 
-COPY dist/ /app
+COPY . /app
 
 WORKDIR /app
 
