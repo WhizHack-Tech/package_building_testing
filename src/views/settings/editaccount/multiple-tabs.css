@@ -1,0 +1,29 @@
+/* // ================================================================================================
+//  File Name: multiple-tabs.css.js
+//  Description: Details of the Edit Account Pages.
+//  ----------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Client Dashboard
+//  Author URL: https://whizhack.in
+// ============================================================================================== */
+.tags-input-container {
+    border: 0.1px solid #ededed;
+    padding: .2em;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: .5em;
+    padding-left: .5em;
+    border-radius: 5px;
+}
+
+.cursor {
+    cursor: pointer;
+}
+
+.tags-input {
+    flex-grow: 1;
+    padding: .5em 0;
+    border: none;
+    outline: none;
+}
