@@ -1,9 +1,0 @@
-version: "3"
-
-services:
-  gridpot:
-    container_name: "gridpot"
-    image: registry.whizhack-intranet.com:5000/trace_gridpot
-    build: .
-    ports:
-      - "6267:6267"
