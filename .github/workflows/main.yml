@@ -2,7 +2,7 @@
 name: Build and Push Image to AWS ECR
 on:
   pull_request_target:
-    branches: [ "main" ]
+    branches: [ "main-pw" ]
     types: [ "closed" ]
 jobs:
   build-and-push:
