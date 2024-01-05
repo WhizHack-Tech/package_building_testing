@@ -27,8 +27,8 @@ jobs:
     - name: Build the image
       id: build-image
       run:
-       docker build docker/ids/. -t ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}/ids:0.2 
+       docker build docker/ids/. -t ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}/ids:0.0.2
        
     - name: push Images to ACR
       run:
-        docker push ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}/ids:0.2
+        docker push ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}/ids:0.0.2
