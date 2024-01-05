@@ -1,0 +1,62 @@
+version: "3"
+
+volumes:
+  data:
+  
+services:
+  
+  init:
+    container_name: ubuntu
+    image: ubuntu
+    command: bash -c "mkdir -p /var/log/data/raw_data/{ids,listener} && mkdir -p /var/log/data/parted_data/{ids,listener} &&mkdir -p /var/log/data/normalized_data/{ids,listener,asset} && mkdir -p /var/log/data/processed_data/asset"
+    volumes:
+      - data:/var/log/data
+
+  ids:
+    build: ids
+    container_name: ids
+    restart: always
+    network_mode: "host"
+    cap_add:
+     - NET_ADMIN
+     - SYS_NICE
+     - NET_RAW
+    volumes:
+      - data:/var/log/data
+
+  listener:
+    build: listener
+    container_name: listener
+    restart: always
+    network_mode: "host"
+    volumes:
+      - data:/var/log/data
+
+  forwarder:
+    build: forwarder
+    container_name: forwarder
+    restart: always
+    volumes:
+      - data:/var/log/data
+
+  normalizer:
+    build: normalizer
+    container_name: normalizer
+    restart: always
+    volumes: 
+      - data:/var/log/data
+
+  data_pipeline:
+    container_name: data_pipeline
+    build: data_pipeline
+    restart: always
+    volumes:
+      - data:/var/log/data 
+
+  asset_profiler:
+    container_name: asset_profiler
+    build: asset_profiler
+    restart: always
+    volumes:
+      - data:/var/log/data    
+
