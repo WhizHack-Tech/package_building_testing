@@ -23,6 +23,6 @@ jobs:
 
     - name: Build and push Docker image
       run: |
-        docker build -t ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}/ids:1 .
+        docker build -t ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}/ids:1 /docker/ids/.
         docker push ${{ secrets.AZURE_REGISTRY_URL }}/ids:1
 
