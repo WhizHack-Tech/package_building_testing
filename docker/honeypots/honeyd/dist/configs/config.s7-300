@@ -1,7 +1,0 @@
-create base
-add base subsystem "/usr/share/honeyd/s7commServer" shared restart
-
-clone host1 base
-set host1 personality "Siemens Simatic 300 programmable logic controller"
-
-bind 172.16.2.6 host1

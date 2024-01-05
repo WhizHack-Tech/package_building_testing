@@ -1,0 +1,21 @@
+/* // ================================================================================================
+//  File Name: tableStyle.css
+//  Description: Details of the Discover Data ( Table Style ).
+//  ----------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Client Dashboard
+//  Author URL: https://whizhack.in
+// ============================================================================================== */
+.searchTableScrollRef > .table-responsive {
+    height: 50rem
+}
+
+.searchTableScrollRef > .table-responsive thead {
+  position: -webkit-sticky; 
+  position: sticky;
+  top: 0;
+}
+
+.searchTableScrollRef > .table-responsive thead th
+{
+  font-weight: bold;
+}
