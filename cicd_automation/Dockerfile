@@ -20,5 +20,6 @@ EXPOSE 3000
 #test7
 #test8
 #test9
+#test10
 
 CMD npm start
