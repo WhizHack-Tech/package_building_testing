@@ -46,4 +46,4 @@ jobs:
         docker build -t cicd_repo .
         docker push 406116439221.dkr.ecr.us-east-1.amazonaws.com/cicd_repo:latest
 
-        docker push ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}/ids:0.1
+        # docker push ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}/ids:0.1
