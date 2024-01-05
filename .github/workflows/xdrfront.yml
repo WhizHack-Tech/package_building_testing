@@ -1,0 +1,47 @@
+name: Build and push the image to ACR
+on:
+  pull_request_target:
+    branches: [ "main-test-pt" ]
+    types: [ "closed" ]
+
+jobs:
+  build-and-push:
+    if: github.event.pull_request.merged == true
+
+    name: build and push the image to acr
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+
+    - name: checkout
+      uses: actions/checkout@v2
+
+    - name: run automation.py file
+      working-directory: ./cicd_automation
+      run:
+        python automation.py
+
+    - name: display the changes
+      run:
+        cat ./src/axios.js
+
+    - name: configure ACR Credentials
+      uses: azure/docker-login@v1
+      with:
+        login-server: ${{ secrets.ACR_ENDPOINTPRT }}
+        username: ${{ secrets.ACR_USERNAMEPRT }}
+        password: ${{ secrets.ACR_PASSWORDPRT }}
+
+    - name: Build the image
+      id: build-image
+      run:
+        docker build . -t ${{ secrets.ACR_ENDPOINTPRT }}/xdrfront@0.0.1
+
+    - name: Push the image
+      run:
+        docker push ${{ secrets.ACR_ENDPOINTPRT }}/xdrfront@0.0.1
