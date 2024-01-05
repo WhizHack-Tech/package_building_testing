@@ -37,8 +37,8 @@ jobs:
         username: ${{ secrets.ACR_USERNAMEPRT }}
         password: ${{ secrets.ACR_PASSWORDPRT }}
 
-    - name: Build the iamge
-      id: build-iamge
+    - name: Build the image
+      id: build-image
       run:
         docker build . -t ${{ secrets.ACR_ENDPOINTPRT }}/xdrfront@0.0.1
 
