@@ -1,0 +1,30 @@
+name: Build and Push Image to Azure ACR
+on:
+  pull_request_target:
+    branches: [ "PW-main" ]
+    types: [ "closed" ]
+jobs:
+  build-and-push:
+    if: github.event_name == 'pull_request' && github.event.pull_request.merged == true
+    name: Docker build and push to acr
+    runs-on: ubuntu-22.04
+ 
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v2
+ 
+    # login to docker  
+    - name: Docker Login
+      uses: azure/docker-login@v1
+      with:
+        login-server: ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}
+        username: ${{ secrets.ACR_REGISTRY_USERNAME_PW }}
+        password: ${{ secrets.ACR_REGISTRY_PASSWORD_PW }}
+    - name: Build the image
+      id: build-image
+      run:
+       docker build -t ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}/ids:0.1 -f docker/ids/.
+    - name: push Images to ACR
+      run:
+        docker push ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}/ids:0.1
