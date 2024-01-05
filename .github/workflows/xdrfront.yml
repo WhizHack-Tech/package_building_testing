@@ -12,6 +12,10 @@ jobs:
     runs-on: ubuntu-22.04
     timeout-minutes: 5
 
+    defaults:
+      run:
+        shell: bash
+
     steps:
 
     - name: checkout
