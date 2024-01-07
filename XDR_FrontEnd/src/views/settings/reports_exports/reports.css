@@ -1,0 +1,60 @@
+/* // ================================================================================================
+//  File Name: report.css
+//  Description: Details of the Dynamic Report ( Css ).
+//  ----------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Client Dashboard
+//  Author URL: https://whizhack.in
+// ============================================================================================== */
+.scroll-box-list {
+    max-height: 60rem;
+    overflow-y: auto;
+    padding-right: 1.5rem;
+}
+
+.scroll-box-list .scrollbar {
+    position: relative;
+    height: calc(100% - 80px);
+}
+
+.word-break {
+    word-break: break-all;
+}
+
+.col-search-input {
+    padding-bottom: 17px;
+    padding-top: 17px;
+    font-size: 1.2em;
+}
+
+/* Header Filter #Start */
+
+.scroll-box-horizontal {
+    height: 6rem;
+    max-height: 6rem;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-items: center;
+    padding-top: 1.7rem;
+    padding-bottom: 0;
+}
+
+.filter-output-box {
+    height: 35px;
+    font-size: 16.5px;
+    flex: none;
+    display: flex;
+    align-items: center;
+}
+
+/* Header Filter #End */
+
+
+/* Scrolloing #start */
+.dynamicReportScrollRef {
+    height: auto;
+    max-height: 69.7rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Scrolloing #end */

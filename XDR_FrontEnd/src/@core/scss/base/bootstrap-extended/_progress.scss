@@ -1,0 +1,20 @@
+/*=========================================================================================
+  File Name: progress.scss
+  Description: Extended bootstrap progress bar scss.
+  ----------------------------------------------------------------------------------------
+  Item Name: Whizhack Client Admin Dashboard Template
+  Author: Jaydeep Roy Sarkar (WH0020)
+  Author URL: https://demo-xdr.zerohack.in
+  ----------------------------------------------------------------------------------------
+==========================================================================================*/
+
+.progress {
+  // border radius to set for stacked bars
+  .progress-bar + .progress-bar:not(:last-child) {
+    border-radius: 0;
+  }
+  .progress-bar:last-child {
+    border-top-right-radius: $progress-border-radius;
+    border-bottom-right-radius: $progress-border-radius;
+  }
+}

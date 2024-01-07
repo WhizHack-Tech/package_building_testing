@@ -1,0 +1,21 @@
+/* ===============================================================================================
+-------------------------
+  Item Name: Whizhack Client Admin Dashboard Template
+  Author: Jaydeep Roy Sarkar (WH0020)
+  Author URL: https://demo-xdr.zerohack.in
+================================================================================================*/
+a {
+  &:focus {
+    outline: none;
+  }
+}
+
+a:not([href]) {
+  color: inherit;
+  text-decoration: none;
+
+  @include hover() {
+    color: inherit;
+    text-decoration: none;
+  }
+}
