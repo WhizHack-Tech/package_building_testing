@@ -1,4 +1,4 @@
-name: Build and Push Image to AWS ECR
+name: Build and Push Image to AWS ACR
 on:
   pull_request_target:
     branches: [ "main-pw" ]
