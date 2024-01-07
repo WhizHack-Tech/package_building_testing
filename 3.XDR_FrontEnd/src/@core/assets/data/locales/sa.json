@@ -1,0 +1,353 @@
+
+{
+  "Dashboard": "لوحة القيادة",
+  "Home": "مسكن",
+  "Attack Events": "أحداث الهجوم",
+  "Intelligence": "الذكاء",
+  "Network Map": "خريطة الشبكة",
+  "Administration": "الادارة",
+  "Logs": "السجلات",
+  "User Config": "تكوين المستخدم",
+  "Report": "تقرير",
+  "Insights": "أفكار",
+  "Settings": "إعدادات",
+  "Edit Account": "تحرير الحساب",
+  "Notification": "تنبيه",
+  "ML Accuracy": "مل د",
+  "ML Engine": "محرك ML",
+  "DL Engine": "محرك DL",
+  "Activity Type": "نوع التهديد",
+  "Attacker IP": "مهاجم IP",
+  "Attack Timestamp": "هجوم الطابع الزمني",
+  "Attacker MAC": "مهاجم ماك",
+  "Target IP": "الهدف IP",
+  "Target MAC": "هدف MAC",
+  "Detected Threat Type": "اكتشاف نوع التهديد",
+  "Top threat types detected by the Triple Layer Detection Engines": "أفضل أنواع التهديدات التي تم اكتشافها بواسطة محركات الكشف عن الطبقة الثلاثية",
+  "IDS": "معرفات",
+  "ML": "مل",
+  "DL": "DL",
+  "External Attacks": "الهجمات الخارجية",
+  "Total number of critical External attacks": "إجمالي عدد الهجمات الخارجية الحرجة",
+  "Internal and External Attack Comparison": "مقارنة الهجوم الداخلي والخارجي",
+  "Line chart representing comparison between Internal and External Attacks": "مخطط خط يمثل المقارنة بين الهجمات الداخلية والخارجية",
+  "Compromised Hosts": "المضيفين المستعرضين",
+  "Internal Attacks": "الهجمات الداخلية",
+  "Total Number of Compromised Hosts": "إجمالي عدد المضيفين المعرضين للخطر",
+  "Total number of critical Internal attacks": "إجمالي عدد الهجمات الداخلية الحرجة",
+  "Overall Attack Comparison": "مقارنة الهجوم الشامل",
+  " We represent here attacks in the environment based on Internal Attacks and External Attacks": "نمثل هنا هجمات في البيئة بناءً على الهجمات الداخلية والهجمات الخارجية",
+  "Critical Threats": "تهديدات حرجة",
+  "Total number of critical Internal and External attacks": "إجمالي عدد الهجمات الداخلية والخارجية الحرجة",
+  "Threat Logs": "سجلات التهديد",
+  "Threat logs display entries when traffic matches one of the Security Profiles attached to a security filter by the Triple Layered Detection Engine": "تعرض سجلات التهديد إدخالات عندما تتطابق حركة المرور",
+  "Severity 1": "شدة 1",
+  "Severity 2": "شدة 2",
+  "Severity 3": "شدة 3",
+  "Ml Detection": "ML الكشف",
+  "DL Detection": "الكشف DL",
+  "IDS Detection": "اكتشاف IDS",
+  "Threat Detection Type": "نوع الكشف عن التهديد",
+  "This card represents the count of the different detection mechanisms": "تمثل هذه البطاقة عدد آليات الكشف المختلفة",
+  "Attack Frequency": "تردد الهجوم",
+  "Line chart represents the frequency of attacks detected by the Triple Layered Detection Engine": "يمثل مخطط الخط تواتر الهجمات التي اكتشفها محرك الكشف عن الطبقات الثلاثي",
+  "Top Attacker ASNs": "أفضل المهاجم asns",
+  "Line chart represents the top Autonomous System Number used by the attacker detected by the Geo-Location detection system": "يمثل مخطط الخط رقم النظام المستقل الأعلى الذي يستخدمه المهاجم الذي اكتشفه نظام الكشف عن الموقع الجغرافي",
+  "Most Attacked Ports": "معظم المنافذ هاجمة",
+  "Top destination ports targeted by Attackers": "أفضل منافذ الوجهة التي يستهدفها المهاجمون",
+  "IP": "IP",
+  "IP Attacks": "هجمات IP",
+  "Top Attacked Services": "تعلى الخدمات التي هاجمت",
+  "In this card, you will identify the most attacked services by the attacker": "في هذه البطاقة ، ستقوم بتحديد الخدمات الأكثر هجومًا من قبل المهاجم",
+  "ASN Attack": "هجوم أسن",
+  "Top Attacker Cities": "أفضل مدن المهاجمين",
+  "Top Cities from where the attacks originate": "أعلى المدن التي تنشأ فيها الهجمات",
+  "Attacker IPs": "IPS المهاجم",
+  "Top Source IPs of the attackers": "أعلى مصدر IPs للمهاجمين",
+  "Attacker MAC Addresses": "عناوين المهاجم MAC",
+  "List of physical address of most frequent attackers of your network Top Source MAC Addresses of the attackers": "قائمة العنوان الفعلي لمعظم المهاجمين المتكررين من عناوين MAC الخاصة بمصدر الشبكات الخاص بك للمهاجمين",
+  "Attacker Geo-Locations": "المهاجم الجيولوجي",
+  "Geo-Locations of the Top attackers": "الخلف الجغرافي لأفضل المهاجمين",
+  "Top Source Attack Countries": "أعلى دول هجوم المصدر",
+  "Top Countries from where attack originates": "أفضل الدول من حيث ينشأ الهجوم",
+  "AWS": "AWS",
+  "On-Prim": "على أساس",
+  "Azure": "أزور",
+  "Frequent Attacker Details": "تفاصيل المهاجم المتكرر",
+  "Export": "يصدّر",
+  "CSV": "CSV",
+  "Excel": "Excel",
+  "Target Mac Address": "عنوان MAC الهدف",
+  "No Of Times Attacked": "لا من الهجوم",
+  "Attacker Mac Address": "عنوان MACTER MAC",
+  "Most Attacked Services": "معظم الخدمات التي هاجمت",
+  "Attacker ASN": "المهاجم أسن",
+  "Attacker City": "مدينة المهاجم",
+  "TCP Port": "منفذ TCP",
+  "UDP Port": "منفذ UDP",
+  "Threat Type": "نوع التهديد",
+  "Attacked Service Details": "هاجمت تفاصيل الخدمة",
+  "Attackers Geolocation Details": "المهاجمين تفاصيل تحديد الموقع الجغرافي",
+  "Top Victim IP addresses": "عناوين IP الضحية العليا",
+  "IPs that require immediate attention!": "IPS التي تتطلب الاهتمام الفوري!",
+  "Victim tcp services attacked": "هاجمت خدمات الضحية TCP",
+  "Frequently Targeted Host Details": "تفاصيل المضيف المستهدفة في كثير من الأحيان",
+  "Attacker Details": "تفاصيل المهاجم",
+  "Targeted Hosts Details": "تفاصيل المضيفين المستهدفين",
+  "Victim udp services attacked": "هاجمت خدمات الضحية UDP",
+  "Create Api key": "إنشاء مفتاح API",
+  "Palo Alto XSOAR": "بالو ألتو xsoar",
+  "Full Control": "السيطرة الكاملة",
+  "Create Api": "إنشاء API",
+  "Creating Api...": "إنشاء API ...",
+  "API Type": "نوع API",
+  "Select application": "حدد التطبيق",
+  "Type of Application": "نوع الطلب",
+  "Api Type": "نوع API",
+  "Key": "مفتاح",
+  "Date": "تاريخ",
+  "Status": "حالة",
+  "Actions": "أجراءات",
+  "Create an API Key": "إنشاء مفتاح API",
+  "API Key": "مفتاح API",
+  "Search": "يبحث",
+  "API Settings": "إعدادات API",
+  "API": "API",
+  "Activity": "نشاط",
+  "Browser": "متصفح",
+  "Method": "طريقة",
+  "Type": "يكتب",
+  "Username": "اسم المستخدم",
+  "User Logs": "سجلات المستخدم",
+  "secondary Email Id": "معرف البريد الإلكتروني الثانوي",
+  "Email": "البريد الإلكتروني",
+  "Country": "دولة",
+  "Contact": "اتصال",
+  "Save Changes": "حفظ التغييرات",
+  "Loading...": "جار التحميل...",
+  "Reset": "إعادة ضبط",
+  "Account": "الحساب",
+  "User Config Details": "تفاصيل تكوين المستخدم",
+  "First Name": "الاسم الاول",
+  "Last Name": "الكنية",
+  "User Role": "دور المستخدم",
+  "Super Admin": "المشرف سوبر",
+  "Select Role": "حدد الدور",
+  "Network Admin": "مسؤول الشبكة",
+  "Submit": "يُقدِّم",
+  "Role": "دور",
+  "Phone": "هاتف",
+  "User Management": "إدارةالمستخدم",
+  "Add User": "أضف المستخدم",
+  "Users List": "قائمة المستخدمين",
+  "Address-1": "العنوان 1",
+  "Address-2": "العنوان 2",
+  "State": "حالة",
+  "City": "مدينة",
+  "Zipcode": "الرمز البريدي",
+  "Address Details": "تفاصيل العنوان",
+  "Personal Information": "معلومات شخصية",
+  "Details": "تفاصيل",
+  "Threat Severity": "شدة التهديد",
+  "Low": "قليل",
+  "Medium": "متوسط",
+  "High": "عالٍ",
+  "Saving": "إنقاذ",
+  "Severity": "خطورة",
+  "Time Interval": "الفاصل الزمني",
+  "Last 5minutes": "آخر 5 دقائق",
+  "Last 15minutes": "آخر 15 دقيقة",
+  "Last 30minutes": "آخر 30 دقيقة",
+  "Last 1hour": "آخر 2 ساعة",
+  "Last 6hour": "آخر 6 ساعات",
+  "Last 12hour": "آخر 12 ساعة",
+  "Last 24hour": "آخر 24 ساعة",
+  "General info": "معلومات عامة",
+  "Upload": "تحميل",
+  "Allowed JPG, PNG. Max size of 800kB": "سمح JPG ، PNG. بحد أقصى 800 كيلو بايت",
+  "E-mail": "البريد الإلكتروني",
+  "Information": "معلومة",
+  "MFA | Multifactor Authentication": "MFA | المصادقة متعددة العوامل",
+  "Config": "تكوين",
+  "Email Config": "تكوين البريد الإلكتروني",
+  "Dashboard Config": "تكوين لوحة القيادة",
+  "ASN": "أسن",
+  "Service Name": "اسم الخدمة",
+  "Target OS": "OS الهدف",
+  "Type of Threat": "نوع التهديد",
+  "Threat Class": "فئة التهديد",
+  "Count": "عدد",
+  "xlsx": "XLSX",
+  "csv": "CSV",
+  "txt": "رسالة قصيرة",
+  "Cancel": "يلغي",
+  "Target mac address": "عنوان MAC الهدف",
+  "Filter": "منقي",
+  "Select Subject": "حدد الموضوع",
+  "Report Type": "نوع التقرير",
+  "Incident Response Report": "تقرير الرد الحادث",
+  "Executive Report": "التقرير التنفيذي",
+  "Select Platform": "حدد النظام الأساسي",
+  "Select": "يختار",
+  "Internal": "داخلي",
+  "External": "خارجي",
+  "Select Count": "حدد العد",
+  "Top-10": "أعلى 10",
+  "Top-20": "أفضل 20",
+  "Top-50": "أعلى 50",
+  "Top-100": "أفضل 100",
+  "IDS Threat Severity": "شدة التهديد IDS",
+  "1-High": "1",
+  "2-Medium": "2-medium",
+  "3-Low": "3 منخفض",
+  "Start Date": "تاريخ البدء",
+  "End Date": "تاريخ الانتهاء",
+  "Generate Report": "انشاء تقرير",
+  "Checking": "تدقيق",
+  "Page Not Found": "الصفحة غير موجودة",
+  "Oops! 😖 The requested URL was not found on this server": "أُووبس! 😖 لم يتم العثور على عنوان URL المطلوب على هذا الخادم",
+  "Back to home": "العودة إلى المنزل",
+  "Type your 6 digit security code": "اكتب رمز الأمان المكون من 6 أرقام",
+  "Enter all 6 digit of OTP": "أدخل كل 6 أرقام من OTP",
+  "Didn’t get the code?": "لم تحصل على الرمز؟",
+  "Resend": "إعادة إرسال",
+  "New Password": "كلمة السر الجديدة",
+  "Confirm Password": "تأكيد كلمة المرور",
+  "Login": "تسجيل الدخول",
+  "Your password successfully reset, please login and continue": "إعادة تعيين كلمة المرور الخاصة بك بنجاح ، يرجى تسجيل الدخول والمتابعة",
+  "Please enter your email id to reset your password": "الرجاء إدخال معرف البريد الإلكتروني الخاص بك لإعادة تعيين كلمة المرور الخاصة بك",
+  "Email ID": "عنوان الايميل",
+  "Forgot": "نسيت",
+  "Back to login": "العودة إلى تسجيل الدخول",
+  "Garnet New Password": "كلمة مرور جديدة",
+  "Old Password": "كلمة المرور القديمة",
+  "Set your new passwords": "اضبط كلمات المرور الجديدة الخاصة بك",
+  "Welcome": "أهلا وسهلا",
+  "You have successfully logged in as an {role} user to XDR. Now you can start to explore. Enjoy!": "لقد قمت بتسجيل الدخول بنجاح كمستخدم {Role} إلى XDR. الآن يمكنك البدء في الاستكشاف. يتمتع!",
+  "Select Language": "اختار اللغة",
+  "English": "إنجليزي",
+  "French": "فرنسي",
+  "German": "ألمانية",
+  "Japanese": "اليابانية",
+  "Password": "كلمة المرور",
+  "Forgot Password?": "هل نسيت كلمة السر؟",
+  "Sign in": "تسجيل الدخول",
+  "You are not authorized!": "أنك غير مخول!",
+  "You are not authorized! This page is not authorized for you as per your role": "أنك غير مخول! هذه الصفحة غير مصرح لك حسب دورك",
+  "DL Accuracy": "دقة DL",
+  "Login Details": "تفاصيل تسجيل الدخول",
+  "General": "عام",
+  "Account Setting": "إعدادات الحساب",
+  "High Severity Events": "أحداث شدة عالية",
+  "Lateral Movement Attacks": "هجمات الحركة الجانبية",
+  "Internal Attack Count": "عدد الهجوم الداخلي",
+  "Intregation": "التهوية",
+  "Third Party Application Intregation": "الجهة الثالثة للتطبيق",
+  "Applications": "التطبيقات",
+  "Forgot Password": "هل نسيت كلمة السر",
+  "Profile": "الملف الشخصي",
+  "Logout": "تسجيل خروج",
+  "We sent a verification code to your registered email address. Enter the code from the email in the field below": "أرسلنا رمز التحقق إلى عنوان بريدك الإلكتروني المسجل. أدخل الرمز من البريد الإلكتروني في الحقل أدناه",
+  "Two Step Verification": "التحقق من خطوتين",
+  "Attacker OS": "OS المهاجم",
+  "Outgoing Botnet Connections": "اتصالات الروبوتات المنتهية ولايته",
+  "Notification Config": "تكوين الإخطار",
+  "Environment Config": "تهيئة البيئة",
+  "Footer Type": "نوع التذييل",
+  "Navbar Color": "لون قوارير",
+  "Menu Hidden": "قائمة مخفية",
+  "Menu Collapsed": "انهارت القائمة",
+  "Horizontal": "أفقي",
+  "Router Transition": "انتقال جهاز التوجيه",
+  "RTL": "RTL",
+  "Boxed": "وضع في صندوق",
+  "Full Width": "عرض كامل",
+  "Content Width": "عرض المحتوى",
+  "Skin": "جلد",
+  "Customize & Preview in Real Time": "تخصيص ومعاينة في الوقت الحقيقي",
+  "Theme Customizer": "مخصص موضوع",
+  "Fade": "اختفي",
+  "Fade In Left": "fadeinleft",
+  "Zoom In": "Zoomin",
+  "None": "لا أحد",
+  "Static": "ثابتة",
+  "Hidden": "مختفي",
+  "Floating": "يطفو على السطح",
+  "Semi Dark": "شبه مظلم",
+  "Dark": "مظلم",
+  "Bordered": "يحد",
+  "Light": "خفيفة",
+  "ML & DL Detection": "اكتشاف ML & DL",
+  "Integration": "اندماج",
+  "You have successfully logged in as an": "لقد قمت بتسجيل الدخول بنجاح ك",
+  "user to XDR. Now you can start to explore. Enjoy!": "المستخدم إلى XDR. الآن يمكنك البدء في الاستكشاف. يتمتع!",
+  "Vertical": "عمودي",
+  "Sticky": "لزج",
+  "PDF": "بي دي إف",
+  "Accuracy": "دقة",
+  "Between 91% to 100%": "بين 91 ٪ إلى 100 ٪",
+  "Between 76% to 90%": "بين 76 ٪ إلى 90 ٪",
+  "Between 65% to 75%": "ما بين 65 ٪ إلى 75 ٪",
+  "Views": "الآراء",
+  "Enable": "يُمكَِن",
+  "Disable": "تعطيل",
+  "Email Notifications": "اشعارات البريد الالكتروني",
+  "Platform": "Platform",
+  "Menu Layout": "تخطيط القائمة",
+  "External Attack Events": "أحداث الهجوم الخارجي",
+  "Dashboard Notifications": "إشعارات لوحة القيادة",
+  "Notifications": "إشعارات",
+  "Innovative": "مبتكر",
+  "Select Email": "حدد البريد الإلكتروني",
+  "Innovative Search": "بحث مبتكر",
+  "Generate": "يولد",
+  "Attacker Mac": "مهاجم ماك",
+  "Target Mac": "هدف MAC",
+  "Ids Threat Class": "فئة التهديد IDS",
+  "Ids Threat Severity": "شدة التهديد IDS",
+  "Account Active Status": "حساب الحالة النشطة",
+  "Discover": "يكتشف",
+  "Discover Data": "اكتشف البيانات",
+  "Threar Severity": "شدة الإثارة",
+  "Attacker Timestamp": "الطابع الزمني للمهاجم",
+  "Ml Threat Class": "فئة التهديد ML",
+  "Dl Threat Class": "دل فئة التهديد",
+  "Ids Threat Type": "نوع التهديد IDS",
+  "Ml Accuracy": "مل د",
+  "Dl Accuracy": "دقة DL",
+  "Tcp": "TCP",
+  "Udp": "UDP",
+  "Icmp": "ICMP",
+  "Ans": "الإجابة",
+  "Country Name": "اسم الدولة",
+  "Latitude": "خط العرض",
+  "Longititude": "الطول",
+  "Postal": "بريدي",
+  "Security Warning": "تحذير الأمان",
+  " Numbers of security warning in your environment, click on the": " أرقام تحذير الأمن في بيئتك ، انقر على",
+  "View More": "عرض المزيد",
+  " to get the details": " للحصول على التفاصيل",
+  "Filter Data": "تصفية البيانات",
+  "Search value is empty": "قيمة البحث فارغة",
+  "Data Not Found": "لم يتم العثور على بيانات",
+  "Please Enter Password Correctly": "الرجاء إدخال كلمة المرور بشكل صحيح",
+  "Close": "قريب",
+  "Save": "يحفظ",
+  "Enter Your Login Password": "أدخل كلمة مرور تسجيل الدخول الخاصة بك",
+  "Sit Back and Relax": "الجلوس والاسترخاء",
+  "Great Success": "نجاح كبير",
+  "Field cannot be blank": "لا يمكن أن يكون الحقل فارغًا",
+  "Requested data not available": "البيانات المطلوبة غير متوفرة",
+  "Fullscreen": "شاشة كاملة",
+  "Data not available at this moment": "البيانات غير متوفرة في هذه اللحظة",
+  "No Internet Connection.Please try again later.": "لا يوجد اتصال بالإنترنت ، يرجى المحاولة مرة أخرى لاحقًا.",
+  "COPYRIGHT": "حقوق النشر",
+  "All rights Reserved": "كل الحقوق محفوظة",
+  "Made in INDIA": "المحرز في الهند",
+  "Verification Status": "حالة التحقق",
+  "Refresh": "ينعش",
+  "Wazuh": "Wazuh",
+  "Create API": "إنشاء API",
+  "Your email has not been verified yet, please check your email": "لم يتم التحقق من بريدك الإلكتروني حتى الآن ، يرجى التحقق من بريدك الإلكتروني",
+  "Your organization is deactived from XDR Portal": "تم إلغاء تنشيط مؤسستك من XDR Portal"
+}
