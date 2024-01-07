@@ -1,532 +1,0 @@
-{
-  "Dashboard": "لوحه القياده",
-  "Home": "وطن",
-  "Attack Events": "أحداث الهجوم",
-  "Intelligence": "الاستخبارات",
-  "Network Map": "خريطة الشبكة",
-  "Administration": "إدارة",
-  "Logs": "سجلات",
-  "User Config": "تكوين المستخدم",
-  "Report": "تقرير",
-  "Insights": "البصائر",
-  "Settings": "اعدادات",
-  "Edit Account": "تحرير الحساب",
-  "Notification": "اخطار",
-  "ML Accuracy": "دقة ML",
-  "ML Engine": "محرك ML",
-  "DL Engine": "محرك DL",
-  "Activity Type": "نوع التهديد",
-  "Attacker IP": "عنوان IP للمهاجم",
-  "Attack Timestamp": "الطابع الزمني للهجوم",
-  "Attacker MAC": "مهاجم ماك",
-  "Target IP": "عنوان IP المستهدف",
-  "Target MAC": "الهدف ماك",
-  "Detected Threat Type": "نوع التهديد المكتشف",
-  "Top threat types detected by the Triple Layer Detection Engines": "أهم أنواع التهديدات التي تم اكتشافها بواسطة محركات الكشف ثلاثية الطبقات",
-  "IDS": "معرفات",
-  "ML": "مل",
-  "DL": "دل",
-  "External Attacks": "الهجمات الخارجية",
-  "Total number of critical External attacks": "العدد الإجمالي للهجمات الخارجية الحرجة",
-  "Internal and External Attack Comparison": "مقارنة الهجوم الداخلي والخارجي",
-  "Line chart representing comparison between Internal and External Attacks": "مخطط خطي يمثل مقارنة بين الهجمات الداخلية والخارجية",
-  "Compromised Hosts": "المضيفين المخترقة",
-  "Internal Attacks": "الهجمات الداخلية",
-  "Total Number of Compromised Hosts": "إجمالي عدد المضيفين المخترقة",
-  "Total number of critical Internal attacks": "العدد الإجمالي للهجمات الداخلية الحرجة",
-  "Overall Attack Comparison": "مقارنة شاملة للهجوم",
-  "We represent here attacks in the environment based on Internal Attacks and External Attacks": "نحن نمثل هنا الهجمات في البيئة القائمة على الهجمات الداخلية والهجمات الخارجية",
-  "Critical Threats": "التهديدات الحرجة",
-  "Total number of critical Internal and External attacks": "العدد الإجمالي للهجمات الداخلية والخارجية الحرجة",
-  "Threat Logs": "سجلات التهديدات",
-  "Threat logs display entries when traffic matches one of the Security Profiles attached to a security filter by the Triple Layered Detection Engine": "تعرض سجلات التهديدات الإدخالات عندما تتطابق حركة المرور مع أحد ملفات تعريف الأمان المرفقة بعامل تصفية الأمان بواسطة محرك الكشف ثلاثي الطبقات",
-  "Severity 1": "الخطورة 1",
-  "Severity 2": "الخطورة 2",
-  "Severity 3": "الخطورة 3",
-  "Ml Detection": "كشف مل",
-  "DL Detection": "كشف DL",
-  "IDS Detection": "كشف IDS",
-  "Threat Detection Type": "نوع الكشف عن التهديدات",
-  "This card represents the count of the different detection mechanisms": "تمثل هذه البطاقة عدد آليات الكشف المختلفة",
-  "Attack Frequency": "تردد الهجوم",
-  "Line chart represents the frequency of attacks detected by the Triple Layered Detection Engine": "يمثل المخطط الخطي تكرار الهجمات التي يكتشفها محرك الكشف ثلاثي الطبقات",
-  "Top Attacker ASNs": "أعلى مهاجم ASNs",
-  "Line chart represents the top Autonomous System Number used by the attacker detected by the Geo-Location detection system": "يمثل المخطط الخطي أعلى رقم نظام مستقل يستخدمه المهاجم والذي اكتشفه نظام الكشف عن الموقع الجغرافي",
-  "Most Attacked Ports": "المنافذ الأكثر هجوما",
-  "Top destination ports targeted by Attackers": "أهم منافذ الوجهة المستهدفة من قبل المهاجمين",
-  "IP": "آي بي",
-  "IP Attacks": "هجمات IP",
-  "Top Attacked Services": "أعلى الخدمات التي تعرضت للهجوم",
-  "In this card, you will identify the most attacked services by the attacker": "في هذه البطاقة ، ستحدد الخدمات الأكثر تعرضا للهجوم من قبل المهاجم",
-  "ASN Attack": "هجوم ASN",
-  "Top Attacker Cities": "أفضل المدن المهاجمة",
-  "Top Cities from where the attacks originate": "أهم المدن التي نشأت منها الهجمات",
-  "Attacker IPs": "عناوين IP للمهاجمين",
-  "Top Source IPs of the attackers": "عناوين IP عالية المصدر للمهاجمين",
-  "Attacker MAC Addresses": "عناوين MAC للمهاجم",
-  "List of physical address of most frequent attackers of your network Top Source MAC Addresses of the attackers": "قائمة العناوين الفعلية للمهاجمين الأكثر تكرارا في شبكتك عناوين MAC المصدر الأعلى للمهاجمين",
-  "Attacker Geo-Locations": "المواقع الجغرافية للمهاجمين",
-  "Geo-Locations of the Top attackers": "المواقع الجغرافية لأفضل المهاجمين",
-  "Top Source Attack Countries": "دول الهجوم المصدر الأعلى",
-  "Top Countries from where attack originates": "أهم الدول التي ينشأ منها الهجوم",
-  "AWS": "أوس",
-  "On-Prim": "أون بريم",
-  "Azure": "أسمانجوني",
-  "Frequent Attacker Details": "تفاصيل المهاجم المتكرر",
-  "Export": "تصدير",
-  "CSV": ".CSV",
-  "Excel": "اكسل",
-  "Target Mac Address": "عنوان Mac المستهدف",
-  "No Of Times Attacked": "عدد مرات الهجوم",
-  "Attacker Mac Address": "عنوان ماك المهاجم",
-  "Most Attacked Services": "الخدمات الأكثر تعرضا للهجوم",
-  "Attacker ASN": "المهاجم ASN",
-  "Attacker City": "المدينة المهاجم",
-  "TCP Port": "منفذ TCP",
-  "UDP Port": "منفذ UDP",
-  "Threat Type": "نوع التهديد",
-  "Attacked Service Details": "تفاصيل الخدمة التي تعرضت للهجوم",
-  "Attackers Geolocation Details": "--",
-  "Top Victim IP addresses": "أهم عناوين IP للضحية",
-  "IPs that require Target IP attention!": "عناوين IP التي تتطلب اهتماما فوريا!",
-  "Victim tcp services attacked": "مهاجمة خدمات TCP للضحية",
-  "Frequently Targeted Host Details": "تفاصيل المضيف المستهدفة بشكل متكرر",
-  "Attacker Details": "تفاصيل المهاجم",
-  "Targeted Hosts Details": "تفاصيل المضيفين المستهدفين",
-  "Victim udp services attacked": "هجوم على خدمات UDP للضحايا",
-  "Create Api key": "إنشاء مفتاح API",
-  "Palo Alto XSOAR": "بالو ألتو إكسسوار",
-  "Full Control": "تحكم كامل",
-  "Create Api": "إنشاء واجهة برمجة التطبيقات",
-  "Creating Api...": "إنشاء واجهة برمجة التطبيقات ...",
-  "API Type": "نوع واجهة برمجة التطبيقات",
-  "Select application": "حدد التطبيق",
-  "Type of Application": "نوع التطبيق",
-  "Api Type": "نوع واجهة برمجة التطبيقات",
-  "Key": "مفتاح",
-  "Date": "تاريخ",
-  "Status": "حالة",
-  "Actions": "الاجراءات",
-  "Create an API Key": "إنشاء مفتاح API",
-  "API Key": "مفتاح واجهة برمجة التطبيقات",
-  "Search": "بحث",
-  "API Settings": "API Setticountsngs",
-  "API": "API",
-  "Activity": "نشاط",
-  "Browser": "المستعرض",
-  "Method": "أسلوب",
-  "Type": "نوع",
-  "Username": "اسم المستخدم",
-  "User Logs": "سجلات المستخدم",
-  "secondary Email Id": "معرف البريد الإلكتروني الثانوي",
-  "Email": "البريد الإلكتروني",
-  "Country": "بلد",
-  "Contact": "الاتصال",
-  "Save Changes": "حفظ التغييرات",
-  "Loading...": "تحميل...",
-  "Reset": "اعاده تعيين",
-  "Account": "حساب",
-  "User Config Details": "تفاصيل تكوين المستخدم",
-  "First Name": "الاسم الأول",
-  "Last Name": "اسم العائلة",
-  "User Role": "دور المستخدم",
-  "Super Admin": "مشرف متميز",
-  "Select Role": "حدد الدور",
-  "Network Admin": "مسؤول الشبكة",
-  "Submit": "إرسال",
-  "Role": "دور",
-  "Phone": "الهاتف",
-  "User Management": "إدارة المستخدمين",
-  "Add User": "إضافة مستخدم",
-  "Users List": "قائمة المستخدمين",
-  "Address-1": "العنوان-1",
-  "Address-2": "العنوان-2",
-  "State": "حالة",
-  "City": "مدينة",
-  "Zipcode": "الرمز البريدي",
-  "Address Details": "تفاصيل العنوان",
-  "Personal Information": "المعلومات الشخصية",
-  "Details": "التفاصيل",
-  "Threat Severity": "خطورة التهديد",
-  "Low": "منخفض",
-  "Medium": "متوسط",
-  "High": "عال",
-  "Saving": "حفظ",
-  "Severity": "شده",
-  "Time Interval": "الفاصل الزمني",
-  "Last 5minutes": "آخر 5 دقائق",
-  "Last 15minutes": "آخر 15 دقيقة",
-  "Last 30minutes": "آخر 30 دقيقة",
-  "Last 1hour": "آخر 2ساعة",
-  "Last 6hour": "آخر 6 ساعات",
-  "Last 12hour": "آخر 12 ساعة",
-  "Last 24hour": "آخر 24 ساعة",
-  "General info": "معلومات عامة",
-  "Upload": "رفع",
-  "Allowed JPG, PNG. Max size of 800kB": "يسمح JPG ، PNG. الحد الأقصى لحجم 800kB",
-  "E-mail": "البريد الالكترونى",
-  "Information": "معلومات",
-  "MFA | Multifactor Authentication": "وزارة الخارجية | المصادقة متعددة العوامل",
-  "Config": "التكوين",
-  "Email Config": "تكوين البريد الإلكتروني",
-  "Dashboard Config": "تكوين لوحة القيادة",
-  "ASN": "إيه إس إن",
-  "Service Name": "اسم الخدمة",
-  "Target OS": "نظام التشغيل المستهدف",
-  "Type of Threat": "نوع التهديد",
-  "Threat Class": "فئة التهديد",
-  "Count": "عد",
-  "xlsx": ".xlsx",
-  "csv": ".csv",
-  "txt": ".txt",
-  "Cancel": "إلغاء الأمر",
-  "Target mac address": "عنوان mac المستهدف",
-  "Filter": "راووق",
-  "Select Subject": "اختر الموضوع",
-  "Report Type": "نوع التقرير",
-  "Incident Response Report": "تقرير الاستجابة للحوادث",
-  "Executive Report": "تقرير تنفيذي",
-  "Select Platform": "حدد النظام الأساسي",
-  "Select": "اختار",
-  "Internal": "داخلي",
-  "External": "--",
-  "Select Count": "حدد العد",
-  "Top-10": "أعلى 10",
-  "Top-20": "أعلى 20",
-  "Top-50": "أعلى 50",
-  "Top-100": "توب 100",
-  "IDS Threat Severity": "خطورة تهديد IDS",
-  "1-High": "1-مرتفع",
-  "2-Medium": "2-متوسط",
-  "3-Low": "3-منخفض",
-  "Start Date": "بدء العرض",
-  "End Date": "انتهاء العرض",
-  "Generate Report": "إنشاء تقرير",
-  "Checking": "التحقق",
-  "Page Not Found": "لم يتم العثور على الصفحة",
-  "Oops! 😖 The requested URL was not found on this server": "عفوا! 😖 لم يتم العثور على عنوان URL المطلوب على هذا الخادم",
-  "Back to home": "العودة إلى الصفحة الرئيسية",
-  "Type your 6 digit security code": "اكتب رمز الحماية المكون من 6 أرقام",
-  "Enter all 6 digit of OTP": "أدخل كل 6 أرقام من OTP",
-  "Didn’t get the code?": "لم تحصل على الرمز؟",
-  "Resend": "ارسال",
-  "New Password": "كلمة مرور جديدة",
-  "Confirm Password": "تأكيد كلمة المرور",
-  "Login": "تسجيل الدخول",
-  "Your password successfully reset, please login and continue": "تمت إعادة تعيين كلمة المرور الخاصة بك بنجاح ، يرجى تسجيل الدخول والمتابعة",
-  "Please enter your email id to reset your password": "يرجى إدخال معرف البريد الإلكتروني الخاص بك لإعادة تعيين كلمة المرور الخاصة بك",
-  "Email ID": "معرف البريد الإلكتروني",
-  "Forgot": "نسيت",
-  "Back to login": "العودة إلى تسجيل الدخول",
-  "Garnet New Password": "كلمة مرور جديدة من العقيق",
-  "Old Password": "كلمة المرور القديمة",
-  "Set your new passwords": "تعيين كلمات المرور الجديدة",
-  "Welcome": "أهلًا وسهلًا",
-  "You have successfully logged in as an {role} user to XDR. Now you can start to explore. Enjoy!": "لقد قمت بتسجيل الدخول بنجاح كمستخدم {role} إلى XDR. الآن يمكنك البدء في استكشاف. استمتع!",
-  "Select Language": "اختر اللغة",
-  "English": "الإنكليزية",
-  "French": "الفرنسية",
-  "German": "الألمانية",
-  "Japanese": "اليابانية",
-  "Password": "شعار",
-  "Forgot Password?": "نسيت كلمة المرور؟",
-  "Sign in": "تسجيل الدخول",
-  "You are not authorized!": "أنت غير مخول!",
-  "You are not authorized! This page is not authorized for you as per your role": "أنت غير مخول! هذه الصفحة غير مصرح بها لك حسب دورك",
-  "DL Accuracy": "دقة DL",
-  "Login Details": "تفاصيل تسجيل الدخول",
-  "General": "عام",
-  "Account Settings": "إعداد الحساب",
-  "High Severity Events": "أحداث عالية الخطورة",
-  "Lateral Movement Attacks": "هجمات الحركة الجانبية",
-  "Internal Attack Count": "عدد الهجمات الداخلية",
-  "Intregation": "التدبر",
-  "Third Party Application Intregation": "إدخال تطبيق الطرف الثالث",
-  "Applications": "التطبيقات",
-  "Forgot Password": "نسيت كلمة المرور",
-  "Profile": "ملف تعريف",
-  "Logout": "الخروج",
-  "We sent a verification code to your registered email address. Enter the code from the email in the field below": "لقد أرسلنا رمز التحقق إلى عنوان بريدك الإلكتروني المسجل. أدخل الرمز من البريد الإلكتروني في الحقل أدناه",
-  "Two Step Verification": "التحقق بخطوتين",
-  "Attacker OS": "نظام التشغيل المهاجم",
-  "Outgoing Botnet Connections": "اتصالات الروبوتات الصادرة",
-  "Notification Config": "--",
-  "Environment Config": "تكوين البيئة",
-  "Footer Type": "نوع التذييل",
-  "Navbar Color": "لون شريط التنقل",
-  "Menu Hidden": "القائمة مخفية",
-  "Menu Collapsed": "القائمة مطوية",
-  "Horizontal": "أفقي",
-  "Router Transition": "انتقال جهاز التوجيه",
-  "RTL": "ار تي ال",
-  "Boxed": "محاصر",
-  "Full Width": "العرض الكامل",
-  "Content Width": "عرض المحتوى",
-  "Skin": "جلد",
-  "Customize & Preview in Real Time": "تخصيص ومعاينة في الوقت الحقيقي",
-  "Theme Customizer": "مخصص السمة",
-  "Fade": "تتلاشى",
-  "Fade In Left": "fadeInLeft",
-  "Zoom In": "تكبير",
-  "None": "اي",
-  "Static": "ثابت",
-  "Hidden": "مخفي",
-  "Floating": "طافي",
-  "Semi Dark": "شبه مظلمة",
-  "Dark": "داكن",
-  "Bordered": "تحدها",
-  "Light": "ضوء",
-  "ML & DL Detection": "كشف ML و DL",
-  "Integration": "تكامل",
-  "You have successfully logged in as an": "لقد قمت بتسجيل الدخول بنجاح كملف",
-  "user to XDR. Now you can start to explore. Enjoy!": "المستخدم إلى XDR. الآن يمكنك البدء في استكشاف. استمتع!",
-  "Vertical": "عمودي",
-  "Sticky": "دبق",
-  "PDF": ".PDF",
-  "Accuracy": "دقة",
-  "Between 91% to 100%": "بين 91٪ إلى 100٪",
-  "Between 76% to 90%": "بين 76٪ إلى 90٪",
-  "Between 65% to 75%": "بين 65٪ إلى 75٪",
-  "Views": "طرق عرض",
-  "Enable": "تمكين",
-  "Disable": "تعطيل",
-  "Email Notifications": "إشعارات البريد الإلكتروني",
-  "Platform": "رصيف",
-  "Menu Layout": "تخطيط القائمة",
-  "External Attack Events": "أحداث الهجوم الخارجي",
-  "Dashboard Notifications": "إشعارات لوحة المعلومات",
-  "Notifications": "الاخطارات",
-  "Innovative": "مبتكره",
-  "Select Email": "حدد البريد الإلكتروني",
-  "Innovative Search": "البحث المبتكر",
-  "Generate": "ولد",
-  "Attacker Mac": "المهاجم ماك",
-  "Target Mac": "تارجت ماك",
-  "Ids Threat Class": "فئة تهديد المعرفات",
-  "Ids Threat Severity": "خطورة تهديد IDS",
-  "Account Active Status": "الحالة النشطة للحساب",
-  "Discover": "اكتشف",
-  "Discover Data": "اكتشف البيانات",
-  "Threar Severity": "الخطورة الخلفية",
-  "Attacker Timestamp": "الطابع الزمني للمهاجم",
-  "Ml Threat Class": "فئة تهديد ML",
-  "Dl Threat Class": "فئة تهديد DL",
-  "Ids Threat Type": "نوع تهديد IDS",
-  "Ml Accuracy": "دقة مل",
-  "Dl Accuracy": "دقة DL",
-  "Tcp": "تي سي بي",
-  "Udp": "أودب",
-  "Icmp": "اللجنة الدولية لشؤون المفقودين",
-  "Ans": "الجواب",
-  "Country Name": "اسم البلد",
-  "Latitude": "العرض",
-  "Longititude": "خط الطول",
-  "Postal": "البريديه",
-  "Security Warning": "تحذير أمني",
-  " Numbers of security warning in your environment, click on the": "أرقام التحذيرات الأمنية في بيئتك ، انقر فوق",
-  "View More": "عرض المزيد",
-  " to get the details": "للحصول على التفاصيل",
-  "Filter Data": "تصفية البيانات",
-  "Search value is empty": "قيمة البحث فارغة",
-  "Data Not Found": "لم يتم العثور على البيانات",
-  "Please Enter Password Correctly": "الرجاء إدخال كلمة المرور بشكل صحيح",
-  "Close": "غلق",
-  "Save": "أنقذ",
-  "Enter Your Login Password": "أدخل كلمة مرور تسجيل الدخول الخاصة بك",
-  "Sit Back and Relax": "اجلس واسترخ",
-  "Great Success": "نجاح كبير",
-  "Field cannot be blank": "لا يمكن أن يكون الحقل فارغا",
-  "Requested data not available": "البيانات المطلوبة غير متوفرة",
-  "Fullscreen": "ملء الشاشة",
-  "Data not available at this moment": "البيانات غير متوفرة في الوقت الحالي",
-  "No Internet Connection.Please try again later.": "لا يوجد اتصال بالإنترنت.يرجى إعادة المحاولة لاحقا.",
-  "COPYRIGHT": "حقوق النشر",
-  "All rights Reserved": "جميع الحقوق محفوظة",
-  "Made in INDIA": "صنع في الهند",
-  "Verification Status": "حالة التحقق",
-  "Refresh": "تحديث",
-  "Wazuh": "وزوه",
-  "Create API": "إنشاء واجهة برمجة التطبيقات",
-  "Your email has not been verified yet, please check your email": "لم يتم التحقق من بريدك الإلكتروني بعد ، يرجى التحقق من بريدك الإلكتروني",
-  "Your organization is deactived from XDR Portal": "تم إلغاء تنشيط مؤسستك من بوابة XDR",
-  "Key Management": "إدارة المفاتيح",
-  "Key Name Copied": "تم نسخ اسم المفتاح",
-  "Name": "اسم",
-  "ID": "معرف",
-  "Agents": "الوكلاء",
-  "Top 5 alerts": "أهم 5 تنبيهات",
-  "Data not found": "لم يتم العثور على البيانات",
-  "Top 5 Rule Groups": "أعلى 5 مجموعات القواعد",
-  "Top 5 PCI DSS Requirements": "أعلى 5 متطلبات PCI DSS",
-  "Alert Groups Evolution": "تطور مجموعات التنبيه",
-  "Security Alerts": "تنبيهات الأمان",
-  "Mitra Alerts Evolution Over Time": "ميترا تنبه التطور بمرور الوقت",
-  "Top Tactics": "توب تاكتيكس",
-  "MITRE Technique Details": "تفاصيل تقنية ميتر",
-  "Rule Level By Attack ID": "مستوى القاعدة حسب معرف الهجوم",
-  "MITRE Tactic Details": "تفاصيل تكتيك ميتر",
-  "Rule ID": "معرف القاعدة",
-  "Tactics": "التكتيكات",
-  "Technique(s)": "التقنية (التقنيات)",
-  "MITRE": "ميتري",
-  "HIPAA": "هيبا",
-  "GPG 13": "جي بي جي 13",
-  "GDPR": "اللائحة العامة لحماية البيانات",
-  "Compliance": "امتثال",
-  "Category": "باب",
-  "JSON": "جيسون",
-  "Rule": "حكم",
-  "Groups": "المجموعات",
-  "Level": "مستوى",
-  "System Event ID": "معرف حدث النظام",
-  "Timestamp": "الطابع الزمني",
-  "Description": "وصف",
-  "MITRE Attack": "هجوم المير",
-  "Security Events": "الأحداث الأمنية",
-  "Table": "جدول",
-  "Third Party App": "تطبيق الطرف الثالث",
-  "Trace": "أثر",
-  "Plugin": "البرنامج المساعد",
-  "Endpoint Security": "أمان نقطة النهاية",
-  "Possible Zeroday Attacks": "هجمات يوم الصفر المحتملة",
-  "Total Number of Attacks": "إجمالي عدد الهجمات",
-  "Attack Counts": "عدد الهجمات",
-  "Counts": "التهم",
-  "Action": "فعل",
-  "Attacker Port": "منفذ المهاجم",
-  "IDS Threat Class": "فئة تهديد IDS",
-  "IDS Threat Type": "نوع تهديد IDS",
-  "DL Threat Class": "فئة تهديد DL",
-  "ML Threat Class": "فئة تهديد ML",
-  "ASN Name": "اسم ASN",
-  "Lateral Movement": "الحركة الجانبية",
-  "Most Attacked Host": "المضيف الأكثر هجوما",
-  "Total Threat Count": "إجمالي عدد التهديدات",
-  "More Details": "المزيد من التفاصيل",
-  "Service Names": "أسماء الخدمات",
-  "Top Attacker Port": "منفذ المهاجم الأعلى",
-  "Malware Threats Type": "نوع تهديدات البرامج الضارة",
-  "Mitra Tactick": "ميترا تاكتيك",
-  "Mitra Technique": "تقنية ميترا",
-  "Threats Type": "نوع التهديدات",
-  "Detected Threats": "التهديدات المكتشفة",
-  "City Name": "اسم المدينة",
-  "Top Attacker City": "أفضل مهاجم سيتي",
-  "Service Name Count": "عدد أسماء الخدمات",
-  "Target Port": "المنفذ المستهدف",
-  "Target Frequency Host": "مضيف التردد المستهدف",
-  "Target Host": "المضيف المستهدف",
-  "PCI DSS": "PCI DSS",
-  "Mitre Att&ck Tactics": "تكتيكات ميتري أت آند كيه",
-  "Mitre Att&ck Techniques": "ميتري أت آند كيه تكنيك",
-  "Alert": "تنبيه",
-  "Mitre Att&ck": "ميتري أت آند ك",
-  "Mitre Alerts Evolution Over Time": "Mitre ينبه التطور بمرور الوقت",
-  "Internal Compromised Machine": "آلة مخترقة داخليا",
-  "Attack Count Details": "تفاصيل عدد الهجمات",
-  "Alerts": "تنبيهات",
-  "Events": "احداث",
-  "Incidents": "الحوادث",
-  "Live Attack Map": "خريطة الهجوم المباشر",
-  "Live Maps": "خرائط حية",
-  "HIDS": "مخابئ",
-  "NIDS": "NIDS",
-  "Whitelists": "القوائم البيضاء",
-  "Dynamic Reports": "التقارير الديناميكية",
-  "IP & Threat Classes": "فئات IP والتهديد",
-  "Add IP": "إضافة IP",
-  "Index Name": "اسم الفهرس",
-  "Selected fields": "الحقول المحددة",
-  "Available fields": "الحقول المتوفرة",
-  "One or more of the indices youre looking at contains a date field.Your query may not match anything in the current time range,or there may not be any data at all in the currently selected time range.You can try changing the time range to one which contains data.": "يحتوي واحد أو أكثر من الفهارس التي تبحث عنها على حقل تاريخ. قد لا يتطابق استعلامك مع أي شيء في النطاق الزمني الحالي ، أو قد لا تكون هناك أي بيانات على الإطلاق في النطاق الزمني المحدد حاليا. يمكنك محاولة تغيير النطاق الزمني إلى نطاق يحتوي على بيانات.",
-  "Expand your time range": "توسيع نطاقك الزمني",
-  "No results match your search criteria": "لا توجد نتائج تطابق معايير البحث الخاصة بك",
-  "source": "مصدر",
-  "Static Reports": "تقارير ثابتة",
-  "Last 5 minutes": "آخر 5 دقائق",
-  "Refresh every": "تحديث كل",
-  "Last 24 Hours": "آخر 24 ساعة",
-  "Last 15 minutes": "آخر 15 دقيقة",
-  "Last 7 Days": "آخر 7 أيام",
-  "Last 30 minutes": "آخر 30 دقيقة",
-  "Last 30 Days": "آخر 30 يوم",
-  "Last 1 hour": "آخر 1 ساعة",
-  "Last 90 days": "آخر 90 يوم",
-  "Apply": "طبق",
-  "Off": "قباله",
-  "Minute": "دقيقة",
-  "Hour": "ساعة",
-  "Agent ID": "معرف الوكيل",
-  "Port": "ميناء",
-  "Bruteforce UserName": "اسم مستخدم القوة الغاشمة",
-  "Bruteforce Passwords": "كلمات مرور القوة الغاشمة",
-  "Sersor Name": "اسم سيرسور",
-  "Anomaly APP Proto": "الشذوذ APP بروتو",
-  "Anomaly Event": "حدث الشذوذ",
-  "Files State": "حالة الملفات",
-  "Files MD5": "ملفات MD5",
-  "Files Name": "اسم الملفات",
-  "Malware Type": "نوع البرمجيات الخبيثة",
-  "Malware CVE ID": "معرف مكافحة التطرف العنيف للبرامج الضارة",
-  "Mitre Techniques Name": "اسم تقنيات ميتري",
-  "Mitre techniques ID": "معرف تقنيات ميتري",
-  "Mitre Tactics Name": "اسم تكتيكات ميتري",
-  "Mitre Tactics ID": "معرف تكتيكات ميتري",
-  "Longitude": "خط الطول",
-  "Intel Spurce Feed Name": "اسم موجز انتل سبورس",
-  "Brut Password": "كلمة مرور بروت",
-  "Brut Username": "اسم المستخدم الغاشم",
-  "Http URL": "رابط HTTP",
-  "IP rep": "مندوب IP",
-  "Attacker Host Type": "نوع مضيف المهاجم",
-  "Tag": "العلامه",
-  "Sensor Name": "اسم المستشعر",
-  "Gobal Trace Details": "تفاصيل تتبع جوبال",
-  "Malware": "البرمجيات الخبيثة",
-  "Intel Source": "مصدر انتل",
-  "Malware Details": "تفاصيل البرامج الضارة",
-  "Threat Nature": "طبيعة التهديد",
-  "Data Source": "مصدر البيانات",
-  "Current Status": "الوضع الحالي",
-  "Associated Domain": "المجال المرتبط",
-  "Download": "تحميل",
-  "Product Types": "أنواع المنتجات",
-  "Log Types": "أنواع السجلات",
-  "TRACE": "أثر",
-  "SOAR": "ترتفع",
-  "Health Check Feeds": "تغذية الفحص الصحي",
-  "Sensor ID": "معرف المستشعر",
-  "Level Count": "عدد المستويات",
-  "Log Info": "معلومات السجل",
-  "Senor No": "سينور لا",
-  "IP Address": "عنوان بروتوكول الإنترنت",
-  "CPU Utilization": "استخدام وحدة المعالجة المركزية",
-  "RAM Utilization": "استخدام ذاكرة الوصول العشوائي",
-  "Disk Remaining": "القرص المتبقي",
-  "Disk Log Details": "تفاصيل سجل القرص",
-  "Sensor Details": "تفاصيل المستشعر",
-  "Health Check Logs": "سجلات الفحص الصحي",
-  "TRACE Health Check": "فحص صحة TRACE",
-  "NIDS Health Check": "الفحص الصحي NIDS",
-  "HIDS Manager": "مدير HIDS",
-  "SOAR Health Check": "فحص صحة SOAR",
-  "Kindly click on the button below to open SOAR in a new tab and login using the provided credentials": "يرجى النقر فوق الزر أدناه لفتح SOAR في علامة تبويب جديدة وتسجيل الدخول باستخدام بيانات الاعتماد المقدمة",
-  "Download Speed": "سرعة التحميل",
-  "Upload Speed": "سرعة التحميل",
-  "Running": "تشغيل",
-  "Stop": "وقف",
-  "Response": "استجابه",
-  "Sensor Health": "صحة المستشعر",
-  "Health Check": "فحص الصحة",
-  "RAM Used": "الرام المستخدمة",
-  "Link": "رابط",
-  "Top Source Attacker City": "أعلى مصدر مهاجم المدينة",
-  "Source IPs": "عناوين IP المصدر",
-  "Destination IP": "عنوان IP الوجهة",
-  "Top Source Attacker ASN": "أعلى مصدر المهاجم ASN",
-  "Source IP": "عنوان IP المصدر",
-  "Source MAC": "مصدر ماك",
-  "Destination MAC": "الوجهة MAC",
-  "DL Confident": "DL واثق",
-  "ML Confident": "ML واثق"
-}
