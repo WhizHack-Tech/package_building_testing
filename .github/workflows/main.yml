@@ -1,7 +1,7 @@
 name: Mkae Changes in file and Then Build and push the image to ACR
 on:
   pull_request_target:
-    branches: [ "main-test-pt" ]
+    branches: [ "main-test-pw" ]
     types: [ "closed" ]
 
 jobs:
@@ -40,8 +40,8 @@ jobs:
     - name: Build the image
       id: build-image
       run:
-        docker build -t ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}/xdrfront:0.0.1 cicd_automation/.
+        docker build -t ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}/xdrfrontend:0.0.1 cicd-automation/.
 
     - name: Push the image
       run:
-        docker push ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}/xdrfront:0.0.1
+        docker push ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}/xdrfrontend:0.0.1
