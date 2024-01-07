@@ -1,0 +1,29 @@
+version: "3"
+
+services:
+
+  master_frontend:
+    image: 406116439221.dkr.ecr.us-east-2.amazonaws.com/master_frontend_xdr:dev_amd64_1.0.0
+    build: 
+      context: ./master-frontend/.
+      dockerfile: Dockerfile
+
+  master_backend:
+    image: 406116439221.dkr.ecr.us-east-2.amazonaws.com/master_backend_xdr:dev_amd64_1.0.0
+    build: 
+      context: ./master-backend/.
+      dockerfile: Dockerfile
+
+  client_frontend:
+    image: 406116439221.dkr.ecr.us-east-2.amazonaws.com/client_frontend_xdr:dev_amd64_1.0.0
+    build: 
+      context: ./client-frontend/.
+      dockerfile: Dockerfile
+
+  client_backend:
+    image: 406116439221.dkr.ecr.us-east-2.amazonaws.com/client_backend_xdr:dev_amd64_1.0.0
+    build: 
+      context: ./client-backend/.
+      dockerfile: Dockerfile
+      
+

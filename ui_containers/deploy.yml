@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  client_frontend:
+    image: 406116439221.dkr.ecr.us-east-2.amazonaws.com/client_frontend_xdr:dev_amd64_1.0.0
+    restart: always
+    container_name: client_frontend
+    ports:
+      - 3000:3000
+
+  client_backend:
+    image: 406116439221.dkr.ecr.us-east-2.amazonaws.com/client_backend_xdr:dev_amd64_1.0.0
+    container_name: client_backend
+    restart: always
+    ports:
+      - 8000:8000
+
+  master_frontend:
+    image: 406116439221.dkr.ecr.us-east-2.amazonaws.com/master_frontend_xdr:dev_amd64_1.0.0
+    restart: always
+    container_name: master_frontend
+    ports:
+      - 3001:3000
+
+  master_backend:
+    image: 406116439221.dkr.ecr.us-east-2.amazonaws.com/master_backend_xdr:dev_amd64_1.0.0
+    container_name: master_backend
+    restart: always
+    ports:
+      - 8001:8000
