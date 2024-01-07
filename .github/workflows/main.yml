@@ -1,0 +1,47 @@
+name: Mkae Changes in file and Then Build and push the image to ACR
+on:
+  pull_request_target:
+    branches: [ "main-test-pt" ]
+    types: [ "closed" ]
+
+jobs:
+  build-and-push:
+    if: github.event.pull_request.merged == true
+
+    name: build and push the image to acr
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+    - name: checkout
+      uses: actions/checkout@v2
+
+    - name: run automation.py file
+      working-directory: ./cicd_automation
+      run:
+        python automation.py
+
+    - name: display the changes
+      run:
+        cat ./src/axios.js
+    # login to docker 
+    - name: configure ACR Credentials
+      uses: azure/docker-login@v1
+      with:
+        login-server: ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}
+        username: ${{ secrets.ACR_REGISTRY_USERNAME_PW }}
+        password: ${{ secrets.ACR_REGISTRY_PASSWORD_PW }}
+
+    - name: Build the image
+      id: build-image
+      run:
+        docker build -t ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}/xdrfront:0.0.1 cicd_automation/.
+
+    - name: Push the image
+      run:
+        docker push ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}/xdrfront:0.0.1
