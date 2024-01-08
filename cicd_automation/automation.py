@@ -61,8 +61,8 @@ def master_backend():
     # Read the client URL from the config file
     with open('config.ini', 'r') as config_file:
         for line in config_file:
-            if line.startswith('master_domain_url='):
-                master_url = line.strip().split('=')[1]
+            if line.startswith('client_domain_url='):
+                client_url = line.strip().split('=')[1]
                 break
 
     #Joining the exact location with dist
@@ -73,7 +73,7 @@ def master_backend():
         data = data_file.read()
 
     # Replace 'https://dev-xdr.zerohack.in/generate-new-password/' with the client URL
-    updated_data = data.replace('<<MASTER-DOMAIN-URL>>', master_url)
+    updated_data = data.replace('<<CLIENT-DOMAIN-URL>>', client_url)
 
     # Write the updated data back to the file
     with open(master_backend_new_user , 'w') as data_file:
