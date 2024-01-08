@@ -22,7 +22,7 @@ jobs:
       uses: actions/checkout@v2
 #run and display chneges in python file
     - name: run automation.py scripy
-      working-directory: ./
+      working-directory: .
       run: python automation.py
 
     - name: display the changes
