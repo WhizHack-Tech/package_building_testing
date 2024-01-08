@@ -23,7 +23,7 @@ jobs:
 
     # show changes  
     - name: display changes in axios.js
-      run: cat ./src/axios.js
+      run: cat src/axios.js
       
       
     # login to docker  
