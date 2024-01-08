@@ -37,5 +37,5 @@ jobs:
     - name: Build the image
       id: build-image
       run:
-       docker build cicd_automation/. -t ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}//xdr_client_frontend:0.0.1
-       docker push ${{ secrets.ACR_ENDPOINTPRT }}/xdr_client_frontend:0.0.1
+       docker build cicd_automation/. -t ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}//xdr_client_frontend:0.0.1a
+       docker push ${{ secrets.ACR_ENDPOINTPRT }}/xdr_client_frontend:0.0.1a
