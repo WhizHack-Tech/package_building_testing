@@ -1,0 +1,12 @@
+.app-avatar-box {
+    height: 10rem;
+    overflow: hidden;
+}
+
+.app-avatar {
+    width: inherit;
+    height: inherit;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}

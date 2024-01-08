@@ -1,11 +1,10 @@
-// =============================================================================================
+ // ================================================================================================
 //  File Name: store.js
-//  Description: Details of the store config component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  Description: Details Pages of the Store Config ( Redux ).
+//  ----------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
-
 // ** Redux, Thunk & Root Reducer Imports
 import thunk from 'redux-thunk'
 import createDebounce from 'redux-debounced'

@@ -1,11 +1,12 @@
-// =============================================================================================
-//  File Name: spinner/index.js
-//  Description: Details of the fallback spinner loader component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+// ==============================================================================================
+//  File Name: Fallback-spinner.js
+//  Description: Details of the Fallback-spinner component.
+//  ---------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
 
+// ** Logo
 import logo from '@src/assets/images/logo/logo.png'
 
 const SpinnerComponent = () => {

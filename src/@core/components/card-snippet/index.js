@@ -1,8 +1,8 @@
-// =============================================================================================
+// ==============================================================================================
 //  File Name: card-snippet/index.js
-//  Description: Details of the card snippet component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  Description: Details of the card-snippet component.
+//  ---------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
 
@@ -22,7 +22,7 @@ const CardSnippet = props => {
   const [isOpen, setIsOpen] = useState(false)
 
   // ** If user passes custom icon then render that else render default icon
-  // const IconCode = iconCode ? iconCode : <Code size={15} />
+  const IconCode = iconCode ? iconCode : <Code size={15} />
 
   // ** To toggle collapse
   const toggle = () => setIsOpen(!isOpen)
@@ -34,9 +34,9 @@ const CardSnippet = props => {
     <Card className='card-snippet'>
       <CardHeader>
         <CardTitle tag='h4'>{title}</CardTitle>
-        {/* <div className='views cursor-pointer' onClick={toggle}>
+        <div className='views cursor-pointer' onClick={toggle}>
           {IconCode}
-        </div> */}
+        </div>
       </CardHeader>
       <Wrapper>{children}</Wrapper>
       <Collapse isOpen={isOpen}>

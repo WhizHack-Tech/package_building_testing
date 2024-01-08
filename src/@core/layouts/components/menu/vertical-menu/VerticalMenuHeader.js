@@ -1,8 +1,8 @@
-// =============================================================================================
-//  File Name: VerticalMenuHeader\index.js
-//  Description: Details of the Vertical Menu Header component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+// ==============================================================================================
+//  File Name: VerticalMenuHeader.js
+//  Description: Details of the VerticalMenuHeader component.
+//  ---------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
 

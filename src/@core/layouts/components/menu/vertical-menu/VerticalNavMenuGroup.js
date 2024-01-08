@@ -1,8 +1,8 @@
-// =============================================================================================
-//  File Name: VerticalNavMenuGroup\index.js
-//  Description: Details of the Vertical Nav Menu Group component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+// ==============================================================================================
+//  File Name: VerticalNavMenuGroup.js
+//  Description: Details of the VerticalNavMenuGroup component.
+//  ---------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
 
@@ -12,7 +12,6 @@ import { Link, useLocation } from 'react-router-dom'
 // ** Third Party Components
 import classnames from 'classnames'
 import { Collapse, Badge } from 'reactstrap'
-import { useTranslation } from 'react-i18next'
 
 // ** Vertical Menu Items Component
 import VerticalNavMenuItems from './VerticalNavMenuItems'
@@ -36,7 +35,6 @@ const VerticalNavMenuGroup = ({
 }) => {
   // ** Current Val
   const currentURL = useLocation().pathname
-  const {t} = useTranslation()
 
   // ** Toggles Open Group
   const toggleOpenGroup = (item, parentItem) => {
@@ -115,18 +113,8 @@ const VerticalNavMenuGroup = ({
       })}
     >
       <Link className='d-flex align-items-center' to='/' onClick={e => onCollapseClick(e, item)}>
-
-      {
-        item.imageIcon ? <img src={item.imageIcon} style={
-          {
-            height: '50px',
-            width: '50px'
-          }
-        } /> : null
-      }
-
         {item.icon}
-        <span className='menu-title text-truncate'>{t(item.title)}</span>
+        <span className='menu-title text-truncate'>{item.title}</span>
 
         {item.badge && item.badgeText ? (
           <Badge className='ml-auto mr-1' color={item.badge} pill>

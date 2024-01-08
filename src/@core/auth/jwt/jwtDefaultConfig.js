@@ -1,8 +1,8 @@
 // ==============================================================================================
 //  File Name: jwtDefaultConfig.js
-//  Description: Details of the JWT Default Config.
-// ----------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  Description: Details of the jwtDefaultConfig component.
+//  ---------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
 

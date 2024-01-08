@@ -1,91 +1,88 @@
-// ================================================================================================
-//  File Name: InfoTabContent.js
-//  Description: Details of the Discover Data.
-//  ----------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
-//  Author URL: https://whizhack.in
-// ============================================================================================== 
-import { Row, Spinner, Col, Button, Form, Input, Label, FormGroup, CardBody, CardHeader, CardTitle, Card } from 'reactstrap'
-import { useState, useEffect } from 'react'
-import axios from '@axios'
-import { token } from '@utils'
-import { toast } from 'react-toastify'
-import { useTranslation } from 'react-i18next'
-const UserAccountTab = ({ data }) => {
-  const {t} = useTranslation()
-  const [loading, setLoading] = useState(false)
+import { useState } from 'react'
+import Flatpickr from 'react-flatpickr'
+import { AvForm, AvInput } from 'availity-reactstrap-validation-safe'
+import { Label, Input, FormGroup, Row, Col, Button } from 'reactstrap'
+import '@styles/react/libs/flatpickr/flatpickr.scss'
 
-  const formSubmit = (event) => {
-    event.preventDefault()
-    setLoading(true)
-    const formData = new FormData(event.target)
-    axios("/account-information-update", {
-      method: "post",
-      data: formData,
-      headers: { Authorization: token() }
-    })
-      .then(res => {
-        setLoading(false)
-        if (res.data.message_type === "updated") {
-          toast.success(`Information Updated`, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined
-          })
-        }
-      }).catch(err => {
-        setLoading(false)
-      })
-  }
+const InfoTabContent = ({ data }) => {
+  const [bio, setBio] = useState(data.bio ? data.bio : '')
+  const [dob, setDob] = useState(data.dob ? data.dob : '')
+  const [phone, setPhone] = useState(data.phone ? data.phone : '')
+  const [website, setWebsite] = useState(data.website ? data.website : '')
+  const [country, setCountry] = useState(data.country ? data.country : '')
 
   return (
-    <Card>
-      <h6 className='section-label mx-0 mb-1'>{t('Information')}</h6>
-      <Form onSubmit={formSubmit}>
-        <div style={{ height: '255px' }}>
-          <Row>
-            <Col sm='6'>
-              <FormGroup>
-                <Label>{t('Address-1')}</Label>
-                <Input type='text' name="address_1" defaultValue={data.address_1} />
-              </FormGroup>
-            </Col>
-            <Col sm='6'>
-              <FormGroup>
-                <Label>{t('Address-2')}</Label>
-                <Input type='text' name="address_2" defaultValue={data.address_2} />
-              </FormGroup>
-            </Col>
-            <Col sm='6'>
-              <FormGroup>
-                <Label>{t('State')}</Label>
-                <Input type='text' name="state" defaultValue={data.state} />
-              </FormGroup>
-            </Col>
-            <Col sm='6'>
-              <FormGroup>
-                <Label>{t('City')}</Label>
-                <Input type='text' name="city" defaultValue={data.city} />
-              </FormGroup>
-            </Col>
-            <Col sm='6'>
-              <FormGroup>
-                <Label>{t('Zipcode')}</Label>
-                <Input type='text' name="zipcode" defaultValue={data.zipcode} />
-              </FormGroup>
-            </Col>
-            <Col className='mt-1' sm='12'>
-              {(loading === false) ? <Button.Ripple color='primary' type="submit">{t('Save Changes')}</Button.Ripple> : <Button.Ripple type="button" color='primary' disabled> <Spinner size="sm" />&nbsp;{t('Saving')}...</Button.Ripple>}
-            </Col>
-          </Row>
-        </div>
-      </Form>
-    </Card>
+    <AvForm onSubmit={e => e.preventDefault()}>
+      <Row>
+        <Col sm='12'>
+          <FormGroup>
+            <Label for='bio'>Bio</Label>
+            <Input
+              id='bio'
+              type='textarea'
+              rows='4'
+              placeholder='Your Bio data here...'
+              value={bio}
+              onChange={e => setBio(e.target.value)}
+            />
+          </FormGroup>
+        </Col>
+        <Col sm='6'>
+          <FormGroup>
+            <Label for='birth-date'>Birth Date</Label>
+            <AvInput
+              tag={Flatpickr}
+              name='dob'
+              className='form-control'
+              value={dob}
+              onChange={date => setDob(date)}
+              id='birth-date'
+              placeholder='Birth Date'
+              required
+            />
+          </FormGroup>
+        </Col>
+        <Col sm='6'>
+          <FormGroup>
+            <Label for='country'>Country</Label>
+            <Input id='country' type='select' value={country} onChange={e => setCountry(e.target.value)}>
+              <option value='USA'>USA</option>
+              <option value='France'>France</option>
+              <option value='Canada'>Canada</option>
+            </Input>
+          </FormGroup>
+        </Col>
+        <Col sm='6'>
+          <FormGroup>
+            <Label for='website'>Website</Label>
+            <AvInput
+              type='url'
+              id='website'
+              name='website'
+              value={website}
+              onChange={e => setWebsite(e.target.value)}
+              placeholder='Website Address'
+              required
+            />
+          </FormGroup>
+        </Col>
+        <Col sm='6'>
+          <FormGroup>
+            <Label for='phone'>Phone</Label>
+            <Input id='phone' value={phone} onChange={e => setPhone(e.target.value)} placeholder='Phone Number' />
+          </FormGroup>
+        </Col>
+        <Col className='mt-1' sm='12'>
+          <Button.Ripple className='mr-1' color='primary'>
+            Save changes
+          </Button.Ripple>
+          <Button.Ripple color='secondary' outline>
+            Cancel
+          </Button.Ripple>
+        </Col>
+      </Row>
+    </AvForm>
   )
 }
 
-export default UserAccountTab
+export default InfoTabContent

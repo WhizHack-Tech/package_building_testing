@@ -1,8 +1,8 @@
-// =============================================================================================
-//  File Name: VerticalMenuNavItems\index.js
-//  Description: Details of the Vertical Menu Nav Items component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+// ==============================================================================================
+//  File Name: VerticalNavMenuItems.js
+//  Description: Details of the VerticalNavMenuItems component.
+//  ---------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
 
@@ -20,8 +20,8 @@ import { AbilityContext } from '@src/utility/context/Can'
 // ** Utils
 import {
   resolveVerticalNavMenuItemComponent as resolveNavItemComponent,
-  CanViewMenuGroup,
-  CanViewMenuItem
+  canViewMenuGroup,
+  canViewMenuItem
 } from '@layouts/utils'
 
 const VerticalMenuNavItems = props => {
@@ -39,9 +39,9 @@ const VerticalMenuNavItems = props => {
   const RenderNavItems = props.items.map((item, index) => {
     const TagName = Components[resolveNavItemComponent(item)]
     if (item.children) {
-      return CanViewMenuGroup(item) && <TagName item={item} index={index} key={item.id} {...props} />
+      return canViewMenuGroup(item) && <TagName item={item} index={index} key={item.id} {...props} />
     }
-    return CanViewMenuItem(item) && <TagName key={item.id || item.header} item={item} {...props} />
+    return canViewMenuItem(item) && <TagName key={item.id || item.header} item={item} {...props} />
   })
 
   return RenderNavItems

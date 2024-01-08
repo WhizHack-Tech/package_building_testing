@@ -1,11 +1,10 @@
-// =============================================================================================
+ // ================================================================================================
 //  File Name: Router.js
-//  Description: Details of the Router component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  Description: Details Pages of the Router.
+//  ----------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
-
 // ** React Imports
 import { Suspense, useContext, lazy, useEffect } from 'react'
 import jwt_decode from "jwt-decode"
@@ -20,7 +19,7 @@ import { useRouterTransition } from '@hooks/useRouterTransition'
 import LayoutWrapper from '@layouts/components/layout-wrapper'
 
 // ** Router Components
-import { BrowserRouter as AppRouter, Route, Switch, Redirect, useHistory } from 'react-router-dom'
+import { BrowserRouter as AppRouter, Route, Switch, Redirect } from 'react-router-dom'
 
 // ** Routes & Default Routes
 import { DefaultRoute, Routes } from './routes'
@@ -34,6 +33,7 @@ const Router = () => {
   // ** Hooks
   const [layout, setLayout] = useLayout()
   const [transition, setTransition] = useRouterTransition()
+
   // ** ACL Ability Context
   const ability = useContext(AbilityContext)
 
@@ -75,13 +75,12 @@ const Router = () => {
   const FinalRoute = props => {
     const route = props.route
     let action, resource
-    const history = useHistory()
+
     useEffect(() => {
       if (isUserLoggedIn() !== null) {
         const jwt_token_decoded = jwt_decode(getUserData().accessToken)
           if (jwt_token_decoded.exp <= Math.round(new Date().getTime() / 1000)) {
-          localStorage.removeItem('clientData')
-          history.push('/login')
+          localStorage.removeItem('userData')
         }
       }
     }, [route.path])

@@ -1,8 +1,8 @@
-// =============================================================================================
-//  File Name: widgets\stats\TinyChartStats.js
-//  Description: Details of the stats TinyChartStats component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+// ==============================================================================================
+//  File Name: TinyChartStats.js
+//  Description: Details of the TinyChartStats component.
+//  ---------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
 

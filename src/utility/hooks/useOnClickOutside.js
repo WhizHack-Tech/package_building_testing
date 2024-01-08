@@ -1,11 +1,10 @@
-// =============================================================================================
+ // ================================================================================================
 //  File Name: useOnClickOutside.js
-//  Description: Details of the useOnClickOutside Utility component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  Description: Details Pages of the useOnClickOutside.
+//  ----------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
-
 //** React Imports
 import { useEffect } from 'react'
 

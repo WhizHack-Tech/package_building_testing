@@ -1,10 +1,10 @@
 // ================================================================================================
-//  File Name: Index.js
-//  Description: Details of Hole Project Routes Page".
+//  File Name: index.js
+//  Description: Details of the Routes pages.
 //  ----------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
-// ==============================================================================================
+// =============================================================================================
 // ** React Imports
 import { Suspense, lazy } from 'react'
 import ReactDOM from 'react-dom'
@@ -29,9 +29,6 @@ import './@core/components/ripple-button'
 // ** Fake Database
 import './@fake-db'
 
-// ** i18n
-import './configs/i18n'
-
 // ** PrismJS
 import 'prismjs'
 import 'prismjs/themes/prism-tomorrow.css'
@@ -47,18 +44,16 @@ import '@styles/react/libs/toastify/toastify.scss'
 import './@core/assets/fonts/feather/iconfont.css'
 import './@core/scss/core.scss'
 import './assets/scss/style.scss'
-import NoInternetConnection from '@NoInternet'
 
 // ** Service Worker
 import * as serviceWorker from './serviceWorker'
-
+// document.addEventListener('contextmenu', event => event.preventDefault())
 // ** Lazy load app
 const LazyApp = lazy(() => import('./App'))
 
 ReactDOM.render(
   <Provider store={store}>
     <Suspense fallback={<Spinner />}>
-      <NoInternetConnection />
       <AbilityContext.Provider value={ability}>
         <ThemeContext>
           <IntlProviderWrapper>

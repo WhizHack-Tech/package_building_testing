@@ -1,8 +1,8 @@
-// =============================================================================================
-//  File Name: widgets\stats\ChartOptions.js
-//  Description: Details of the areaChartOptions component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+// ==============================================================================================
+//  File Name: ChartOptions.js
+//  Description: Details of the ChartOptions component.
+//  ---------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
 

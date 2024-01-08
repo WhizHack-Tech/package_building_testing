@@ -1,18 +1,24 @@
+// ================================================================================================
+//  File Name: axios.js
+//  Description: Details of the Axios ( Basic URl ).
+//  ----------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
+//  Author URL: https://whizhack.in
+// =============================================================================================
 import axios from "axios"
-
-// const _baseURL = "http://127.0.0.1:8000"
-const _baseURL = "https://<<CLIENT-DOMAIN-URL>>"
-
 const instance = axios.create({
-    baseURL: `${_baseURL}/api`
+ baseURL: "https://<<MASTER-DOMAIN-URL>>/api"
+//  baseURL: "http://127.0.0.1:8002/api"
 })
 
-// URLs Objects
-const urlObj = new URL(_baseURL)
-
-// Determine WebSocket protocol dynamically
-const WebSocketProtocol = urlObj.protocol === "https:" ? "wss" : "ws"
-
-export const staticPath = _baseURL
-export const wsURL = `${WebSocketProtocol}://${urlObj.host}/ws`
 export default instance
+
+export const baseURL = "https://<<MASTER-DOMAIN-URL>>/api"
+export const staticPath = "https://<<MASTER-DOMAIN-URL>>/api"
+// export const staticPath = "http://127.0.0.1:8002"
+
+
+// WebSocket URL
+export const wsURL = "wss://<<MASTER-DOMAIN-URL>>/ws"
+// export const wsURL = "ws://127.0.0.1:8002/ws"
+//here work...

@@ -1,8 +1,8 @@
-// =============================================================================================
-//  File Name: widgets\stats\StatsWithAreaChart.js
-//  Description: Details of the stats StatsWithAreaChart component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+// ==============================================================================================
+//  File Name: StatsWithAreaChart.js
+//  Description: Details of the StatsWithAreaChart component.
+//  ---------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
 

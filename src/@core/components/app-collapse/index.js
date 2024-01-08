@@ -1,8 +1,8 @@
 // ==============================================================================================
 //  File Name: app-collapse/index.js
-//  Description: Details of the collapse list component.
-// ----------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  Description: Details of the app-collapse component.
+//  ---------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
 

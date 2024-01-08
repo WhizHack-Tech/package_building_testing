@@ -1,36 +1,28 @@
 // ================================================================================================
 //  File Name: index.js
-//  Description: User Config Details(reducer).
+//  Description: Details of the Administration ( Reducer ).
 //  ----------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
-// ================================================================================================
-const initialState = {
+// =============================================================================================
+// ** Initial State
+const initialState = {  
   data: [],
-  selectedUser:null,
-  loading : true
+  selectedUser: null,
+  loader : true,
+  error: null
 }
 
-
-const users = (state = initialState, action) => {
+const client_users = (state = initialState, action) => {
   switch (action.type) {
-    case 'GET_ALL_DATA':
-      return { ...state, data: action.data, loading : false }
-    case 'GET_DATA':
-      return {
-        ...state,
-        data: action.data,
-        total: action.totalPages,
-        params: action.params
-      }
-    case 'GET_USER':
-      return { ...state, selectedUser: action.selectedUser, loading : false }
-      case "GET_ALL_DATA_LOAD":
-      return { ...state, loading : false } 
-    case 'DELETE_USER':
-      return { ...state }
+    case 'CLIENT_ALL_DATA':
+      return { ...state, data: action.data, loader : false }    
+    case 'SINGLE_USER':
+      return { ...state, selectedUser: action.selectedUser, loader : false }
+    case "CLIENT_ALL_DATA_LOAD":
+      return { ...state, loader : false }  
     default:
       return { ...state }
   }
 }
-export default users
+export default client_users

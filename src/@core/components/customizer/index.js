@@ -1,8 +1,8 @@
-// =============================================================================================
+// ==============================================================================================
 //  File Name: customizer/index.js
-//  Description: Details of the theme customizer component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  Description: Details of the customizer component.
+//  ---------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
 
@@ -17,7 +17,6 @@ import { CustomInput, FormGroup } from 'reactstrap'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 import { selectThemeColors } from '@utils'
 
-import { useTranslation } from 'react-i18next'
 // ** Styles
 import '@styles/react/libs/react-select/_react-select.scss'
 
@@ -48,7 +47,7 @@ const Customizer = props => {
 
   // ** State
   const [openCustomizer, setOpenCustomizer] = useState(false)
-  const {t} = useTranslation()
+
   // ** Toggles Customizer
   const handleToggle = e => {
     e.preventDefault()
@@ -60,22 +59,22 @@ const Customizer = props => {
     const skinsArr = [
       {
         name: 'light',
-        label: t('Light'),
+        label: 'Light',
         checked: skin === 'light'
       },
       {
         name: 'bordered',
-        label: t('Bordered'),
+        label: 'Bordered',
         checked: skin === 'bordered'
       },
       {
         name: 'dark',
-        label: t('Dark'),
+        label: 'Dark',
         checked: skin === 'dark'
       },
       {
         name: 'semi-dark',
-        label: t('Semi Dark'),
+        label: 'Semi Dark',
         checked: skin === 'semi-dark'
       }
     ]
@@ -122,22 +121,22 @@ const Customizer = props => {
     const navbarTypeArr = [
       {
         name: 'floating',
-        label: t('Floating'),
+        label: 'Floating',
         checked: navbarType === 'floating'
       },
       {
         name: 'sticky',
-        label: t('Sticky'),
+        label: 'Sticky',
         checked: navbarType === 'sticky'
       },
       {
         name: 'static',
-        label: t('Static'),
+        label: 'Static',
         checked: navbarType === 'static'
       },
       {
         name: 'hidden',
-        label: t('Hidden'),
+        label: 'Hidden',
         checked: navbarType === 'hidden'
       }
     ]
@@ -168,17 +167,17 @@ const Customizer = props => {
     const footerTypeArr = [
       {
         name: 'sticky',
-        label: t('Sticky'),
+        label: 'Sticky',
         checked: footerType === 'sticky'
       },
       {
         name: 'static',
-        label: t('Static'),
+        label: 'Static',
         checked: footerType === 'static'
       },
       {
         name: 'hidden',
-        label: t('Hidden'),
+        label: 'Hidden',
         checked: footerType === 'hidden'
       }
     ]
@@ -202,10 +201,10 @@ const Customizer = props => {
 
   // **  Router Transition Options
   const transitionOptions = [
-    { value: 'fadeIn', label: t('Fade') },
-    { value: 'fadeInLeft', label: t('Fade In Left') },
-    { value: 'zoomIn', label: t('Zoom In') },
-    { value: 'none', label: t('None') }
+    { value: 'fadeIn', label: 'Fade' },
+    { value: 'fadeInLeft', label: 'Fade In Left' },
+    { value: 'zoomIn', label: 'Zoom In' },
+    { value: 'none', label: 'None' }
   ]
 
   // ** Get Current Transition
@@ -222,8 +221,8 @@ const Customizer = props => {
       </a>
       <PerfectScrollbar className='customizer-content'>
         <div className='customizer-header px-2 pt-1 pb-0 position-relative'>
-          <h4 className='mb-0'>{t('Theme Customizer')}</h4>
-          <p className='m-0'>{t('Customize & Preview in Real Time')}</p>
+          <h4 className='mb-0'>Theme Customizer</h4>
+          <p className='m-0'>Customize & Preview in Real Time</p>
           <a href='/' className='customizer-close' onClick={handleToggle}>
             <X />
           </a>
@@ -233,25 +232,25 @@ const Customizer = props => {
 
         <div className='px-2'>
           <FormGroup className='mb-2'>
-            <p className='font-weight-bold'>{t('Skin')}</p>
+            <p className='font-weight-bold'>Skin</p>
             <div className='d-flex'>{renderSkinsRadio()}</div>
           </FormGroup>
 
           <FormGroup className='mb-2'>
-            <p className='font-weight-bold'>{t('Content Width')}</p>
+            <p className='font-weight-bold'>Content Width</p>
             <div className='d-flex'>
               <CustomInput
                 type='radio'
                 id='full-width'
                 className='mr-1'
-                label={t('Full Width')}
+                label='Full Width'
                 checked={contentWidth === 'full'}
                 onChange={() => setContentWidth('full')}
               />
               <CustomInput
                 type='radio'
                 id='boxes'
-                label={t('Boxed')}
+                label='Boxed'
                 checked={contentWidth === 'boxed'}
                 onChange={() => setContentWidth('boxed')}
               />
@@ -260,14 +259,14 @@ const Customizer = props => {
 
           <FormGroup className='mb-2'>
             <div className='d-flex'>
-              <p className='font-weight-bold mr-auto mb-0'>{t('RTL')}</p>
+              <p className='font-weight-bold mr-auto mb-0'>RTL</p>
               <CustomInput type='switch' id='rtl' name='RTL' checked={isRtl} onChange={() => setIsRtl(!isRtl)} />
             </div>
           </FormGroup>
 
           <FormGroup className='mb-2'>
             <div className='d-flex justify-content-between align-items-center'>
-              <p className='font-weight-bold mb-0'>{t('Router Transition')}</p>
+              <p className='font-weight-bold mb-0'>Router Transition</p>
               <Select
                 theme={selectThemeColors}
                 className='react-select'
@@ -285,13 +284,13 @@ const Customizer = props => {
         <hr />
 
         <div className='px-2'>
-          <p className='font-weight-bold'>{t('Menu Layout')}</p>
+          <p className='font-weight-bold'>Menu Layout</p>
           <FormGroup className='mb-2'>
             <div className='d-flex align-items-center'>
               <CustomInput
                 type='radio'
                 id='vertical-layout'
-                label={t('Vertical')}
+                label='Vertical'
                 checked={layout === 'VerticalLayout'}
                 onChange={() => setLayout('vertical')}
                 className='mr-1'
@@ -299,7 +298,7 @@ const Customizer = props => {
               <CustomInput
                 type='radio'
                 id='horizontal-layout'
-                label= {t('Horizontal')}
+                label='Horizontal'
                 checked={layout === 'HorizontalLayout'}
                 onChange={() => setLayout('horizontal')}
               />
@@ -308,7 +307,7 @@ const Customizer = props => {
           {layout !== 'HorizontalLayout' ? (
             <FormGroup className='mb-2'>
               <div className='d-flex align-items-center'>
-                <p className='font-weight-bold mr-auto mb-0'>{t('Menu Collapsed')}</p>
+                <p className='font-weight-bold mr-auto mb-0'>Menu Collapsed</p>
                 <CustomInput
                   type='switch'
                   id='menu-collapsed'
@@ -322,7 +321,7 @@ const Customizer = props => {
 
           <FormGroup className='mb-2'>
             <div className='d-flex align-items-center'>
-              <p className='font-weight-bold mr-auto mb-0'>{t('Menu Hidden')}</p>
+              <p className='font-weight-bold mr-auto mb-0'>Menu Hidden</p>
               <CustomInput
                 type='switch'
                 id='menu-hidden'
@@ -339,13 +338,13 @@ const Customizer = props => {
         <div className='px-2'>
           {layout !== 'HorizontalLayout' ? (
             <FormGroup className='mb-2'>
-              <p className='font-weight-bold'>{t('Navbar Color')}</p>
+              <p className='font-weight-bold'>Navbar Color</p>
               <ul className='list-inline unstyled-list'>{renderNavbarColors()}</ul>
             </FormGroup>
           ) : null}
 
           <FormGroup className='mb-2'>
-            <p className='font-weight-bold'>{layout === 'HorizontalLayout' ? 'Menu' : 'Navbar'}{t('Type')}</p>
+            <p className='font-weight-bold'>{layout === 'HorizontalLayout' ? 'Menu' : 'Navbar'} Type</p>
             <div className='d-flex'>{renderNavbarTypeRadio()}</div>
           </FormGroup>
         </div>
@@ -354,7 +353,7 @@ const Customizer = props => {
 
         <div className='px-2'>
           <FormGroup className='mb-2'>
-            <p className='font-weight-bold'>{t('Footer Type')}</p>
+            <p className='font-weight-bold'>Footer Type</p>
             <div className='d-flex'>{renderFooterTypeRadio()}</div>
           </FormGroup>
         </div>

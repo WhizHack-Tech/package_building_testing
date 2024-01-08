@@ -1,52 +1,82 @@
 // ================================================================================================
-//  File Name:  Personalinformation.js
-//  Description: User Config Details.
+//  File Name: Personlinformation.js
+//  Description: Details of the Administration ( View User Details ).
 //  ----------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
-// ================================================================================================
-
+// =============================================================================================
 import {  Row, Col, Button, Form, Input, Label, FormGroup, Table, CustomInput, Spinner, CardBody, CardHeader, CardTitle } from 'reactstrap'
-import { useTranslation } from 'react-i18next'
-const UserAccountTab = ({selectedUser}) => {
-  const {t} = useTranslation()
+import { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
+import axios from '@axios'
+import { token } from '@utils'
+import "../Loader.css"
+const UserAccountTab = () => {
+const {id} = useParams()
+const [billData, setBillData] = useState(null)
+
+useEffect(() => {
+  axios.get(`/displayuser/${id}/`, { headers: { Authorization: token()} }).then(response => {
+    setBillData(response.data)
+  })  
+}, [])
+
+  // ** Function to change user image
+ 
     return (
-       (selectedUser === null) ? `Logining..` :  <Row>
+       (billData === null) ?    <div className='d-flex justify-content-center align-items-center' style={{ height: '210px' }}>
+       <div class="tri-color-ripple-spinner">
+       <div class="ripple ripple1"></div>
+       <div class="ripple ripple2"></div>
+     </div>
+     </div> :  <Row>
          <CardHeader>
-          <CardTitle tag='h2'>{t('Address Details')}</CardTitle>
+          <CardTitle tag='h4'>Address Details</CardTitle>
         </CardHeader>
         <CardBody>
     <Col sm='12'>
         <Form>
             <Row>
-              <Col sm='6'>
+              <Col md='6'>
                 <FormGroup>
-                  <Label>{t('Address-1')}</Label>
-                  <Input type='text' disabled value={selectedUser.address_1} />
-                </FormGroup>
-              </Col>  
-              <Col sm='6'>
-                <FormGroup>
-                  <Label>{t('Address-2')}</Label>
-                  <Input type='text' disabled value={selectedUser.address_2} />
-                </FormGroup>
-              </Col>  
-              <Col sm='6'>
-                <FormGroup>
-                  <Label>{t('State')}</Label>
-                  <Input type='text' disabled value={selectedUser.state} />
+                  <Label>Gender</Label>
+                  <Input type='text' value={billData.gender} />
                 </FormGroup>
               </Col>
               <Col sm='6'>
                 <FormGroup>
-                  <Label>{t('City')}</Label>
-                  <Input type='text' disabled value={selectedUser.city} />
+                  <Label>Address-1</Label>
+                  <Input type='text' value={billData.address_1} />
                 </FormGroup>
               </Col>  
               <Col sm='6'>
                 <FormGroup>
-                  <Label>{t('Zipcode')}</Label>
-                  <Input type='text' disabled value={selectedUser.zipcode} />
+                  <Label>Address-2</Label>
+                  <Input type='text' value={billData.address_2} />
+                </FormGroup>
+              </Col>  
+              <Col sm='6'>
+                <FormGroup>
+                  <Label>Branch Code</Label>
+                  <Input type='text' value={billData.branch_code} />
+                </FormGroup>
+              </Col> 
+              <Col sm='6'>
+                <FormGroup>
+                  <Label>State</Label>
+                  <Input type='text' value={billData.state} />
+                </FormGroup>
+              </Col>
+              <Col sm='6'>
+                <FormGroup>
+                  <Label>City</Label>
+                  <Input type='text' value={billData.city} />
+                </FormGroup>
+              </Col>  
+              <Col sm='6'>
+                <FormGroup>
+                  <Label>Zipcode</Label>
+                  <Input type='text' value={billData.zipcode} />
                 </FormGroup>
               </Col>           
             </Row>

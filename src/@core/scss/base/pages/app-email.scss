@@ -2,9 +2,9 @@
 // 	File Name: app-email.scss
 // 	Description: SCC file for email application page.
 // 	----------------------------------------------------------------------------------------------
-// 	Item Name: Whizhack Client Admin Dashboard Template
-// 	Author: Jaydeep Roy Sarkar (WH0020)
-// 	Author URL: https://demo-xdr.zerohack.in
+// 	Item Name: Vuexy - Vuejs, React, Angular, HTML & Laravel Admin Dashboard Template
+// 	Author: PIXINVENT
+// 	Author URL: http://www.themeforest.net/user/pixinvent
 // ================================================================================================
 
 @import '../bootstrap-extended/include'; // Bootstrap includes
@@ -14,11 +14,10 @@ $email_read: $body-bg;
 $email_selected_border: #e4e1e8;
 $email_details_header_height: 5rem;
 .scroll-box{
-  max-height: 50rem;
+  max-height: 51rem;
   overflow-y: auto;
   padding: 15px;
 }
-
 .email-application {
   .content-area-wrapper {
     border: 1px solid $border-color;

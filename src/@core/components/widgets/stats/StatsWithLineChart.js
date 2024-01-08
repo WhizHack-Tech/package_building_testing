@@ -1,8 +1,8 @@
-// =============================================================================================
-//  File Name: widgets\stats\StatsWithLineChart.js
-//  Description: Details of the stats StatsWithLineChart component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+// ==============================================================================================
+//  File Name: StatsWithLineChart.js
+//  Description: Details of the StatsWithLineChart component.
+//  ---------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
 
@@ -18,7 +18,6 @@ import { Card, CardHeader, CardText } from 'reactstrap'
 import { lineChartOptions } from './ChartOptions'
 
 const StatsWithLineChart = ({ icon, color, stats, statTitle, series, options, type, height, ...rest }) => {
-  
   return (
     <Card {...rest}>
       <CardHeader className='align-items-start pb-0'>
@@ -26,10 +25,7 @@ const StatsWithLineChart = ({ icon, color, stats, statTitle, series, options, ty
           <h2 className='font-weight-bolder'>{stats}</h2>
           <CardText>{statTitle}</CardText>
         </div>
-        <span>
-           {icon}
-        </span>
-        {/* <color={`light-${color}`} icon={icon} /> */}
+        <Avatar className='avatar-stats p-50 m-0' color={`light-${color}`} icon={icon} />
       </CardHeader>
       <Chart options={options} series={series} type={type} height={height ? height : 100} />
     </Card>

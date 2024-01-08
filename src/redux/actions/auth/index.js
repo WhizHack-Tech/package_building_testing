@@ -1,35 +1,27 @@
-// =============================================================================================
-//  File Name: auth/index.js
-//  Description: Details of the auth redux component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  ================================================================================================
+//  File Name: index.js
+//  Description: Details Pages of the auth ( Redux ( Action )).
+//  ----------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
 
-import { wsDis } from "../../../ws_con" 
 // ** Handle User Login
 export const handleLogin = data => {
   return dispatch => {
     dispatch({ type: 'LOGIN', data })
 
     // ** Add to user to localStorage
-    localStorage.setItem('clientData', JSON.stringify(data))
+    localStorage.setItem('userData', JSON.stringify(data))
   }
 }
 
 // ** Handle User Logout
 export const handleLogout = () => {
   return dispatch => {
-    wsDis()
-    dispatch({ type: 'LOGOUT' }) 
+    dispatch({ type: 'LOGOUT' })
+
     // ** Remove user from localStorage
-    localStorage.removeItem('clientData')
-  }
-}
-
-
-export const updateProfile = (data) => {
-  return dispatch => {
-    dispatch({ type: 'PROFILE_UPDATE', data})
+    localStorage.removeItem('userData')
   }
 }

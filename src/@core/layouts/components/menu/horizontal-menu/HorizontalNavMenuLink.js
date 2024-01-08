@@ -1,8 +1,8 @@
-// =============================================================================================
-//  File Name: HorizontalNavMenuLink\index.js
-//  Description: Details of the Horizontal Nav MenuLink component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+// ==============================================================================================
+//  File Name: HorizontalNavMenuLink/index.js
+//  Description: Details of the HorizontalNavMenuLink component.
+//  ---------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
 
@@ -10,11 +10,25 @@
 import { useEffect } from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 
+// ** Horizontal menu items array
+import navigation from '@src/navigation/horizontal'
+
 // ** Third Party Components
 import classnames from 'classnames'
-import { useTranslation } from 'react-i18next'
 
-const HorizontalNavMenuLink = ({ item, isChild, activeItem, setActiveItem, setOpenDropdown, currentActiveItem }) => {
+// ** Utils
+import { isNavLinkActive, search, getAllParents } from '@layouts/utils'
+
+const HorizontalNavMenuLink = ({
+  item,
+  setOpenDropdown,
+  setGroupActive,
+  activeItem,
+  setActiveItem,
+  routerProps,
+  currentActiveItem,
+  isChild
+}) => {
   // ** Conditional Link Tag, if item has newTab or externalLink props use <a> tag else use NavLink
   const LinkTag = item.externalLink ? 'a' : NavLink
 
@@ -22,8 +36,15 @@ const HorizontalNavMenuLink = ({ item, isChild, activeItem, setActiveItem, setOp
   const location = useLocation()
   const currentURL = location.pathname
 
-  // ** Hooks
-  const {t} = useTranslation()
+  const navLinkActive = isNavLinkActive(item.navLink, currentURL, routerProps)
+
+  // ** Get parents of current items
+  const searchParents = (navigation, currentURL) => {
+    const parents = search(navigation, currentURL, routerProps) // Search for parent object
+    const allParents = getAllParents(parents, 'id') // Parents Object to Parents Array
+    allParents.pop()
+    return allParents
+  }
 
   // ** Remove all items from OpenDropdown array
   const resetOpenDropdowns = () => setOpenDropdown([])
@@ -32,6 +53,8 @@ const HorizontalNavMenuLink = ({ item, isChild, activeItem, setActiveItem, setOp
   useEffect(() => {
     if (currentActiveItem !== null) {
       setActiveItem(currentActiveItem)
+      const arr = searchParents(navigation, currentURL)
+      setGroupActive([...arr])
     }
   }, [location])
 
@@ -70,7 +93,7 @@ const HorizontalNavMenuLink = ({ item, isChild, activeItem, setActiveItem, setOp
         /*eslint-enable */
       >
         {item.icon}
-        <span>{t(item.title)}</span>
+        <span>{item.title}</span>
       </LinkTag>
     </li>
   )

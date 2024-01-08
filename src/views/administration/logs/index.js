@@ -1,26 +1,26 @@
-
 // ================================================================================================
 //  File Name: index.js
-//  Description: Index page for the Logs Details.
+//  Description: Details of the Administration ( Log Details ).
 //  ----------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
-// ================================================================================================
+// ==============================================================================================
 import { Fragment } from 'react'
-import { Link } from 'react-router-dom'
 import { Row, Col } from 'reactstrap'
-import BasicTimeline from './BasicTimeline'
-import Breadcrumbs from '@components/breadcrumbs/bread'
-import { useTranslation } from 'react-i18next'
+import ClientLogs from './clientLogs'
+import MasterLogs from './masterLogs'
+import BreadCrumbs from '@components/breadcrumbs'
 
 const Timeline = () => {
-  const { t } = useTranslation()
   return (
     <Fragment>
-      <Breadcrumbs breadCrumbTitle={t('Logs')} />
+    <BreadCrumbs breadCrumbTitle='Logs Details'/>
       <Row>
-        <Col lg='12'>
-          <BasicTimeline />
+        <Col lg='6'>
+          <ClientLogs />
+        </Col>
+        <Col lg='6'>
+          <MasterLogs />
         </Col>
       </Row>
     </Fragment>

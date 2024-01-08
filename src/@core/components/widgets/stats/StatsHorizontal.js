@@ -1,8 +1,8 @@
-// =============================================================================================
-//  File Name: widgets\stats\StatsHorizontal.js
-//  Description: Details of the stats horizontal component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+// ==============================================================================================
+//  File Name: StatsHorizontal.js
+//  Description: Details of the StatsHorizontal component.
+//  ---------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
 
@@ -31,10 +31,10 @@ const StatsHorizontal = ({ icon, color, stats, statTitle, className, ...rest }) 
 export default StatsHorizontal
 
 // ** PropTypes
-// StatsHorizontal.propTypes = {
-//   icon: PropTypes.element.isRequired,
-//   color: PropTypes.string.isRequired,
-//   stats: PropTypes.string.isRequired,
-//   statTitle: PropTypes.string.isRequired,
-//   className: PropTypes.string
-// }
+StatsHorizontal.propTypes = {
+  icon: PropTypes.element.isRequired,
+  color: PropTypes.string.isRequired,
+  stats: PropTypes.string.isRequired,
+  statTitle: PropTypes.string.isRequired,
+  className: PropTypes.string
+}
