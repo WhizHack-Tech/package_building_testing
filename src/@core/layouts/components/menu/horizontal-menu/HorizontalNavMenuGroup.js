@@ -1,8 +1,8 @@
-// =============================================================================================
-//  File Name: HorizontalNavMenuGroup\index.js
-//  Description: Details of the Horizontal Nav Menu Group component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+// ==============================================================================================
+//  File Name: HorizontalNavMenuGroup/index.js
+//  Description: Details of the HorizontalNavMenuGroup component.
+//  ---------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
 
@@ -11,19 +11,16 @@ import { Link, useLocation } from 'react-router-dom'
 
 // ** Third Party Components
 import classnames from 'classnames'
-// import { useTranslation } from 'react-i18next'
 import { Dropdown, DropdownMenu, DropdownToggle } from 'reactstrap'
 
 // ** Utils
 import { isNavGroupActive } from '@layouts/utils'
 
 // ** Horizontal Menu Items Component
-import { useTranslation } from 'react-i18next'
 import HorizontalNavMenuItems from './HorizontalNavMenuItems'
 
 const HorizontalNavMenuGroup = props => {
   // ** Props
-  const {t} = useTranslation()
   const {
     item,
     submenu,
@@ -40,7 +37,6 @@ const HorizontalNavMenuGroup = props => {
   } = props
 
   // ** URL Var
-
   const currentURL = useLocation().pathname
 
   // ** Dropdown menu modifiers
@@ -101,18 +97,8 @@ const HorizontalNavMenuGroup = props => {
         })}
         onClick={e => e.preventDefault()}
       >
-         {
-        item.imageIcon ? <img src={item.imageIcon} style={
-          {
-            height: '17px',
-            width: '17px',
-            marginRight: '5px'
-          }
-        } /> : null
-      }
-      
         {item.icon}
-        <span>{t(item.title)}</span>
+        <span>{item.title}</span>
       </DropdownToggle>
       <DropdownMenu tag='ul' modifiers={menuModifiers}>
         <HorizontalNavMenuItems

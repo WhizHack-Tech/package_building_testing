@@ -1,22 +1,22 @@
-// =============================================================================================
-//  File Name: widgets\stats\StatsVertical.js
-//  Description: Details of the stats Vertical component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+// ==============================================================================================
+//  File Name: StatsVertical.js
+//  Description: Details of the StatsVertical component.
+//  ---------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
 
 // ** Third Party Components
 import PropTypes from 'prop-types'
-import { Badge, Card, CardBody } from 'reactstrap'
-import Critical from "../../../../assets/images/svg/Botnet.svg"
-import Avatar from '@components/avatar'
+import { Card, CardBody } from 'reactstrap'
 
-const StatsVertical = ({ stats, statTitle, className}) => {
+const StatsVertical = ({ icon, color, stats, statTitle, className, ...rest }) => {
   return (
     <Card className='text-center'>
       <CardBody className={className}>
-      <Avatar color='light-info' icon={<img width={40} src={Critical} />} size='lg'/>
+        <div className={`avatar p-50 m-0 mb-1 ${color ? `bg-light-${color}` : 'bg-light-primary'}`}>
+          <div className='avatar-content'>{icon}</div>
+        </div>
         <h2 className='font-weight-bolder'>{stats}</h2>
         <p className='card-text line-ellipsis'>{statTitle}</p>
       </CardBody>
@@ -26,3 +26,11 @@ const StatsVertical = ({ stats, statTitle, className}) => {
 
 export default StatsVertical
 
+// ** PropTypes
+StatsVertical.propTypes = {
+  icon: PropTypes.element.isRequired,
+  color: PropTypes.string.isRequired,
+  stats: PropTypes.string.isRequired,
+  statTitle: PropTypes.string.isRequired,
+  className: PropTypes.string
+}

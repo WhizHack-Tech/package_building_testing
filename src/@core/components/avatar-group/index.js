@@ -1,8 +1,8 @@
 // ==============================================================================================
 //  File Name: avatar-group/index.js
-//  Description: Details of the render avter group component.
-// ----------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  Description: Details of the avatar-group component.
+//  ---------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
 

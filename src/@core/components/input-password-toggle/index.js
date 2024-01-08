@@ -1,8 +1,8 @@
-// =============================================================================================
+// ==============================================================================================
 //  File Name: input-password-toggle/index.js
-//  Description: Details of the input password toggle component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  Description: Details of the input-password-toggle component.
+//  ---------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
 
@@ -27,9 +27,9 @@ const InputPasswordToggle = props => {
     const size = iconSize ? iconSize : 14
 
     if (inputVisibility === false) {
-      return hideIcon ? hideIcon : <EyeOff size={size} />
+      return showIcon ? showIcon : <EyeOff size={size} />
     } else {
-      return showIcon ? showIcon : <Eye size={size} />
+      return hideIcon ? hideIcon : <Eye size={size} />
     }
   }
 

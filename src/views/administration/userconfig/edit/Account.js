@@ -1,10 +1,10 @@
 // ================================================================================================
-//  File Name:  Account.js
-//  Description: User Config Details.
+//  File Name: Account.js
+//  Description: Details of the Administration ( Eidt User Details ).
 //  ----------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
-// ================================================================================================
+// =============================================================================================
 // ** React Imports
 import { useState, useEffect } from 'react'
 import axios from '@axios'
@@ -14,16 +14,22 @@ import { useParams } from 'react-router-dom'
 import Avatar from '@components/avatar'
 
 // ** Third Party Components
-import { Row, Col, Button, Form, Input, Label, FormGroup, Spinner } from 'reactstrap'
+import { Edit } from 'react-feather'
+import { Media, Row, Col, Button, Form, Input, Label, FormGroup, Spinner } from 'reactstrap'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import api_msg from "../../../../constants/api_message"
 const MySwal = withReactContent(Swal)
 const UserAccountTab = ({ selectedUser }) => {
+  if (selectedUser === null) {
+    return <div className='d-flex justify-content-center'><Spinner color='primary' type='grow' /></div>
+  }
+  // ** States
   const [img, setImg] = useState(null)
   const [userData, setUserData] = useState(null)
-  const [btnLoader, setBtnLoader] = useState(false)
+  const [btnLoader, setBtnLoader] = useState(false) 
   const { id } = useParams()
+  
 
   // ** Function to change user image
   const onChange = e => {
@@ -46,34 +52,33 @@ const UserAccountTab = ({ selectedUser }) => {
       }
     }
   }, [])
-
-  function submit_form(event) {
-    setBtnLoader(true)
+function submit_form(event) {
+  setBtnLoader(true)
     event.preventDefault()
+  
+  const bodyFormData = new FormData(event.target)
+ 
+  axios({
+    method: "post",
+    url: "/users",
+    data: bodyFormData,
+    headers: { Authorization: token()}
+    
+  })
+    .then((res) => {
+      setBtnLoader(false)
+      if (res.data.message_type === "successfully_inserted") {
+         MySwal.fire({
+          title: api_msg.title_msg,
+          text: 'Sit Back and Relax',
+          icon: 'success',
+          customClass: {
+            confirmButton: 'btn btn-primary'
+          },
+          buttonsStyling: false
+        })     
 
-    const bodyFormData = new FormData(event.target)
-
-    axios({
-      method: "post",
-      url: "/users",
-      data: bodyFormData,
-      headers: { Authorization: token() }
-
-    })
-      .then((res) => {
-        setBtnLoader(false)
-        if (res.data.message_type === "successfully_inserted") {
-          MySwal.fire({
-            title: api_msg.title_msg,
-            text: 'Sit Back and Relax',
-            icon: 'success',
-            customClass: {
-              confirmButton: 'btn btn-primary'
-            },
-            buttonsStyling: false
-          })
-
-        } else if (res.data.message_type === "unsuccessful") {
+      } else if (res.data.message_type === "unsuccessful") {
           MySwal.fire({
             icon: 'error',
             title: api_msg.title_err,
@@ -82,24 +87,24 @@ const UserAccountTab = ({ selectedUser }) => {
             customClass: {
               confirmButton: 'btn btn-primary'
             },
-            buttonsStyling: false
-          })
+           buttonsStyling: false
+          }) 
         }
-      })
-      .catch((errors) => {
-        setBtnLoader(false)
-        MySwal.fire({
-          icon: 'error',
-          title: 'Oops!',
-          text: 'Something went wrong!',
-          // footer: '<a href="#">Why do I have this issue?</a>',
-          customClass: {
-            confirmButton: 'btn btn-primary'
-          },
-          buttonsStyling: false
-        })
-      })
-  }
+    })
+    .catch((errors) => {
+      setBtnLoader(false)
+       MySwal.fire({
+        icon: 'error',
+        title: 'Oops!',
+        text: 'Something went wrong!',
+        // footer: '<a href="#">Why do I have this issue?</a>',
+        customClass: {
+          confirmButton: 'btn btn-primary'
+        },
+       buttonsStyling: false
+      }) 
+    })
+}
 
   // ** Renders User
   const renderUserAvatar = () => {
@@ -137,44 +142,94 @@ const UserAccountTab = ({ selectedUser }) => {
       )
     }
   }
-
   if (userData === null || userData === undefined) {
     return null
   } else {
     return (
       <Row>
         <Col sm='12'>
+          <Media className='mb-2'>
+            {renderUserAvatar()}
+            <Media className='mt-50' body>
+              <h4>{selectedUser.first_name} </h4>
+              <div className='d-flex flex-wrap mt-1 px-0'>
+                <Button.Ripple id='change-img' tag={Label} className='mr-75 mb-0' color='primary'>
+                  <span className='d-none d-sm-block'>Change</span>
+                  <span className='d-block d-sm-none'>
+                    <Edit size={14} />
+                  </span>
+                  <input type='file' hidden id='change-img' onChange={onChange} accept='image/*' />
+                </Button.Ripple>
+              </div>
+            </Media>
+          </Media>
         </Col>
         <Col sm='12'>
-          <Form onSubmit={submit_form}>
+        <Form onSubmit={submit_form}>
             <Row>
               <Col md='4' sm='12'>
                 <FormGroup>
-                  <Label>secondary Email Id</Label>
-                  <Input type='text' name="Lastname" defaultValue={userData.last_name} />
+                  <Label>FirstName</Label>
+                  <Input type='text' name="first_name" defaultValue={userData.first_name} />
                 </FormGroup>
-                <input type="hidden" name="id" value={id} />
+                <input type="hidden" name="user_id" value={id} />
               </Col>
               <Col md='4' sm='12'>
                 <FormGroup>
-                  <Label for='name'>Email</Label>
-                  <Input type='text' name="organization_secondary_contact_number" defaultValue={userData.email} />
-                </FormGroup>
-              </Col>
-              <Col md='4' sm='12'>
-                <FormGroup>
-                  <Label for='email'>Country</Label>
-                  <Input type='text' name="organization_city" defaultValue={userData.country} />
+                  <Label for='name'>LastName</Label>
+                  <Input type='text' name="last_name" defaultValue={userData.last_name} />
                 </FormGroup>
               </Col>
               <Col md='4' sm='12'>
                 <FormGroup>
-                  <Label>Contact</Label>
-                  <Input type='text' name="organization_state" defaultValue={userData.contact_number} />
+                  <Label for='email'>UserName</Label>
+                  <Input type='text' name="username" defaultValue={userData.username} />
+                </FormGroup>
+              </Col>
+              <Col md='4' sm='12'>
+                <FormGroup>
+                  <Label>contact Number</Label>
+                  <Input type='text' name="contact_number" defaultValue={userData.contact_number} />
+                </FormGroup>
+              </Col>
+              <Col md='4' sm='12'>
+                <FormGroup>
+                  <Label>Gender</Label>
+                  <Input type='text' name="username" defaultValue={userData.gender} />
+                </FormGroup>
+              </Col>
+              <Col md='4' sm='12'>
+                <FormGroup>
+                  <Label>Addrerss-1</Label>
+                  <Input type='text' name="username" defaultValue={userData.address_1} />
+                </FormGroup>
+              </Col>
+              <Col md='4' sm='12'>
+                <FormGroup>
+                  <Label>Address-2</Label>
+                  <Input type='text' name="username" defaultValue={userData.address_2} />
+                </FormGroup>
+              </Col>
+              <Col md='4' sm='12'>
+                <FormGroup>
+                  <Label>State</Label>
+                  <Input type='text' name="organization_pincode" defaultValue={userData.state} />
+                </FormGroup>
+              </Col>
+              <Col md='4' sm='12'>
+                <FormGroup>
+                  <Label>City</Label>
+                  <Input type='text' name="organization_pincode" defaultValue={userData.city} />
+                </FormGroup>
+              </Col>
+              <Col md='4' sm='12'>
+                <FormGroup>
+                  <Label>Zipcode</Label>
+                  <Input type='text' name="organization_pincode" defaultValue={userData.zipcode} />
                 </FormGroup>
               </Col>
               <Col className='d-flex flex-sm-row flex-column mt-2' sm='12'>
-                {(btnLoader === false) ? <Button.Ripple color='primary' className='btn-submit mr-1' type='submit'> Save Changes</Button.Ripple> : <Button.Ripple color='success' className='btn-submit' type='submit'><Spinner size='sm' /> &nbsp;Loading... </Button.Ripple>}
+              {(btnLoader === false) ? <Button.Ripple color='primary' className='btn-submit mr-1' type='submit'> Submit </Button.Ripple> : <Button.Ripple color='success' className='btn-submit' type='submit'><Spinner size='sm' />&nbsp;Loading... </Button.Ripple>}
                 <Button.Ripple color='secondary' type='reset' outline>
                   Reset
                 </Button.Ripple>
@@ -186,5 +241,4 @@ const UserAccountTab = ({ selectedUser }) => {
     )
   }
 }
-
 export default UserAccountTab

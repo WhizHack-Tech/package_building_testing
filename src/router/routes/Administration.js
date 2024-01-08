@@ -1,18 +1,41 @@
-// =============================================================================================
+ // ================================================================================================
 //  File Name: Administration.js
-//  Description: Details of the Administration router component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  Description: Details Pages of the Administration ( Routes ).
+//  ----------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
-
 import { lazy } from 'react'
 import { Redirect } from 'react-router-dom'
-
-const AdministartionRoutes = [
+const AdministrationRoutes = [
+  // Dashboards
+  {
+    path: '/administration/user/list',
+    component: lazy(() => import('../../views/administration/user/list')),
+    meta: {
+      action: 'read',
+      resource: 'ADMIN'
+    } 
+  },
+  {
+    path: '/administration/user/view/:id/:activated_plan_id',
+    component: lazy(() => import('../../views/administration/user/view')),
+    meta: {
+      action: 'read',
+      resource: 'ADMIN'
+    } 
+  },
+  {
+    path: '/administration/user/edit/:id',
+    component: lazy(() => import('../../views/administration/user/edit'))
+  },
   {
     path: '/administration/userconfig/list',
-    component: lazy(() => import('../../views/administration/userconfig/list'))
+    component: lazy(() => import('../../views/administration/userconfig/list')),
+    meta: {
+      action: 'read',
+      resource: 'ADMIN'
+    } 
   },
   {
     path: '/administration/userconfig/edit',
@@ -26,39 +49,54 @@ const AdministartionRoutes = [
       navLink: '/administration/userconfig/edit'
     }
   },
-  // {
-  //   path: '/administration/userconfig/view',
-  //   exact: true,
-  //   component: () => <Redirect to='/administration/userconfig/view/1' />
-  // },
-  // {
-  //   path: '/administration/userconfig/view/:id',
-  //   component: lazy(() => import('../../views/administration/userconfig/view')),
-  //   meta: {
-  //     navLink: '/administration/userconfig/view'
-  //   }
-  // },
   {
     path: '/administration/userconfig/view/:id',
     component: lazy(() => import('../../views/administration/userconfig/view'))
+  },  
+  {
+    path: '/administration/emailconfig',
+    component: lazy(() => import('../../views/administration/emailconfig')),
+    exact: true
+  },
+  {
+    path: '/administration/account-settings',
+    component: lazy(() => import('../../views/administration/account-settings'))
+  },  
+  // {
+  //   path: '/administration/roles',
+  //   component: lazy(() => import('../../views/administration/roles')),
+  //   meta: {
+  //     action: 'read',
+  //     resource: 'ADMIN'
+  //   } 
+  // },
+  {
+    path: '/administration/permission',
+    exact: true,
+    component: () => <Redirect to='/administration/permission/1' />
+  },
+  {
+    path: '/administration/permission/:id',
+    component: lazy(() => import('../../views/administration/permission')),
+    meta: {
+      navLink: '/administration/permission'
+    }
+  },
+  {
+    path: '/addlocation',
+    component: lazy(() => import('../../views/administration/org_location')),
+    meta: {
+      navLink: '/addlocation'
+    }
   },
   {
     path: '/administration/logs',
-    component: lazy(() => import('../../views/administration/logs'))
-  },
-  {
-    path: '/administration/Api-key',
-    component: lazy(() => import('../../views/administration/Api-key'))
+    component: lazy(() => import('../../views/administration/logs')),
+    meta: {
+      action: 'read',
+      resource: 'ADMIN'
+    } 
   }
-  // {
-  //   path: '/administration/shop',
-  //   className: 'ecommerce-application',
-  //   component: lazy(() => import('../../views/administration/shop'))
-  // },
-  // {
-  //   path: '/administration/detail/:id',
-  //   component: lazy(() => import('../../views/administration/detail'))
-  // }
 ]
 
-export default AdministartionRoutes
+export default AdministrationRoutes

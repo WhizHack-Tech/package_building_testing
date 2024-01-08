@@ -1,31 +1,27 @@
-// ================================================================================================
-//  File Name: PasswordtabContent.js
-//  Description: Details of the Edit Account Pages.
-//  ----------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
-//  Author URL: https://whizhack.in
-// ==============================================================================================
-import { FormGroup, Row, Col, Button } from 'reactstrap'
+import { FormGroup, Row, Col, Button, CustomInput } from 'reactstrap'
 import InputPasswordToggle from '@components/input-password-toggle'
 import { AvForm, AvInput } from 'availity-reactstrap-validation-safe'
-
+import { useState } from 'react'
 const PasswordTabContent = () => {
+  // const [commentOnArticle, setCommentOnArticle] = useState(data.commentOnArticle)
+  
   return (
-    <AvForm onSubmit={e => e.preventDefault()}>
-      <h6 className='section-label mx-0 mb-1'>Password</h6>
+    <AvForm >
       <Row>
-        <Col sm='6'>
-          <FormGroup>
-            <InputPasswordToggle
-              tag={AvInput}
-              className='input-group-merge'
-              label='Old Password'
-              htmlFor='old-password'
-              name='old-password'
-              required
-            />
-          </FormGroup>
-        </Col>
+          <Col sm='6'>
+            <FormGroup>
+              <InputPasswordToggle
+                tag={AvInput}
+                className='input-group-merge'
+                label='Old Password'
+                htmlFor='old-password'
+                name='old-password'
+                required
+              />
+            </FormGroup>
+          </Col>
+      </Row>
+      <Row>
         <Col sm='6'>
           <FormGroup>
             <InputPasswordToggle
@@ -50,9 +46,26 @@ const PasswordTabContent = () => {
             />
           </FormGroup>
         </Col>
+        </Row>
+        <Row>
+        <Col sm='12' className='mb-2'>
+          <CustomInput
+            type='switch'
+            id='commentOnArticle'
+            // checked={commentOnArticle}
+            // onChange={e => setCommentOnArticle(e.target.checked)}
+            name='customSwitch'
+            label='Want to Enable Two Factor Authentication '
+          />
+        </Col>
+      </Row>
+      <Row>
         <Col className='mt-1' sm='12'>
           <Button.Ripple className='mr-1' color='primary'>
             Save changes
+          </Button.Ripple>
+          <Button.Ripple color='secondary' outline>
+            Cancel
           </Button.Ripple>
         </Col>
       </Row>

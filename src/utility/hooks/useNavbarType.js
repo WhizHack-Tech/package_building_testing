@@ -1,11 +1,10 @@
-// =============================================================================================
+ // ================================================================================================
 //  File Name: useNavbarType.js
-//  Description: Details of the useNavbarType Utility component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  Description: Details Pages of the useNavbarType.
+//  ----------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
-
 //** React Imports
 import { useState } from 'react'
 

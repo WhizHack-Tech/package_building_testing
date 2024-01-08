@@ -1,63 +1,43 @@
-// =============================================================================================
+ // ================================================================================================
 //  File Name: Dashboard.js
-//  Description: Details of the Dashboard router component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  Description: Details Pages of the Dashboard ( Routes ).
+//  ----------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
-
 import { lazy } from 'react'
 
 const DashboardRoutes = [
-    // Dashboard
-    {
-      path: '/dashboard/dashboard',
-      component: lazy(() => import('../../views/dashboard/dash')),
-      meta: {
-        action: 'read',
-        resource: 'ADMIN'
-      }
-    },
-    {
-        path: '/dashboard/attackevents',
-        component: lazy(() => import('../../views/dashboard/analytics')),
-        meta: {
-          action: 'read',
-          resource: 'ADMIN'
-        }
-      },
-      // {
-      //   path: '/dashboard/attacks',
-      //   component: lazy(() => import('../../views/dashboard/ecommerce')),
-      //   meta: {
-      //     action: 'read',
-      //     resource: 'ADMIN'
-      //   },
-      //   exact: true
-      // },
-      {
-        path: '/dashboard/networkmap',
-        component: lazy(() => import('../../views/dashboard/networkmap')),
-        exact: true
-      },
-      {
-        path: '/dashboard/relevantintelligence',
-        component: lazy(() => import('../../views/dashboard/relevantintelligence')),
-        meta: {
-          action: 'read',
-          resource: 'ADMIN'
-        },
-        exact: true
-      },
+  // Dashboards
+  // {
+  //   path: '/dashboard/dashboard',
+  //   component: lazy(() => import('../../views/dashboard/analytics')),
+  //   meta: {
+  //     action: 'read',
+  //     resource: 'ADMIN'
+  //   }  
+  // },
   {
-        path: '/dashboard/ml&dldetection',
-        component: lazy(() => import('../../views/dashboard/ml_dl_page')),
-        meta: {
-          action: 'read',
-          resource: 'ADMIN'
-        },
-        exact: true
-      }
+    path: '/dashboard/agent',
+    exact: true,
+    component: lazy(() => import('../../views/dashboard/agent')),
+    meta: {
+      action: 'read',
+      resource: 'ADMIN'
+    } 
+  },
+  {
+    path: '/dashboard/agentdetails/:org_location',
+    exact: true,
+    component: lazy(() => import('../../views/dashboard/agentdetails')),
+    meta: {
+      navLink: '/dashboard/agentdetails',
+      action: 'read',
+      resource: 'ADMIN'
+    }
+  }
+
+ 
 ]
 
 export default DashboardRoutes

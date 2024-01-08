@@ -1,11 +1,10 @@
-// =============================================================================================
+// ================================================================================================
 //  File Name: utils.js
-//  Description: Details of the utils component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  Description: Details Pages of the auth ( Utils ).
+//  ----------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
-
 import useJwt from '@src/@core/auth/jwt/useJwt'
 
 /**
@@ -15,10 +14,10 @@ import useJwt from '@src/@core/auth/jwt/useJwt'
  */
 // eslint-disable-next-line arrow-body-style
 export const isUserLoggedIn = () => {
-  return localStorage.getItem('clientData') && localStorage.getItem(useJwt.jwtConfig.storageTokenKeyName)
+  return localStorage.getItem('userData') && localStorage.getItem(useJwt.jwtConfig.storageTokenKeyName)
 }
 
-export const getUserData = () => JSON.parse(localStorage.getItem('clientData'))
+export const getUserData = () => JSON.parse(localStorage.getItem('userData'))
 
 /**
  * This function is used for demo purpose route navigation

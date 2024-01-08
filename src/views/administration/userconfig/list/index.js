@@ -1,28 +1,27 @@
-   // ================================================================================================
-//  File Name: index.js
-//  Description: User Config Details.
-//  ----------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
-//  Author URL: https://whizhack.in
 // ================================================================================================
-// ** User List Component
-import Table from './Table'
-import { useTranslation } from 'react-i18next'
-
+//  File Name: index.js
+//  Description: Details of the Administration ( List User Details ).
+//  ----------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
+//  Author URL: https://whizhack.in
+// =============================================================================================
+// // ** User List Component
+import { Fragment } from 'react'
+import TableWithButtons from './TableWithButtons'
+import BreadCrumbs from '@components/breadcrumbs'
 
 // ** Styles
 import '@styles/react/apps/app-users.scss'
 import '@styles/react/libs/tables/react-dataTable-component.scss'
-import Breadcrumbs from '@components/breadcrumbs/bread'
-
 
 const UsersList = () => {
-  const {t} = useTranslation()
   return (
+    <Fragment>
+<BreadCrumbs breadCrumbTitle='User Config Details'/>
     <div className='app-user-list'>
-      <Breadcrumbs breadCrumbTitle={t('User Management')}/>
-      <Table />
+      <TableWithButtons />
     </div>
+  </Fragment>
   )
 }
 

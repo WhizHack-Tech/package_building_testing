@@ -1,38 +1,77 @@
-// =============================================================================================
-//  File Name: VerticalNavMenuLink\index.js
-//  Description: Details of the Vertical Nav Menu Link component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+// ==============================================================================================
+//  File Name: VerticalNavMenuLink.js
+//  Description: Details of the VerticalNavMenuLink component.
+//  ---------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
 
 // ** React Imports
 import { useEffect } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink, useLocation, matchPath, useParams } from 'react-router-dom'
 
 // ** Third Party Components
-import classnames from 'classnames'
-import { useTranslation } from 'react-i18next'
-
-// ** Reactstrap Imports
 import { Badge } from 'reactstrap'
+import classnames from 'classnames'
+
+// ** Vertical Menu Array Of Items
+import navigation from '@src/navigation/vertical'
+
+// ** Utils
+import { isNavLinkActive, search, getAllParents } from '@layouts/utils'
 
 const VerticalNavMenuLink = ({
   item,
+  groupActive,
+  setGroupActive,
   activeItem,
   setActiveItem,
+  groupOpen,
+  setGroupOpen,
+  toggleActiveGroup,
+  parentItem,
+  routerProps,
   currentActiveItem
 }) => {
   // ** Conditional Link Tag, if item has newTab or externalLink props use <a> tag else use NavLink
   const LinkTag = item.externalLink ? 'a' : NavLink
 
-  // ** Hooks
-  const {t} = useTranslation()
+  // ** URL Vars
   const location = useLocation()
+  const currentURL = location.pathname
 
+  // ** To match path
+  const match = matchPath(currentURL, {
+    path: `${item.navLink}/:param`,
+    exact: true,
+    strict: false
+  })
+
+  // ** Search for current item parents
+  const searchParents = (navigation, currentURL) => {
+    const parents = search(navigation, currentURL, routerProps) // Search for parent object
+    const allParents = getAllParents(parents, 'id') // Parents Object to Parents Array
+    return allParents
+  }
+
+  // ** URL Vars
+  const resetActiveGroup = navLink => {
+    const parents = search(navigation, navLink, match)
+    toggleActiveGroup(item.id, parents)
+  }
+
+  // ** Reset Active & Open Group Arrays
+  const resetActiveAndOpenGroups = () => {
+    setGroupActive([])
+    setGroupOpen([])
+  }
+
+  // ** Checks url & updates active item
   useEffect(() => {
     if (currentActiveItem !== null) {
       setActiveItem(currentActiveItem)
+      const arr = searchParents(navigation, currentURL)
+      setGroupActive([...arr])
     }
   }, [location])
 
@@ -54,44 +93,29 @@ const VerticalNavMenuLink = ({
             }
           : {
               to: item.navLink || '/',
-              isActive: match => {
+              isActive: (match, location) => {
                 if (!match) {
                   return false
                 }
 
-                if (
-                  match.url &&
-                  match.url !== '' &&
-                  match.url === item.navLink
-                ) {
+                if (match.url && match.url !== '' && match.url === item.navLink) {
                   currentActiveItem = item.navLink
                 }
               }
             })}
+        /*eslint-enable */
         onClick={e => {
-          if (
-            item.navLink.length === 0 ||
-            item.navLink === '#' ||
-            item.disabled === true
-          ) {
+          if (!item.navLink.length) {
             e.preventDefault()
           }
+          parentItem ? resetActiveGroup(item.navLink) : resetActiveAndOpenGroups()
         }}
       >
-         {
-        item.imageIcon ? <img src={item.imageIcon} style={
-          {
-            height: '50px',
-            width: '50px'
-          }
-        } /> : null
-      }
-      
         {item.icon}
-        <span className='menu-item text-truncate'>{t(item.title)}</span>
+        <span className='menu-item text-truncate'>{item.title}</span>
 
         {item.badge && item.badgeText ? (
-          <Badge className='ms-auto me-1' color={item.badge} pill>
+          <Badge className='ml-auto mr-1' color={item.badge} pill>
             {item.badgeText}
           </Badge>
         ) : null}

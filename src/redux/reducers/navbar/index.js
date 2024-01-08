@@ -1,11 +1,10 @@
-// =============================================================================================
-//  File Name: navBar/index.js
-//  Description: Details of the app navBar reducers component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+ // ================================================================================================
+//  File Name: index.js
+//  Description: Details Pages of the Navbar ( Redux ( Reducer )).
+//  ----------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
-
 // ** Initial State
 const initialState = {
   suggestions: [],

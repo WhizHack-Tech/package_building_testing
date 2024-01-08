@@ -1,19 +1,25 @@
-// =============================================================================================
+// ==============================================================================================
 //  File Name: NavbarUser.js
-//  Description: Details of the Navbar User component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  Description: Details of the NavbarUser component.
+//  ---------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
 
-import IntlDropdown from './IntlDropdown'
+// ** Dropdowns Imports
+import { Fragment } from 'react'
+
 import UserDropdown from './UserDropdown'
-import { Sun, Moon } from 'react-feather'
+
+// ** Third Party Components
+import { Sun, Moon, Menu } from 'react-feather'
 import { NavItem, NavLink } from 'reactstrap'
-import '@styles/react/apps/app-todo.scss'
+
 const NavbarUser = props => {
-   const { skin, setSkin } = props
-  
+  // ** Props
+  const { skin, setSkin, setMenuVisibility } = props
+
+  // ** Function to toggle Theme (Light/Dark)
   const ThemeToggler = () => {
     if (skin === 'dark') {
       return <Sun className='ficon' onClick={() => setSkin('light')} />
@@ -23,15 +29,25 @@ const NavbarUser = props => {
   }
 
   return (
-    <ul className='nav navbar-nav align-items-center ml-auto'>
-      <IntlDropdown />
-      <NavItem className='d-none d-lg-block'>
-        <NavLink className='nav-link-style'>
-          <ThemeToggler />
-        </NavLink>
-      </NavItem>
-      <UserDropdown />
-    </ul>
+    <Fragment>
+      <ul className='navbar-nav d-xl-none d-flex align-items-center'>
+        <NavItem className='mobile-menu mr-auto'>
+          <NavLink className='nav-menu-main menu-toggle hidden-xs is-active' onClick={() => setMenuVisibility(true)}>
+            <Menu className='ficon' />
+          </NavLink>
+        </NavItem>
+      </ul>
+      <div className='bookmark-wrapper d-flex align-items-center'>
+        <NavItem className='d-none d-lg-block'>
+          <NavLink className='nav-link-style'>
+            <ThemeToggler />
+          </NavLink>
+        </NavItem>
+      </div>
+      <ul className='nav navbar-nav align-items-center ml-auto'>
+        <UserDropdown />
+      </ul>
+    </Fragment>
   )
 }
 export default NavbarUser

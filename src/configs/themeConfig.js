@@ -1,28 +1,26 @@
-// =============================================================================================
+// You can customize the template with the help of this file
+// ================================================================================================
 //  File Name: themeConfig.js
-//  Description: Details of the customize the template component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  Description: Details Pages of the Config ( Theme Config settings ).
+//  ----------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
-
-// You can customize the template with the help of this file
-
 //Template config options
 const themeConfig = {
   app: {
-    appName: 'SRC',
-    appLogoImage: require('@src/assets/images/logo/logo3.png').default
+    appName: 'XDR Master',
+    appLogoImage: require('@src/assets/images/logo/logo.png').default
   },
   layout: {
     isRTL: false,
-    skin: 'dark', // light, dark, bordered, semi-dark
-    routerTransition: 'zoomIn', // fadeIn, fadeInLeft, zoomIn, none or check this for more transition https://animate.style/
+    skin: 'light', // light, dark, bordered, semi-dark
+    routerTransition: 'fadeIn', // fadeIn, fadeInLeft, zoomIn, none or check this for more transition https://animate.style/
     type: 'vertical', // vertical, horizontal
     contentWidth: 'full', // full, boxed
     menu: {
       isHidden: false,
-      isCollapsed: true
+      isCollapsed: false
     },
     navbar: {
       // ? For horizontal menu, navbar type will work for navMenu type

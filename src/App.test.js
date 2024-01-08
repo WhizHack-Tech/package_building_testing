@@ -1,10 +1,10 @@
 // ================================================================================================
-//  File Name: App.test.js
-//  Description: Details of Unit Test".
+//  File Name: App.Test.js
+//  Description: Details of the Test Page.
 //  ----------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
-// ==============================================================================================
+// =============================================================================================
 import ReactDOM from 'react-dom'
 import App from './App'
 

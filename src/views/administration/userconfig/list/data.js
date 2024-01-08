@@ -1,23 +1,38 @@
 // ================================================================================================
 //  File Name: data.js
-//  Description: User Config Details.
+//  Description: Details of the Administration ( List User Details ).
 //  ----------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
-// ================================================================================================    
-import { useState } from 'react'
+// =============================================================================================
+// ** Custom Components
 import Avatar from '@components/avatar'
 import { Link } from 'react-router-dom'
-import InputPasswordToggle from '@components/input-password-toggle'
-import { Mail, Phone, Eye } from 'react-feather'
-import { Badge, CustomInput, Modal, ModalHeader, ModalFooter, Button, FormGroup, Spinner, Col, ModalBody } from 'reactstrap'
-import axios, { staticPath } from '@axios'
-import { useTranslation } from 'react-i18next'
+import { useState } from 'react'
 import { getUserData } from "@utils"
+import axios from '@axios'
+
+// ** Third Party Components
+import { User, Mail, Phone, Trello, Eye, Globe } from 'react-feather'
+import { Badge, CustomInput, Modal, ModalHeader, ModalBody, FormGroup, ModalFooter, Button, Spinner } from 'reactstrap'
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import InputPasswordToggle from '@components/input-password-toggle'
+
 const MySwal = withReactContent(Swal)
 
+// ** Renders Client Columns
+const renderClient = row => {
+  const stateNum = Math.floor(Math.random() * 6),
+    states = ['light-success', 'light-danger', 'light-warning', 'light-info', 'light-primary', 'light-secondary'],
+    color = states[stateNum]
+
+  if (row.avatar) {
+    return <Avatar className='mr-1' img={row.avatar} width='32' height='32' />
+  } else {
+    return <Avatar color={color || 'primary'} className='mr-1' content={row.first_name || 'John Doe'} initials />
+  }
+}
 const first_config = {
   0: { title: 'Unverified', color: 'light-warning' },
   1: { title: 'Verified', color: 'light-success' }
@@ -26,16 +41,13 @@ const role_id_id = {
   2: { title: 'Network Admin', color: 'light-warning' },
   1: { title: 'Super Admin', color: 'light-success' }
 }
-// ** Avatar render function
-const renderClient = row => {
-  const stateNum = Math.floor(Math.random() * 6),
-    states = ['light-success', 'light-danger', 'light-warning', 'light-info', 'light-primary', 'light-secondary'],
-    color = states[stateNum]
-  if (row.profile_photo !== null && row.profile_photo !== undefined) {
-    return <Avatar className='mr-1' img={`${row.profile_photo}`} width='32' height='32' />
-  } else {
-    return <Avatar color={color || 'primary'} className='mr-1' content={row.first_name || ''} initials />
-  }
+
+const status = {
+  1: { title: 'Current', color: 'light-primary' },
+  2: { title: 'Professional', color: 'light-success' },
+  3: { title: 'Rejected', color: 'light-danger' },
+  4: { title: 'Resigned', color: 'light-warning' },
+  5: { title: 'Applied', color: 'light-info' }
 }
 
 const UserAccountStatusModal = ({ row }) => {
@@ -59,7 +71,7 @@ const UserAccountStatusModal = ({ row }) => {
     const { email } = getUserData()
     if (password !== "") {
       setLoading(false)
-      axios.post("/disable-user-account", {
+      axios.post("/disable-user", {
         user_id: row.id,
         is_active: isActive,
         email,
@@ -82,7 +94,6 @@ const UserAccountStatusModal = ({ row }) => {
         setLoading(true)        
       }).catch((error) => {
         if (error.response) {
-          console.log(error.response.data.message)
           if (error.response.data.message_type === "password_incorrect") {
             setIsActive(row.is_active)
             setCheckPass("Please Enter Password Correctly")
@@ -120,26 +131,39 @@ const UserAccountStatusModal = ({ row }) => {
 }
 
 // ** Table Common Column
-export const columns = ({t}) => {
-  return [
+export const columns = [
   {
-    name: t('First Name'),
-    minWidth: '250px',
+    name: 'Full Name',
+    minWidth: '350px',
     selector: 'first_name',
     sortable: true,
     cell: row => (
       <div className='d-flex justify-content-left align-items-center'>
         {renderClient(row)}
         <div className='d-flex flex-column'>
-          <span className='font-weight-bold'>{row.first_name} {row.last_name}</span>
-          <small className='text-truncate text-muted mb-0'>{row.email}</small>
+            <span className='font-weight-bold'>{row.first_name} {row.last_name}</span>
+          <small className='text-truncate text-muted mb-0'>@ {row.email}</small>
         </div>
       </div>
     )
   },
+  // {
+  //   name: 'Last Name',
+  //   minWidth: '150px',
+  //   selector: 'last_name',
+  //   sortable: true,
+  //   cell: row => {
+  //     return (
+  //       <div className='d-flex justify-content-left align-items-center'>
+  //         <User size={15} className='mb-0' />
+  //         <span className='font-weight-bold ml-1'>{row.last_name}</span>
+  //       </div>
+  //     )
+  //   }
+  // },
   {
-    name: t('Email'),
-    minWidth: '250px',
+    name: 'Email',
+    minWidth: '350px',
     selector: 'email',
     sortable: true,
     cell: row => {
@@ -151,36 +175,23 @@ export const columns = ({t}) => {
       )
     }
   },
-  // {
-  //   name: t('Role'),
-  //   minWidth: '100px',
-  //   selector: 'role_id_id',
-  //   sortable: true,
-  //   cell: row => {
-  //     return (
-  //       <Badge color={role_id_id[row.role_id_id].color} pill>
-  //         {role_id_id[row.role_id_id].title}
-  //       </Badge>
-  //     )
-  //   }
-  // },
   {
-    name: t('Phone'),
-    selector: 'contact_number',
+    name: 'Branch Code',
+    minWidth: '200px',
+    selector: 'location_branchcode',
     sortable: true,
-    minWidth: '100px',
     cell: row => {
       return (
         <div className='d-flex justify-content-left align-items-center'>
-          <Phone size={15} className='mb-0' />
-          <span className='font-weight-bold ml-1'>{row.contact_number}</span>
+          <Globe size={15} className='mb-0' />
+          <span className='font-weight-bold ml-1'>{row.location_branchcode}</span>
         </div>
       )
     }
   },
   {
-    name: t('Verification Status'),
-    minWidth: '100px',
+    name: 'Status',
+    minWidth: '50px',
     selector: 'first_config',
     sortable: true,
     cell: row => {
@@ -192,14 +203,55 @@ export const columns = ({t}) => {
     }
   },
   {
-    name: t('Account Active Status'),
+    name: 'Role',
+    minWidth: '50px',
+    selector: 'role_id_id',
+    sortable: true,
+    cell: row => {
+      return (
+        <Badge color={role_id_id[row.role_id_id || 2].color} pill>
+          {row.role_id_id ? role_id_id[row.role_id_id].title : null}
+        </Badge>
+      )
+    }
+  },
+  {
+    name: 'Phone',
+    minWidth:"200px",
+    selector: 'contact_number',
+    sortable: true,
+    cell: row => {
+      return (
+        <div className='d-flex justify-content-left align-items-center'>
+          <Phone size={15} className='mb-0' />
+          <span className='font-weight-bold ml-1'>{row.contact_number}</span>
+        </div>
+      )
+    }
+  },
+  {
+    name: 'Company Name',
+    minWidth: '300px',
+    selector: 'organization_name',
+    sortable: true,
+    cell: row => {
+      return (
+        <div className='d-flex justify-content-left align-items-center'>
+          <Trello size={15} className='mb-0' />
+          <span className='font-weight-bold ml-1'>{row.organization_name}</span>
+        </div>
+      )
+    }
+  },
+  {
+    name: 'Account Active Status',
     minWidth: '100px',
     selector: '',
     sortable: true,
     cell: row => <UserAccountStatusModal row={row} />
   },
   {
-    name: t('Actions'),
+    name: 'Actions',
     minWidth: '100px',
     sortable: true,
     cell: row => (
@@ -210,6 +262,5 @@ export const columns = ({t}) => {
       </div>
     )
   }
-  ]
-}
-// export default columns
+]
+export default columns

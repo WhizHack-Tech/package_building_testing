@@ -1,6 +1,6 @@
 {
-  "short_name": "SRC",
-  "name": "Security Remediation Console (SRC)",
+  "short_name": "React App",
+  "name": "Create React App Sample",
   "icons": [
     {
       "src": "favicon.png",

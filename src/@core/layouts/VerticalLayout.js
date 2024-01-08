@@ -1,8 +1,8 @@
-// =============================================================================================
+// ==============================================================================================
 //  File Name: VerticalLayout.js
-//  Description: Details of the Vertical Layout component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  Description: Details of the VerticalLayout component.
+//  ---------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
 
@@ -35,8 +35,6 @@ import { useSkin } from '@hooks/useSkin'
 import { useNavbarType } from '@hooks/useNavbarType'
 import { useFooterType } from '@hooks/useFooterType'
 import { useNavbarColor } from '@hooks/useNavbarColor'
-import { setLocalNavbarColor, getLocalNavbarColor, setLocalNavbarType, getLocalNavbarType, setLocalFooterType, getLocalFooterType } from '@utils'
-import { pagePermissions } from '../../redux/actions/layout/pagesPermissions'
 
 // ** Styles
 import '@styles/base/core/menu/menu-types/vertical-menu.scss'
@@ -49,9 +47,9 @@ const VerticalLayout = props => {
   // ** Hooks
   const [skin, setSkin] = useSkin()
   const [isRtl, setIsRtl] = useRTL()
-  const [navbarTypeHook, setNavbarTypeHook] = useNavbarType()
-  const [footerTypeHook, setFooterTypeHook] = useFooterType()
-  const [navbarColorHook, setNavbarColorHook] = useNavbarColor()
+  const [navbarType, setNavbarType] = useNavbarType()
+  const [footerType, setFooterType] = useFooterType()
+  const [navbarColor, setNavbarColor] = useNavbarColor()
 
   // ** States
   const [isMounted, setIsMounted] = useState(false)
@@ -65,24 +63,6 @@ const VerticalLayout = props => {
   // ** Update Window Width
   const handleWindowWidth = () => {
     setWindowWidth(window.innerWidth)
-  }
-
-  const navbarColor = getLocalNavbarColor(navbarColorHook)  
-  const setNavbarColor = val => {
-    setNavbarColorHook(val)
-    setLocalNavbarColor(val)
-  }
-
-  const navbarType = getLocalNavbarType(navbarTypeHook)
-  const setNavbarType = val => {
-    setNavbarTypeHook(val)
-    setLocalNavbarType(val)
-  }
-  
-  const footerType = getLocalFooterType(footerTypeHook)
-  const setFooterType = val => {
-    setFooterTypeHook(val)
-    setLocalFooterType(val)
   }
 
   // ** Vars
@@ -116,7 +96,6 @@ const VerticalLayout = props => {
 
   //** ComponentDidMount
   useEffect(() => {
-    dispatch(pagePermissions())
     setIsMounted(true)
     return () => setIsMounted(false)
   }, [])

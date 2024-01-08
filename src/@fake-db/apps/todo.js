@@ -27,7 +27,7 @@ const data = {
         fullName: 'Andrew Anderson',
         avatar: ''
       },
-      tags: ['team'],
+      tags: ['team', 'medium'],
       isCompleted: true,
       isDeleted: false,
       isImportant: false
@@ -87,7 +87,7 @@ const data = {
         fullName: 'David Murphy',
         avatar: ''
       },
-      tags: ['high'],
+      tags: ['high', 'medium'],
       isCompleted: true,
       isDeleted: true,
       isImportant: false
@@ -117,7 +117,7 @@ const data = {
         fullName: 'Thomas Moses',
         avatar: require('@src/assets/images/avatars/7.png').default
       },
-      tags: ['low'],
+      tags: ['low', 'medium'],
       isCompleted: false,
       isDeleted: false,
       isImportant: false
@@ -132,7 +132,7 @@ const data = {
         fullName: 'Angel Morrow',
         avatar: ''
       },
-      tags: ['high'],
+      tags: ['high', 'update'],
       isCompleted: false,
       isDeleted: true,
       isImportant: false

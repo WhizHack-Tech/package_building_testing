@@ -1,11 +1,10 @@
-// =============================================================================================
+ // ================================================================================================
 //  File Name: useLayout.js
-//  Description: Details of the useLayout Utility component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  Description: Details Pages of the useLayout.
+//  ----------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
-
 //** React Imports
 import { useState, useEffect } from 'react'
 
