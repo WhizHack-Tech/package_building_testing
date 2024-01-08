@@ -7,6 +7,10 @@ on:
 jobs:
   build-and-push:
     if: github.event.pull_request.merged == true
+
+    defaults:
+      run:
+        shell: bash
     
     name: Docker build and push to acr
     runs-on: ubuntu-22.04
@@ -23,7 +27,7 @@ jobs:
 
     # show changes  
     - name: display changes in axios.js
-      run: cat src/axios.js
+      run: cat ./src/axios.js
       
       
     # login to docker  
