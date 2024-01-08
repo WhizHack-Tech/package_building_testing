@@ -10,4 +10,4 @@
 
 # Base url to be used when mail sent to new user added
 # Live URL #enter only domain name
-BaseUrl = "<<CLIENT-DOMAIN-URL>>"
+BaseUrl = "<<MASTER-DOMAIN-URL>>"
