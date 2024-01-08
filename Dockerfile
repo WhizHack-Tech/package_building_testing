@@ -12,6 +12,7 @@ RUN npm install --legacy-peer-deps && \
     #test9
     #test10
     #test11
+    #test12
 EXPOSE 3000
 
 CMD npm start
