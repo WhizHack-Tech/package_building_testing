@@ -8,7 +8,8 @@ COPY . /app
 WORKDIR /app
 
 RUN npm install --legacy-peer-deps && \
-    npm rebuild node-sass
+    npm rebuild node-sass 
+    #test9
 
 EXPOSE 3000
 
