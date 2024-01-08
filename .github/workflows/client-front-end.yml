@@ -1,4 +1,4 @@
-name: Build and Push Image to AWS ACR
+name: Build and Push Image to ACR
 on:
   pull_request_target:
     branches: [ "main-pw" ]
@@ -41,5 +41,8 @@ jobs:
     - name: Build the image
       id: build-image
       run:
-       docker build cicd_automation/. -t ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}//xdr_client_frontend:0.0.1a
-       docker push ${{ secrets.ACR_ENDPOINTPRT }}/xdr_client_frontend:0.0.1a
+       docker build . -t ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}/xdr_client_frontend:0.0.1
+
+    - name: Build the image
+      run:
+       docker push ${{ secrets.ACR_ENDPOINTPRT }}/xdr_client_frontend:0.0.1
