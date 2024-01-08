@@ -36,7 +36,6 @@ def client_frontend():
     with open(client_frontend_axios , 'w') as data_file:
         data_file.write(updated_data)
         
-
 def main():
     #Running functions
     #master_frontend()
