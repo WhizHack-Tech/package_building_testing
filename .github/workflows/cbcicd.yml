@@ -32,11 +32,11 @@ jobs:
 
     - name: display the changes on settings.py
       run:
-        cat .backend/settings.py
+        cat ./backend/settings.py
 
     - name: display the changes on url_for_new_user.py
       run:
-        cat .frontend/url_for_new_user.py
+        cat ./frontend/url_for_new_user.py
 
     - name: configure ACR Credentials
       uses: azure/docker-login@v1
