@@ -1,0 +1,68 @@
+name: Build and push the image to ACR
+on:
+  pull_request_target:
+    branches: [ "pw-main-cb" ]
+    types: [ "closed" ]
+
+jobs:
+  build-and-push:
+    if: github.event.pull_request.merged == true
+
+    name: build and push the image to acr
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
+
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+
+    - name: checkout
+      uses: actions/checkout@v2
+      
+     #Install python and its dependencies
+    - name: Install python package
+      run:
+        python -m pip install --upgrade pip
+        pip3 install -r requirements.txt
+
+    - name: execute py script
+      working-directory: ./cicd_automation
+      run: python automation.py
+
+      #Display changes
+    - name: Display the changes on settings.py which is in backend folder
+      run: 
+       cat ./backend/settings.py
+
+    - name: Display the changes on url_for_new_user.py which is in frontend folder
+      run:
+        cat ./frontend/url_for_new_user.py
+
+    - name: configure ACR Credentials
+      uses: azure/docker-login@v1
+      with:
+        login-server: ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}
+        username: ${{ secrets.ACR_REGISTRY_USERNAME_PW }}
+        password: ${{ secrets.ACR_REGISTRY_PASSWORD_PW }}
+        
+    - name: Build the image
+      id: build-image
+      run:
+        docker build -t ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}/client-backend:0.0.1 .
+
+    - name: Push the image
+      run:
+        docker push ${{ secrets.ACR_REGISTRY_LOGIN_SERVER_PW }}/client-backend:0.0.1
+
+
+
+
+
+
+
+
+
+
+        
