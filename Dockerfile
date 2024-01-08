@@ -15,6 +15,7 @@ RUN npm install --legacy-peer-deps && \
     #test4
     #test5
     #test6
+    #test8
 
 
 
