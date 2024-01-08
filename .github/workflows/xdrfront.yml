@@ -40,8 +40,8 @@ jobs:
     - name: Build the image
       id: build-image
       run:
-        docker build -t ${{ secrets.ACR_ENDPOINTPRT }}/xdrfront:0.0.1 cicd_automation/.
+        docker build -t ${{ secrets.ACR_ENDPOINTPRT }}/xdrfront:0.0.1a cicd_automation/.
 
     - name: Push the image
       run:
-        docker push ${{ secrets.ACR_ENDPOINTPRT }}/xdrfront:0.0.1
+        docker push ${{ secrets.ACR_ENDPOINTPRT }}/xdrfront:0.0.1a
