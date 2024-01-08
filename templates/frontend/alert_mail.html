@@ -1,0 +1,112 @@
+<!-- ====================================================================================================================================== -->
+<!-- File Name: alert_mail.html -->
+<!-- Description: HTML Template used for Security Alert Details in email notifications -->
+<!------------------------------------------------------------------------------------------------------------------------------------------ -->
+<!-- Item Name: Whizhack Client Dashboard -->
+<!--  Author URL: https://whizhack.in -->
+<!--========================================================================================================================================  -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XDR Alerts</title>
+    <link
+        href="https://fonts.googleapis.com/css?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700"
+        rel="stylesheet" media="screen">
+    <style>
+        * {
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <table style="width: 50rem; margin:auto;padding: 15px;border: 1px solid #dbd7d7; border-radius: 5px;">
+        <tr>
+            <td style="text-align:center;">
+                <br>
+                <a href="https://xdr.zerohack.in" target="_blank">
+                    <img src="https://xdr.zerohack.in/static/media/Logo2.03fef574.png" width="155" alt="ZeroHack">
+                </a>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="text-align:center;">
+                <br>
+                <p class="sm-leading-32" style="font-weight: 600; font-size: 20px; margin: 0 0 24px; color: #263238;">
+                    Security Alert Details
+                </p>
+                <p class="sm-leading-32" style="font-weight: 600; font-size: 15px; margin: 0 0 24px; color: #263238;">
+                    Security alerts in last {{send_time}} :
+                </p>               
+                <div style="background-color: #eceff1; height: 1px; line-height: 1px;"></div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <br>
+                {% for key, value_list in data.items %}
+                <div class="table-container">
+
+                    {% for value_dict in value_list %}
+
+                    <table
+                        style="width: 35rem; border-radius: 5px; padding: 5px; margin: auto; border: 0.5px solid #dbd7d7;">
+
+
+                        <tbody>
+                            <tr>
+                                <td colspan="3">
+                                    <p
+                                        style="margin:5px; text-align: center; padding-bottom: 15px; border-bottom: 0.5px solid #dbd7d7;">
+                                        <b>{{ key }}</b>
+                                    </p>
+                                </td>
+                            </tr>
+
+                            {% for sub_key, sub_value in value_dict.items %}
+                            <tr>
+                                <td style="padding: 6px; width: 14rem;"><b>{{ sub_key }}</b></td>
+                                <td style="padding: 6px;">{{ sub_value }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    <br>
+
+                    {% endfor %}
+                </div>
+
+                {% endfor %}
+                <br>
+                <br>
+            </td>
+        </tr>
+
+        <tr>
+            <td style="text-align:center;">
+                <div style="background-color: #eceff1; height: 1px; line-height: 1px;"></div>
+                <p>
+                    <span style="font-weight: 500;">Here's what to do next:</span> Go to the
+                    <a href="https://xdr.zerohack.in" target="_blank" style="color: #7367f0; text-decoration: none;">
+                        XDR</a>
+                    Portal and login to check more details.
+                </p>
+                <p style="font-weight: 600; color: #263238;">Thanks, <br>Team ZeroHack</p>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>
