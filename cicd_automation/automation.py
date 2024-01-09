@@ -183,7 +183,7 @@ def client_backend():
     with open(client_backend_new_user , 'r') as data_file:
         data = data_file.read()
     # Replace 'https://dev-xdr.zerohack.in' with the client URL
-    updated_data = data.replace('https://dev-xdr.zerohack.in', client_url)
+    updated_data = data.replace('<<CLIENT_DOMAIN_URL>>', client_url)
     # Write the updated data back to the file
     with open(client_backend_new_user , 'w') as data_file:
         data_file.write(updated_data)                 
