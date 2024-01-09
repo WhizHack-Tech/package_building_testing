@@ -1,0 +1,42 @@
+/* // ================================================================================================
+//  File Name: Loader.css
+//  Description: Details of the Administration ( View Organization Details ).
+//  ----------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
+//  Author URL: https://whizhack.in
+// =========================================================================================== */
+.tri-color-ripple-spinner {
+    width: 50px;
+    height: 50px;
+    position: relative;
+  }
+  
+  .ripple {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 5px solid transparent;
+    border-radius: 50%;
+    animation: rippleAnimation 2s linear infinite;
+  }
+  
+  .ripple1 {
+    border-color: #00ff48; 
+  }
+  
+  .ripple2 {
+    border-color: #0000ff;
+    animation-direction: reverse;
+  }
+  
+  @keyframes rippleAnimation {
+    0% {
+      transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 0;
+    }
+  }
+  

@@ -1,11 +1,10 @@
-
 // ================================================================================================
-//  File Name:  Tba.js
-//  Description: User Config Details.
+//  File Name: Tabs.js
+//  Description: Details of the Administration ( View User Details ).
 //  ----------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
-// ================================================================================================
+// =============================================================================================
 // ** React Imports
 import { Fragment } from 'react'
 
@@ -15,12 +14,11 @@ import { Nav, NavItem, NavLink, TabContent, TabPane, Card, CardBody } from 'reac
 // ** Icons Imports
 import { User, Lock, Bookmark } from 'react-feather'
 
-import PersonalInformation from './PersonalInformation'
+// ** User Components
 import Logs from './Logs'
-import { useTranslation } from 'react-i18next'
+import PersonalInformation from './PersonalInformation'
 
-const UserTabs = ({ active, toggleTab, selectedUser }) => {
-  const {t} = useTranslation()
+const UserTabs = ({ active, toggleTab }) => {
   return (
     <Fragment>
       <Card>
@@ -29,19 +27,25 @@ const UserTabs = ({ active, toggleTab, selectedUser }) => {
         <NavItem>
           <NavLink active={active === '1'} onClick={() => toggleTab('1')}>
             <User className='font-medium-3 me-50' />
-            <span className='fw-bold'>{t('Personal Information')}</span>
+            <span className='fw-bold'>Personal Information</span>
           </NavLink>
         </NavItem>
+        {/* <NavItem>
+          <NavLink active={active === '2'} onClick={() => toggleTab('2')}>
+            <Lock className='font-medium-3 me-50' />
+            <span className='fw-bold'>Security</span>
+          </NavLink>
+        </NavItem> */}
         <NavItem>
           <NavLink active={active === '2'} onClick={() => toggleTab('2')}>
             <Bookmark className='font-medium-3 me-50' />
-            <span className='fw-bold'>{t('Logs')}</span>
+            <span className='fw-bold'>Logs</span>
           </NavLink>
         </NavItem>
       </Nav>
       <TabContent activeTab={active}>
         <TabPane tabId='1'>
-          <PersonalInformation selectedUser={selectedUser} />
+          <PersonalInformation />
         </TabPane>
         <TabPane tabId='2'>
           <Logs />

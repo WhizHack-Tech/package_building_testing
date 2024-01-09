@@ -1,11 +1,10 @@
-// =============================================================================================
+ // ================================================================================================
 //  File Name: rootReducer.js
-//  Description: Details of the root Reducers component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  Description: Details Pages of the RootReducer ( Redux ( Reducer )).
+//  ----------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
-
 // ** Redux Imports
 import { combineReducers } from 'redux'
 
@@ -13,36 +12,23 @@ import { combineReducers } from 'redux'
 import auth from './auth'
 import navbar from './navbar'
 import layout from './layout'
-import users from '@src/views/administration/userconfig/store/reducer'
-import dashboard_charts from "./charts/dashboard_chart"
-import attack_evnets_charts from "./charts/attack-envents-reducer"
-import tables_charts from "./charts/tables_chart"
-import ws_reducer from './ws/wsReducer'
-import test_page from "./charts/test-page"
-import langSwitch from './layout/lang_switch'
-import pagesPermissions from './layout/pagesPermissions'
-import dashboard_chart from '../../views/nids/store/dashboard_chart'
-import incident_charts from '../../views/hids/store/incident_charts'
-import global_charts from '../../views/trace/global_threat_feed/store/global_charts'
-import reports_exports from '../../views/settings/reports_exports/store/reducer'
-import health_sensor from '../../views/healthCheck/store/health_sensor'
+import users from '@src/views/administration/user/store/reducer'
+import client_users from '@src/views/administration/userconfig/store/reducer'
+import billing_details from '@src/views/settings/billing/store/reducer'
+import plan_details from '@src/views/settings/plans/store/reducer'
+import email_details from '@src/views/settings/email/store/reducer'
+import application_details from '@src/views/settings/application/store/reducer'
+
 const rootReducer = combineReducers({
   auth,
   navbar,
   layout,
   users,
-  dashboard_charts,
-  attack_evnets_charts,
-  tables_charts,
-  ws_reducer,
-  test_page,
-  langSwitch,
-  pagesPermissions,
-  dashboard_chart,
-  incident_charts,
-  reports_exports,
-  global_charts,
-  health_sensor
+  client_users,
+  billing_details,
+  plan_details,
+  email_details,
+  application_details
 })
 
 export default rootReducer

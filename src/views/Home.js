@@ -1,3 +1,10 @@
+// ================================================================================================
+//  File Name: Home.js
+//  Description: Details of the Setting ( Edit Plan ).
+//  ----------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
+//  Author URL: https://whizhack.in
+// =============================================================================================
 import { Card, CardHeader, CardBody, CardTitle, CardText, CardLink } from 'reactstrap'
 
 const Home = () => {

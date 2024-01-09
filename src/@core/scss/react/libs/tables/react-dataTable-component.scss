@@ -18,8 +18,7 @@
           font-weight: bold;
           font-style: 0.857rem;
           letter-spacing: 0.5px;
-          // text-transform: uppercase;
-          text-transform: capitalize;
+          text-transform: uppercase;
           &:hover {
             color: $body-color;
           }

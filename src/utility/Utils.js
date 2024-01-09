@@ -1,11 +1,10 @@
-// =============================================================================================
+ // ================================================================================================
 //  File Name: Utils.js
-//  Description: Details of the Utils component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  Description: Details Pages of the Utils.
+//  ----------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
-
 // ** Checks if an object is empty (returns boolean)
 export const isObjEmpty = obj => Object.keys(obj).length === 0
 
@@ -25,17 +24,6 @@ const isToday = date => {
     date.getFullYear() === today.getFullYear()
     /* eslint-enable */
   )
-}
-
-
-export const setDefaultPath = val => localStorage.setItem('default_path', JSON.stringify(val))
-
-export const getDefaultPath = default_page => {
-  if (localStorage.getItem('default_path')) {
-    return JSON.parse(localStorage.getItem('default_path')).default_page
-  } else {
-    return default_page
-  }
 }
 
 /**
@@ -67,20 +55,13 @@ export const formatDateToMonthShort = (value, toTimeForCurrentDay = true) => {
  ** This is completely up to you and how you want to store the token in your frontend application
  *  ? e.g. If you are using cookies to store the application please update this function
  */
-export const isUserLoggedIn = () => localStorage.getItem('clientData')
-export const getUserData = () => JSON.parse(localStorage.getItem('clientData'))
+export const isUserLoggedIn = () => localStorage.getItem('userData')
+export const getUserData = () => JSON.parse(localStorage.getItem('userData'))
+// export const token = () => 'Bearer '.concat(getUserData)
 export const token = () => {
   if (isUserLoggedIn() !== null) {
     return 'Bearer '.concat(getUserData().accessToken)
   }
-}
-
-export const updateUserInfo = (updateData) => {
-  const updateLocalStore = getUserData()
-  updateLocalStore.first_name = updateData.first_name
-  updateLocalStore.profile_photo_path = updateData.profile_photo_path
-  localStorage.removeItem('clientData')
-  localStorage.setItem('clientData', JSON.stringify(updateLocalStore))
 }
 /**
  ** This function is used for demo purpose route navigation
@@ -90,9 +71,9 @@ export const updateUserInfo = (updateData) => {
  * ? NOTE: If you have different pages to navigate based on user ability then this function can be useful. However, you need to update it.
  * @param {String} userRole Role of user
  */
-export const getHomeRouteForLoggedInUser = (userRole, default_path = '/') => {
-  if (userRole === 'super_admin') return default_path
-  if (userRole === 'admin') return default_path
+export const getHomeRouteForLoggedInUser = userRole => {
+  if (userRole === 'super_admin') return '/'
+  if (userRole === 'admin') return '/'
   return '/login'
 }
 
@@ -108,54 +89,3 @@ export const selectThemeColors = theme => ({
     neutral30: '#ededed' // for input hover border-color
   }
 })
-
-export const setLang = (langType = 'en') => {
-  localStorage.setItem('i18nextLng', langType)
-}
-
-export const getLang = localStorage.getItem('i18nextLng') !== null ? localStorage.getItem('i18nextLng') : setLang()
-
-
-//Transition #start
-export const getLocalTransition = transitionHook => {
-  if (localStorage.getItem('transitionAnimation') !== null) {
-    return localStorage.getItem('transitionAnimation')
-  } else {
-    return transitionHook
-  }
-}
-export const setLocalTransition = val => localStorage.setItem('transitionAnimation', val)
-//Transition #End
-
-//navbarColor #start
-export const getLocalNavbarColor = navbarColorHook => {
-  if (localStorage.getItem('navbarColor') !== null) {
-    return localStorage.getItem('navbarColor')
-  } else {
-    return navbarColorHook
-  }
-}
-export const setLocalNavbarColor = val => localStorage.setItem('navbarColor', val)
-// navbarColor #end
-
-// navbarType #start
-export const getLocalNavbarType = navbarTypeHook => {
-  if (localStorage.getItem('navbarType') !== null) {
-    return localStorage.getItem('navbarType')
-  } else {
-    return navbarTypeHook
-  }
-}
-export const setLocalNavbarType = val => localStorage.setItem('navbarType', val)
-// navbarType #end
-
-// footerType #start
-export const getLocalFooterType = footerTypeHook => {
-  if (localStorage.getItem('footerType') !== null) {
-    return localStorage.getItem('footerType')
-  } else {
-    return footerTypeHook
-  }
-}
-export const setLocalFooterType = val => localStorage.setItem('footerType', val)
-// footerType #end

@@ -1,8 +1,8 @@
-// =============================================================================================
-//  File Name: vertical-menu\index.js
+// ==============================================================================================
+//  File Name: vertical-menu/index.js
 //  Description: Details of the vertical-menu component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  ---------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
 
@@ -10,7 +10,7 @@
 import { Fragment, useState, useRef } from 'react'
 
 // ** Vertical Menu Items Array
-import Navigation from '@src/navigation/vertical'
+import navigation from '@src/navigation/vertical'
 
 // ** Third Party Components
 import classnames from 'classnames'
@@ -19,17 +19,11 @@ import PerfectScrollbar from 'react-perfect-scrollbar'
 // ** Vertical Menu Components
 import VerticalMenuHeader from './VerticalMenuHeader'
 import VerticalNavMenuItems from './VerticalNavMenuItems'
-import { Link, useLocation } from 'react-router-dom'
-import { Gitlab } from 'react-feather'
-import { useSelector } from "react-redux"
-import { useTranslation } from 'react-i18next'
-import { Spinner } from 'reactstrap'
+
 const Sidebar = props => {
-  const { t } = useTranslation()
   // ** Props
   const { menuCollapsed, routerProps, menu, currentActiveItem, skin } = props
-  const pagePermissionStore = useSelector((store) => store.pagesPermissions)
-  // const path = useLocation()
+
   // ** States
   const [groupOpen, setGroupOpen] = useState([])
   const [groupActive, setGroupActive] = useState([])
@@ -61,73 +55,6 @@ const Sidebar = props => {
     }
   }
 
-  const ExtenalLink = () => {
-
-    return (
-      <>
-        {/* {(pagePermissionStore.env_trace === true || pagePermissionStore.env_wazuh === true) ? <li class="navigation-header"><span>{t('Plugin')}</span></li> : null}
-
-        {pagePermissionStore.env_trace === true ? <li className={path.pathname === "/third-party/trace" ? 'nav-item active' : 'nav-item'}>
-          <Link className='d-flex align-items-center' to="/third-party/trace" onClick={() => { setActiveItem("/third-party/trace") }}>
-            <Gitlab size={20} />
-            <span className='menu-title text-truncate'>{t('Trace')}</span>
-          </Link>
-        </li> : null}
-
-        {pagePermissionStore.env_wazuh === true ? <li className={path.pathname === "/third-party/wazuh" ? 'nav-item active' : 'nav-item'}>
-          <Link className='d-flex align-items-center' to="/third-party/wazuh" onClick={() => { setActiveItem("/third-party/wazuh") }}>
-            <Gitlab size={20} />
-            <span className='menu-title text-truncate'>{t('Endpoint Security')}</span>
-          </Link>
-        </li> : null} */}
-      </>
-    )
-  }
-
-  let pageGroupsName = {
-    dashboard: true,
-    administartion: true,
-    report: true
-  }
-
-
-  const LoadingMenu = () => {
-    if (pagePermissionStore.loading) {
-
-      pageGroupsName = { ...pageGroupsName, ...pagePermissionStore }
-
-      return (
-        <ul className='navigation navigation-main'>
-          <VerticalNavMenuItems
-            items={Navigation(pageGroupsName)}
-            groupActive={groupActive}
-            setGroupActive={setGroupActive}
-            activeItem={activeItem}
-            setActiveItem={setActiveItem}
-            groupOpen={groupOpen}
-            setGroupOpen={setGroupOpen}
-            routerProps={routerProps}
-            menuCollapsed={menuCollapsed}
-            menuHover={menuHover}
-            currentActiveItem={currentActiveItem}
-          />
-          {/* <ExtenalLink /> */}
-        </ul>
-      )
-
-    } else {
-      return (
-        <ul className='navigation navigation-main'>
-          <li className='nav-item text-center mt-5'>
-            <div className=''>
-              <Spinner color='primary' />
-            </div>
-          </li>
-        </ul>
-      )
-    }
-  }
-
   return (
     <Fragment>
       <div
@@ -153,7 +80,21 @@ const Sidebar = props => {
               options={{ wheelPropagation: false }}
               onScrollY={container => scrollMenu(container)}
             >
-              <LoadingMenu />
+              <ul className='navigation navigation-main'>
+                <VerticalNavMenuItems
+                  items={navigation}
+                  groupActive={groupActive}
+                  setGroupActive={setGroupActive}
+                  activeItem={activeItem}
+                  setActiveItem={setActiveItem}
+                  groupOpen={groupOpen}
+                  setGroupOpen={setGroupOpen}
+                  routerProps={routerProps}
+                  menuCollapsed={menuCollapsed}
+                  menuHover={menuHover}
+                  currentActiveItem={currentActiveItem}
+                />
+              </ul>
             </PerfectScrollbar>
           </Fragment>
         )}

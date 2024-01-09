@@ -1,25 +1,41 @@
-// =============================================================================================
+// ================================================================================================
 //  File Name: settings.js
-//  Description: Details of the settings navbar object component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  Description: Details Pages of the Navigtion ( Horizontal ).
+//  ----------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
+import { BookOpen, Circle, Settings, AlignJustify, Mail } from 'react-feather'
 
-import { Edit, Settings } from 'react-feather'
 export default [
   {
     id: 'settings',
     title: 'Settings',
-    icon: <Settings />,
+    icon: <Settings size={20} />, 
     children: [
       {
-        id: 'editaccountsetting',
-        title: 'Edit Account',
-        icon: <Edit />,
-        action: 'read',
-        resource: 'ACL',
-        navLink: '/settings/editaccount'
+        id: 'plan',
+        title: 'Plan',
+        icon: <AlignJustify size={12} />,
+        navLink: '/settings/plans'
+      },
+      {
+        id: 'billing',
+        title: 'Billing',
+        icon: <Circle size={12} />,
+        navLink: '/settings/billing'
+      },
+      // {
+      //   id: 'email',
+      //   title: 'Email Config',
+      //   icon: <Mail size={12} />,
+      //   navLink: '/settings/email'
+      // },
+      {
+        id: 'application',
+        title: 'Application',
+        icon: <BookOpen />,
+        navLink: '/settings/application'
       }
     ]
   }

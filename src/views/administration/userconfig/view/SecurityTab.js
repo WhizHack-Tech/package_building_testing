@@ -1,11 +1,10 @@
 // ================================================================================================
-//  File Name:  SecurityTab.js
-//  Description: User Config Details.
+//  File Name: SecurityTab.js
+//  Description: Details of the Administration ( View User Details ).
 //  ----------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
-// ================================================================================================
-
+// =============================================================================================
 // ** React Imports
 import { Fragment, useState } from 'react'
 import axios from 'axios'
@@ -46,6 +45,7 @@ const SecurityTab = () => {
           method:"post",
           data:formData
         }).then((res) => {
+          console.log(res)
           // setOldPassNotMatch()
         }).catch((error) => {
           console.log(error.message)
@@ -58,7 +58,7 @@ const SecurityTab = () => {
     <Fragment>
       <Card>
         <CardHeader>
-          <CardTitle tag='h2'>Change Password</CardTitle>
+          <CardTitle tag='h4'>Change Password</CardTitle>
         </CardHeader>
         <CardBody>
           <Form onSubmit={resetPasswordForm}>

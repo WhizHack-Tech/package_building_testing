@@ -1,8 +1,8 @@
-// =============================================================================================
-//  File Name: statistics-card/index.js
-//  Description: Details of the statistics card component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+// ==============================================================================================
+//  File Name: statistics-card.js
+//  Description: Details of the statistics-card component.
+//  ---------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
 

@@ -1,3 +1,11 @@
+// ==============================================================================================
+//  File Name: autocomplete/index.js
+//  Description: Details of the autocomplete component.
+//  ---------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
+//  Author URL: https://whizhack.in
+// ==============================================================================================
+
 // ** React Imports
 import { Fragment, useEffect, useState, useRef } from 'react'
 import ReactDOM from 'react-dom'

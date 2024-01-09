@@ -1,8 +1,8 @@
-// =============================================================================================
-//  File Name: wizard\index.js
-//  Description: Details of the forwardRef component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+// ==============================================================================================
+//  File Name: wizard/index.js
+//  Description: Details of the wizard component.
+//  ---------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
 
@@ -56,7 +56,7 @@ const Wizard = forwardRef((props, ref) => {
             data-target={`#${step.id}`}
           >
             <button type='button' className='step-trigger'>
-              <span>{step.icon ? step.icon : index + 1}</span>
+              <span className='bs-stepper-box'>{step.icon ? step.icon : index + 1}</span>
               <span className='bs-stepper-label'>
                 <span className='bs-stepper-title'>{step.title}</span>
                 {step.subtitle ? <span className='bs-stepper-subtitle'>{step.subtitle}</span> : null}

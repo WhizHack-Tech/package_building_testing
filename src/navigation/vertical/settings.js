@@ -1,27 +1,48 @@
-// =============================================================================================
-//  File Name: settings.js
-//  Description: Details of the settings navebar component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+ // ================================================================================================
+//  File Name: setting.js
+//  Description: Details Pages of the Navigtion ( Vertical ).
+//  ----------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
-
-import { Home, Circle, Edit, CheckSquare, Pocket } from 'react-feather'
+import { BookOpen, Circle, Settings, AlignJustify, Mail } from 'react-feather'
 
 export default [
   {
+    id: 'settings',
     title: 'Settings',
-    action: 'read',
-    resource: 'ACL'
-  },
-  
+    icon: <Settings size={20} />, 
+    children: [
       {
-        id: 'editaccountsetting',
-        title: 'Edit Account',
-        icon: <Edit />,
-        action: 'read',
-        resource: 'ACL',
-        navLink: '/settings/editaccount'
+        id: 'plan2',
+        title: 'Plan',
+        icon: <BookOpen />,
+        navLink: '/settings/plan2'
+      },
+      // {
+      //   id: 'plan',
+      //   title: 'Plan',
+      //   icon: <AlignJustify size={12} />,
+      //   navLink: '/settings/plans'
+      // },
+      {
+        id: 'billing',
+        title: 'Billing',
+        icon: <Circle size={12} />,
+        navLink: '/settings/billing'
       }
-    
+      // {
+      //   id: 'email',
+      //   title: 'Email Config',
+      //   icon: <Mail size={12} />,
+      //   navLink: '/settings/email'
+      // },
+      // {
+      //   id: 'application',
+      //   title: 'Application',
+      //   icon: <BookOpen />,
+      //   navLink: '/settings/application'
+      // }
+    ]
+  }
 ]

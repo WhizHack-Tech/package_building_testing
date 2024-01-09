@@ -1,12 +1,6 @@
-/* ===============================================================================================
--------------------------
-  Item Name: Whizhack Client Admin Dashboard Template
-  Author: Jaydeep Roy Sarkar (WH0020)
-  Author URL: https://demo-xdr.zerohack.in
-================================================================================================*/
 .card {
   border: none;
-  margin-bottom: 1rem;
+  margin-bottom: $content-padding;
   box-shadow: $box-shadow;
   transition: all 0.3s ease-in-out, background 0s, color 0s, border-color 0s;
   .card {
@@ -14,7 +8,7 @@
   }
   .card-title {
     font-weight: 500;
-    font-size: 1.0rem;
+    font-size: 1.285rem;
     margin-bottom: 1.53rem; // Considering sub-title minus margin
   }
   .card-bordered {
@@ -41,8 +35,7 @@
     overflow: auto;
   }
   .card-body[class*='border-bottom-'] {
-    border-bottom-width: 0px !important;
-
+    border-bottom-width: 2px !important;
   }
   .card-img-overlay {
     &.bg-overlay {
@@ -64,9 +57,7 @@
     flex-wrap: wrap;
     justify-content: space-between;
     border-bottom: none;
-    padding: 0.25rem;
-    padding-right: 0.25rem;
-    padding-left: 0.75rem;
+    padding: 1.5rem;
     background-color: transparent;
     .card-title {
       margin-bottom: 0;
@@ -110,7 +101,6 @@
     & + .card-content > .card-body:first-of-type,
     & + .card-body {
       padding-top: 0px;
-      padding-bottom: 0px;
     }
   }
   .card-footer {
@@ -424,7 +414,7 @@
 
 .card-statistics {
   .card-header {
-    padding-left: 0.75rem;
+    padding-left: 2.4rem;
   }
   .statistics-body {
     padding: 2rem 2.4rem 2.8rem !important;
@@ -521,9 +511,4 @@
       }
     }
   }
-}
-
-[dir="ltr"] .row {
-  margin-right: -0.5rem;
-  margin-left: -0.5rem;
 }

@@ -1,8 +1,8 @@
-// =============================================================================================
-//  File Name: HorizontalNavMenuItems\index.js
-//  Description: Details of the Horizontal Nav Menu Items component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+// ==============================================================================================
+//  File Name: HorizontalNavMenuItems/index.js
+//  Description: Details of the HorizontalNavMenuItems component.
+//  ---------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
 
@@ -17,8 +17,8 @@ import HorizontalNavMenuLink from './HorizontalNavMenuLink'
 import HorizontalNavMenuGroup from './HorizontalNavMenuGroup'
 import {
   resolveHorizontalNavMenuItemComponent as resolveNavItemComponent,
-  CanViewMenuGroup,
-  CanViewMenuItem
+  canViewMenuGroup,
+  canViewMenuItem
 } from '@layouts/utils'
 
 const HorizontalNavMenuItems = props => {
@@ -35,9 +35,9 @@ const HorizontalNavMenuItems = props => {
   const RenderNavItems = props.items.map((item, index) => {
     const TagName = Components[resolveNavItemComponent(item)]
     if (item.children) {
-      return CanViewMenuGroup(item) && <TagName item={item} index={index} key={item.id} {...props} />
+      return canViewMenuGroup(item) && <TagName item={item} index={index} key={item.id} {...props} />
     }
-    return CanViewMenuItem(item) && <TagName item={item} index={index} key={item.id} {...props} />
+    return canViewMenuItem(item) && <TagName item={item} index={index} key={item.id} {...props} />
   })
 
   return RenderNavItems

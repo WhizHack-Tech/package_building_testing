@@ -1,56 +1,35 @@
-// =============================================================================================
+// ================================================================================================
 //  File Name: dashboard.js
-//  Description: Details of the dashboard nav object component.
-// ---------------------------------------------------------------------------------------------
-//  Item Name: Whizhack Client Dashboard
+//  Description: Details Pages of the Navigtion ( Horizontal ).
+//  ----------------------------------------------------------------------------------------------
+//  Item Name: Whizhack Master Dashboard
 //  Author URL: https://whizhack.in
 // ==============================================================================================
+import { Home, BarChart2, Shield } from 'react-feather'
 
-import { Home, BarChart2, Shield, Command, Activity, Aperture } from 'react-feather'
 export default [
   {
     id: 'home',
     title: 'Home',
     icon: <Home />,
     children: [
-      {
-        id: 'Dash',
-        title: 'Dashboard',
-        icon: <BarChart2 />,
-        action: 'read',
-        resource: 'ADMIN',
-        navLink: '/dashboard/dashboard'
-      },
+          // {
+          //   id: 'h-dashboard',
+          //   title: 'Dashboard',
+          //   icon: <BarChart2 />,
+          //   navLink: '/dashboard/dashboard',
+          //   action: 'read',
+          //   resource: 'ADMIN'
+          // },
           {
-            id: 'analyticsDash',
-            title: 'Attack Events',
+            id: 'agnetDash',
+            title: 'Agents',
             icon: <Shield />,
+            navLink: '/dashboard/agent',
             action: 'read',
-            resource: 'ADMIN',
-            navLink: '/dashboard/attackevents'
-          },
-          {
-            id: 'relevantintelligence',
-            title: 'Intelligence',
-            icon: <Command />,
-            action: 'read',
-            resource: "ADMIN",
-            navLink: '/dashboard/relevantintelligence'
-          },
-          {
-            id: 'networkmap',
-            title: 'Network Map',
-            icon: <Activity />,
-            navLink: '/dashboard/networkmap'
-          },
-          {
-            id: 'ml&dldetection',
-            title: 'ML & DL Detection',
-            icon: <Aperture />,
-            action: 'read',
-            resource: "ADMIN",
-            navLink: '/dashboard/ml&dldetection'
+            resource: 'ADMIN'
           }
     ]
   }
+     
 ]
