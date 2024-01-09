@@ -1,7 +1,7 @@
 name: Build and push the image to ACR
 on:
   pull_request_target:
-    branches: [ "cf-main-pw" ]
+    branches: [ "pw-main-ClientFE" ]
     types: [ "closed" ]
 
 jobs:
