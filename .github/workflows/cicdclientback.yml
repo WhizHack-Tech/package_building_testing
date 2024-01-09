@@ -48,8 +48,8 @@ jobs:
     - name: Build the image
       id: build-image
       run:
-        docker build -t ${{ secrets.ACR_ENDPOINTPRT }}/client-backend-pt:0.0.1 .
+        docker build -t ${{ secrets.ACR_ENDPOINTPRT }}/client-backend-pt:0.0.2 .
 
     - name: Push the image
       run:
-        docker push ${{ secrets.ACR_ENDPOINTPRT }}/client-backend-pt:0.0.1
+        docker push ${{ secrets.ACR_ENDPOINTPRT }}/client-backend-pt:0.0.2
