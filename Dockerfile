@@ -1,22 +1,7 @@
-FROM node:14.18-alpine
-
-RUN apk update && \
-    apk upgrade
+FROM python:3.10-bullseye
 
 COPY . /app
-
 WORKDIR /app
+RUN pip3 install -r requirements.txt
 
-RUN npm install --legacy-peer-deps && \
-    npm rebuild node-sass
-
-EXPOSE 3000
-#test1
-#test2
-#test3
-#test4
-#test5
-#tes6
-
-
-CMD npm start
+CMD python3 manage.py runserver 0.0.0.0:8000
